@@ -22,7 +22,7 @@
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
     --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.06);
     --shadow-xl: 0 20px 40px -10px rgba(18, 21, 26, 0.12);
-    --radius-card: 20px;
+    --radius-card: 18px;
     --radius-pill: 30px;
   }
 
@@ -41,7 +41,7 @@
   img { max-width: 100%; display: block; }
 
   .container {
-    max-width: 1140px;
+    max-width: 1280px;
     margin: 0 auto;
     padding: 0 24px;
   }
@@ -364,10 +364,11 @@
     border-color: #1e232a;
   }
 
-  .grid-2col {
+  /* 4 CARDS PER ROW GRID LAYOUT */
+  .grid-4col {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 28px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
   }
 
   /* NEXT-LEVEL CARD SYSTEM */
@@ -382,25 +383,25 @@
     flex-direction: column;
   }
   .next-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-6px);
     box-shadow: var(--shadow-xl);
     border-color: rgba(0, 0, 0, 0.12);
   }
 
-  /* Standard Bike Product Card Thumb */
+  /* Bike Product Card Thumb */
   .bike-card .card-thumb {
     background: radial-gradient(circle at 50% 65%, #ffffff 0%, #edf2f7 100%);
-    height: 250px;
+    height: 195px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 24px;
+    padding: 16px;
     position: relative;
   }
   .bike-card .card-thumb img {
-    max-height: 92%;
+    max-height: 90%;
     object-fit: contain;
-    filter: drop-shadow(0 12px 18px rgba(0,0,0,0.14));
+    filter: drop-shadow(0 10px 14px rgba(0,0,0,0.12));
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
   .bike-card:hover .card-thumb img {
@@ -409,15 +410,15 @@
 
   .card-top-tag {
     position: absolute;
-    top: 14px;
-    left: 14px;
-    background: rgba(255, 255, 255, 0.9);
+    top: 10px;
+    left: 10px;
+    background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(0,0,0,0.06);
     color: var(--text-primary);
     border-radius: 20px;
-    padding: 4px 12px;
-    font-size: 11px;
+    padding: 3px 10px;
+    font-size: 10.5px;
     font-weight: 700;
     box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
@@ -425,7 +426,7 @@
   /* NEXT-LEVEL BIKE TOURS CARD THUMBNAIL */
   .tour-card-next .card-thumb {
     background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
-    height: 260px;
+    height: 205px;
     position: relative;
     padding: 0;
     overflow: hidden;
@@ -464,30 +465,30 @@
 
   .glass-badge-left {
     position: absolute;
-    top: 14px;
-    left: 14px;
-    background: rgba(255, 255, 255, 0.15);
+    top: 10px;
+    left: 10px;
+    background: rgba(255, 255, 255, 0.18);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: #ffffff;
     border-radius: 20px;
-    padding: 5px 12px;
-    font-size: 11px;
+    padding: 4px 10px;
+    font-size: 10.5px;
     font-weight: 700;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 4px;
     z-index: 10;
   }
   .glass-badge-right {
     position: absolute;
-    top: 14px;
-    right: 14px;
+    top: 10px;
+    right: 10px;
     background: #ffffff;
     color: #0f172a;
     border-radius: 20px;
-    padding: 5px 14px;
-    font-size: 11px;
+    padding: 4px 11px;
+    font-size: 10.5px;
     font-weight: 800;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     z-index: 10;
@@ -495,67 +496,63 @@
 
   .tour-info-strip {
     position: absolute;
-    bottom: 12px;
-    left: 14px;
-    right: 14px;
-    background: rgba(15, 23, 42, 0.75);
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    background: rgba(15, 23, 42, 0.78);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 12px;
-    padding: 8px 14px;
+    border-radius: 10px;
+    padding: 6px 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: #f8fafc;
-    font-size: 11.5px;
+    font-size: 10.5px;
     font-weight: 600;
     z-index: 10;
-  }
-  .tour-info-strip span {
-    display: flex;
-    align-items: center;
-    gap: 4px;
   }
 
   /* CARD BODY */
   .card-body-next {
-    padding: 20px 22px 22px;
+    padding: 16px 18px 18px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     flex: 1;
   }
   .card-cat-tag {
-    font-size: 11px;
+    font-size: 10.5px;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.8px;
+    letter-spacing: 0.6px;
     color: var(--accent-red);
-    margin-bottom: 4px;
+    margin-bottom: 3px;
   }
   .card-title-next {
-    font-size: 17px;
+    font-size: 14.5px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: -0.2px;
     color: var(--text-primary);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    line-height: 1.3;
   }
 
   .chips-row {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
     flex-wrap: wrap;
-    margin-bottom: 18px;
+    margin-bottom: 14px;
   }
   .chip {
     background: #f1f5f9;
     color: var(--text-muted);
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 6px;
+    padding: 3px 8px;
+    border-radius: 5px;
   }
 
   .card-bottom-row {
@@ -563,16 +560,16 @@
     align-items: center;
     justify-content: space-between;
     margin-top: auto;
-    padding-top: 12px;
+    padding-top: 10px;
     border-top: 1px solid #f1f5f9;
   }
   .card-price-next {
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 800;
     color: var(--text-primary);
   }
   .card-price-next small {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     color: var(--text-muted);
   }
@@ -580,13 +577,13 @@
   .btn-next-action {
     background: #1e232a;
     color: #ffffff;
-    font-size: 12.5px;
+    font-size: 11.5px;
     font-weight: 700;
-    padding: 10px 20px;
-    border-radius: 12px;
+    padding: 8px 14px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
     transition: all 0.25s ease;
   }
   .btn-next-action svg {
@@ -594,10 +591,10 @@
   }
   .next-card:hover .btn-next-action {
     background: #000000;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
   }
   .next-card:hover .btn-next-action svg {
-    transform: translateX(4px);
+    transform: translateX(3px);
   }
 
   /* STEPPER PROCESS */
@@ -637,29 +634,29 @@
   .surf-card .card-thumb {
     background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
     color: #ffffff;
-    height: 240px;
+    height: 195px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 24px;
+    padding: 20px;
     position: relative;
     overflow: hidden;
   }
   .surf-badge {
     position: absolute;
-    top: 14px;
-    right: 14px;
+    top: 10px;
+    right: 10px;
     background: rgba(255, 255, 255, 0.95);
     color: #0284c7;
     border-radius: 20px;
-    padding: 4px 12px;
-    font-size: 11px;
+    padding: 3px 10px;
+    font-size: 10.5px;
     font-weight: 800;
     text-transform: uppercase;
   }
   .surf-graphic-text {
-    font-size: 32px;
+    font-size: 26px;
     font-weight: 900;
     letter-spacing: 1px;
     text-align: center;
@@ -668,7 +665,7 @@
     text-shadow: 0 4px 12px rgba(0,0,0,0.15);
   }
   .surf-subtext {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     opacity: 0.9;
   }
@@ -739,10 +736,13 @@
     font-weight: 600;
   }
 
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
+  /* RESPONSIVE LAYOUT */
+  @media (max-width: 1100px) {
+    .grid-4col { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  }
+  @media (max-width: 640px) {
     .nav-links { display: none; }
-    .grid-2col { grid-template-columns: 1fr; }
+    .grid-4col { grid-template-columns: 1fr; }
     .footer-top { grid-template-columns: 1fr 1fr; row-gap: 32px; }
     .hero-side-bike { display: none; }
     .hero-spec-box { position: static; text-align: center; margin-top: 16px; }
@@ -860,10 +860,10 @@
     </div>
   </section>
 
-  <!-- PRODUCT SECTIONS -->
+  <!-- PRODUCT SECTIONS (4 CARDS PER ROW) -->
   <div class="container">
 
-    <!-- SECTION 1: BIKES (NEXT-LEVEL CARDS) -->
+    <!-- SECTION 1: BIKES (4 CARDS IN A ROW) -->
     <section class="section-row" data-category="bikes">
       <div class="section-header">
         <h2>Bikes</h2>
@@ -872,8 +872,8 @@
           <button class="arrow-btn" aria-label="Next">›</button>
         </div>
       </div>
-      <div class="grid-2col">
-        <!-- NEXT-LEVEL BIKE CARD 1 -->
+      <div class="grid-4col">
+        <!-- CARD 1 -->
         <div class="next-card bike-card">
           <div class="card-thumb">
             <span class="card-top-tag">⚡ Electric Sport</span>
@@ -886,40 +886,88 @@
               <div class="chips-row">
                 <span class="chip">Dual Battery</span>
                 <span class="chip">180 KM Range</span>
-                <span class="chip">Abs Brakes</span>
               </div>
             </div>
             <div class="card-bottom-row">
               <div class="card-price-next">6.60 € <small>/DAY</small></div>
               <button class="btn-next-action">
                 Rent Now
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </button>
             </div>
           </div>
         </div>
 
-        <!-- NEXT-LEVEL BIKE CARD 2 -->
+        <!-- CARD 2 -->
         <div class="next-card bike-card">
           <div class="card-thumb">
-            <span class="card-top-tag">🔥 Popular Commuter</span>
+            <span class="card-top-tag">🔥 Popular</span>
             <img src="images/bike_norco.png" alt="Norco Fluid FS 4 Black 29" />
           </div>
           <div class="card-body-next">
             <div>
-              <div class="card-cat-tag">Cafe Racer Series</div>
+              <div class="card-cat-tag">Cafe Racer</div>
               <div class="card-title-next">NORCO FLUID FS 4 BLACK 29</div>
               <div class="chips-row">
                 <span class="chip">Brembo Clutch</span>
-                <span class="chip">High Acceleration</span>
-                <span class="chip">Lightweight</span>
+                <span class="chip">High Torque</span>
               </div>
             </div>
             <div class="card-bottom-row">
               <div class="card-price-next">8.26 € <small>/DAY</small></div>
               <button class="btn-next-action">
                 Rent Now
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="next-card bike-card">
+          <div class="card-thumb">
+            <span class="card-top-tag">🏆 Flagship</span>
+            <img src="images/hero_bike.png" alt="Ducati Panigale V4 S" />
+          </div>
+          <div class="card-body-next">
+            <div>
+              <div class="card-cat-tag">Track Superbike</div>
+              <div class="card-title-next">DUCATI PANIGALE V4 S</div>
+              <div class="chips-row">
+                <span class="chip">998cc V4</span>
+                <span class="chip">200 HP</span>
+              </div>
+            </div>
+            <div class="card-bottom-row">
+              <div class="card-price-next">45.00 € <small>/DAY</small></div>
+              <button class="btn-next-action">
+                Rent Now
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="next-card bike-card">
+          <div class="card-thumb">
+            <span class="card-top-tag">🏁 Sportbike</span>
+            <img src="images/bike_cbr.png" alt="Yamaha YZF-R1M Apex" />
+          </div>
+          <div class="card-body-next">
+            <div>
+              <div class="card-cat-tag">Apex Series</div>
+              <div class="card-title-next">YAMAHA YZF-R1M APEX</div>
+              <div class="chips-row">
+                <span class="chip">Carbon Fairing</span>
+                <span class="chip">Quickshifter</span>
+              </div>
+            </div>
+            <div class="card-bottom-row">
+              <div class="card-price-next">52.00 € <small>/DAY</small></div>
+              <button class="btn-next-action">
+                Rent Now
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </button>
             </div>
           </div>
@@ -927,7 +975,7 @@
       </div>
     </section>
 
-    <!-- SECTION 2: BIKE TOURS (NEXT-LEVEL HIGH-END CARDS) -->
+    <!-- SECTION 2: BIKE TOURS (4 CARDS IN A ROW) -->
     <section class="section-row" data-category="tours">
       <div class="section-header">
         <h2>Bike Tours</h2>
@@ -936,112 +984,156 @@
           <button class="arrow-btn" aria-label="Next">›</button>
         </div>
       </div>
-      <div class="grid-2col">
-        <!-- NEXT-LEVEL TOUR CARD 1 -->
+      <div class="grid-4col">
+        <!-- TOUR CARD 1 -->
         <div class="next-card tour-card-next">
           <div class="card-thumb">
-            <span class="glass-badge-left">⭐ 4.9 (128)</span>
-            <span class="glass-badge-right">📍 500 Miles</span>
+            <span class="glass-badge-left">⭐ 4.9</span>
+            <span class="glass-badge-right">📍 500 Mi</span>
 
-            <!-- Topographic Dark Map Background SVG -->
-            <svg class="tour-map-canvas" viewBox="0 0 400 260" fill="none">
-              <!-- Topographic Contours -->
-              <path d="M -20 180 C 80 140, 180 220, 420 160" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
-              <path d="M -20 130 C 120 90, 220 180, 420 110" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
-              <path d="M -20 80 C 140 40, 260 140, 420 60" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
-              
-              <!-- Road Terrain Lines -->
-              <path d="M 40 -10 Q 180 140 380 270" stroke="rgba(255,255,255,0.1)" stroke-width="8"/>
-              <path d="M -10 180 Q 220 90 410 140" stroke="rgba(255,255,255,0.1)" stroke-width="8"/>
-
-              <!-- Animated Neon Route Path -->
-              <path class="animated-route-path" d="M 60 190 Q 180 40 340 140" stroke="#f43f5e" stroke-width="3" fill="none" stroke-linecap="round"/>
-
-              <!-- Pulsing Start Node -->
-              <circle cx="60" cy="190" r="12" fill="rgba(244, 63, 94, 0.25)" class="beacon-pulse"/>
-              <circle cx="60" cy="190" r="5" fill="#f43f5e"/>
-
-              <!-- Finish Node -->
-              <circle cx="340" cy="140" r="7" fill="#ffffff" stroke="#f43f5e" stroke-width="3"/>
+            <svg class="tour-map-canvas" viewBox="0 0 300 200" fill="none">
+              <path d="M -20 160 C 80 120, 180 200, 320 140" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
+              <path d="M 30 -10 Q 150 120 320 220" stroke="rgba(255,255,255,0.1)" stroke-width="6"/>
+              <path class="animated-route-path" d="M 50 160 Q 150 40 260 130" stroke="#f43f5e" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <circle cx="50" cy="160" r="10" fill="rgba(244, 63, 94, 0.25)" class="beacon-pulse"/>
+              <circle cx="50" cy="160" r="4" fill="#f43f5e"/>
+              <circle cx="260" cy="130" r="5" fill="#ffffff" stroke="#f43f5e" stroke-width="2.5"/>
             </svg>
 
-            <!-- Bottom Floating Glass Strip -->
             <div class="tour-info-strip">
-              <span>⛰ 2,100m Elevation</span>
-              <span>⏱ 3 Days Ride</span>
-              <span>🛡 Lead Rider</span>
+              <span>⛰ 2,100m</span>
+              <span>⏱ 3 Days</span>
             </div>
           </div>
           <div class="card-body-next">
             <div>
-              <div class="card-cat-tag">Volcanic Pass Expedition</div>
+              <div class="card-cat-tag">Volcanic Pass</div>
               <div class="card-title-next">TEIDE VOLCANO PASS TOUR</div>
               <div class="chips-row">
-                <span class="chip">Hotel Included</span>
-                <span class="chip">Fuel Support</span>
-                <span class="chip">Group Size &le; 8</span>
+                <span class="chip">Hotel Inc.</span>
+                <span class="chip">Fuel Sup.</span>
               </div>
             </div>
             <div class="card-bottom-row">
-              <div class="card-price-next">10.00 € <small>/ person</small></div>
+              <div class="card-price-next">10.00 € <small>/person</small></div>
               <button class="btn-next-action">
-                Book Tour
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                Book
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </button>
             </div>
           </div>
         </div>
 
-        <!-- NEXT-LEVEL TOUR CARD 2 -->
+        <!-- TOUR CARD 2 -->
         <div class="next-card tour-card-next">
           <div class="card-thumb">
-            <span class="glass-badge-left">🔥 Popular</span>
-            <span class="glass-badge-right">📍 500 Miles</span>
+            <span class="glass-badge-left">🔥 Hot</span>
+            <span class="glass-badge-right">📍 500 Mi</span>
 
-            <!-- Topographic Dark Map Background SVG -->
-            <svg class="tour-map-canvas" viewBox="0 0 400 260" fill="none">
-              <!-- Topographic Contours -->
-              <path d="M -20 200 C 140 120, 240 240, 420 180" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
-              <path d="M -20 150 C 160 70, 280 190, 420 120" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
-              <path d="M -20 90 C 180 30, 300 130, 420 70" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
-              
-              <!-- Road Terrain Lines -->
-              <path d="M -10 80 Q 200 210 410 90" stroke="rgba(255,255,255,0.1)" stroke-width="8"/>
-              <path d="M 300 -10 Q 200 140 290 270" stroke="rgba(255,255,255,0.1)" stroke-width="8"/>
-
-              <!-- Animated Neon Route Path -->
-              <path class="animated-route-path" d="M 70 85 Q 210 210 330 100" stroke="#0ea5e9" stroke-width="3" fill="none" stroke-linecap="round"/>
-
-              <!-- Pulsing Start Node -->
-              <circle cx="70" cy="85" r="12" fill="rgba(14, 165, 233, 0.25)" class="beacon-pulse"/>
-              <circle cx="70" cy="85" r="5" fill="#0ea5e9"/>
-
-              <!-- Finish Node -->
-              <circle cx="330" cy="100" r="7" fill="#ffffff" stroke="#0ea5e9" stroke-width="3"/>
+            <svg class="tour-map-canvas" viewBox="0 0 300 200" fill="none">
+              <path d="M -20 180 C 120 100, 200 210, 320 150" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
+              <path d="M -10 60 Q 180 180 320 70" stroke="rgba(255,255,255,0.1)" stroke-width="6"/>
+              <path class="animated-route-path" d="M 50 65 Q 160 170 260 80" stroke="#0ea5e9" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <circle cx="50" cy="65" r="10" fill="rgba(14, 165, 233, 0.25)" class="beacon-pulse"/>
+              <circle cx="50" cy="65" r="4" fill="#0ea5e9"/>
+              <circle cx="260" cy="80" r="5" fill="#ffffff" stroke="#0ea5e9" stroke-width="2.5"/>
             </svg>
 
-            <!-- Bottom Floating Glass Strip -->
             <div class="tour-info-strip">
-              <span>🌊 Coastal Highway</span>
-              <span>⏱ 4 Days Ride</span>
-              <span>📸 Photo Crew</span>
+              <span>🌊 Coastal</span>
+              <span>⏱ 4 Days</span>
             </div>
           </div>
           <div class="card-body-next">
             <div>
-              <div class="card-cat-tag">Metropolitan Scenic Highway</div>
-              <div class="card-title-next">NEW YORK COASTAL STREET TOUR</div>
+              <div class="card-cat-tag">Scenic Highway</div>
+              <div class="card-title-next">NEW YORK COASTAL TOUR</div>
               <div class="chips-row">
-                <span class="chip">Ocean Views</span>
-                <span class="chip">Luxury Meals</span>
-                <span class="chip">GPS Guided</span>
+                <span class="chip">Ocean View</span>
+                <span class="chip">GPS Lead</span>
               </div>
             </div>
             <div class="card-bottom-row">
-              <div class="card-price-next">20.00 € <small>/ person</small></div>
+              <div class="card-price-next">20.00 € <small>/person</small></div>
               <button class="btn-next-action">
-                Book Tour
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                Book
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TOUR CARD 3 -->
+        <div class="next-card tour-card-next">
+          <div class="card-thumb">
+            <span class="glass-badge-left">⛰ Alpine</span>
+            <span class="glass-badge-right">📍 450 Mi</span>
+
+            <svg class="tour-map-canvas" viewBox="0 0 300 200" fill="none">
+              <path d="M -10 140 Q 140 30 310 170" stroke="rgba(255,255,255,0.1)" stroke-width="6"/>
+              <path class="animated-route-path" d="M 40 140 Q 140 30 250 130" stroke="#10b981" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <circle cx="40" cy="140" r="10" fill="rgba(16, 185, 129, 0.25)" class="beacon-pulse"/>
+              <circle cx="40" cy="140" r="4" fill="#10b981"/>
+              <circle cx="250" cy="130" r="5" fill="#ffffff" stroke="#10b981" stroke-width="2.5"/>
+            </svg>
+
+            <div class="tour-info-strip">
+              <span>🏔 Mountain</span>
+              <span>⏱ 2 Days</span>
+            </div>
+          </div>
+          <div class="card-body-next">
+            <div>
+              <div class="card-cat-tag">Alpine Circuit</div>
+              <div class="card-title-next">ALPINE PASS DISCOVERY</div>
+              <div class="chips-row">
+                <span class="chip">2,400m Elev</span>
+                <span class="chip">Lead Rider</span>
+              </div>
+            </div>
+            <div class="card-bottom-row">
+              <div class="card-price-next">15.00 € <small>/person</small></div>
+              <button class="btn-next-action">
+                Book
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TOUR CARD 4 -->
+        <div class="next-card tour-card-next">
+          <div class="card-thumb">
+            <span class="glass-badge-left">☀️ Sunset</span>
+            <span class="glass-badge-right">📍 600 Mi</span>
+
+            <svg class="tour-map-canvas" viewBox="0 0 300 200" fill="none">
+              <path d="M -10 80 Q 150 200 310 90" stroke="rgba(255,255,255,0.1)" stroke-width="6"/>
+              <path class="animated-route-path" d="M 45 80 Q 150 180 255 90" stroke="#f59e0b" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <circle cx="45" cy="80" r="10" fill="rgba(245, 158, 11, 0.25)" class="beacon-pulse"/>
+              <circle cx="45" cy="80" r="4" fill="#f59e0b"/>
+              <circle cx="255" cy="90" r="5" fill="#ffffff" stroke="#f59e0b" stroke-width="2.5"/>
+            </svg>
+
+            <div class="tour-info-strip">
+              <span>🌅 Sunset Pass</span>
+              <span>⏱ 5 Days</span>
+            </div>
+          </div>
+          <div class="card-body-next">
+            <div>
+              <div class="card-cat-tag">Pacific Highway</div>
+              <div class="card-title-next">PACIFIC COAST HIGHWAY</div>
+              <div class="chips-row">
+                <span class="chip">Luxury Stay</span>
+                <span class="chip">Photo Van</span>
+              </div>
+            </div>
+            <div class="card-bottom-row">
+              <div class="card-price-next">25.00 € <small>/person</small></div>
+              <button class="btn-next-action">
+                Book
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </button>
             </div>
           </div>
@@ -1067,7 +1159,7 @@
       </div>
     </section>
 
-    <!-- SECTION 4: SURF SCHOOL -->
+    <!-- SECTION 4: SURF SCHOOL (4 CARDS IN A ROW) -->
     <section class="section-row" data-category="surf">
       <div class="section-header">
         <h2>Surf School</h2>
@@ -1076,53 +1168,106 @@
           <button class="arrow-btn" aria-label="Next">›</button>
         </div>
       </div>
-      <div class="grid-2col">
+      <div class="grid-4col">
+        <!-- CARD 1 -->
         <div class="next-card surf-card">
           <div class="card-thumb">
-            <span class="surf-badge">DURATION: 2 HOURS</span>
-            <div class="surf-graphic-text">SURF<br>SCHOOL</div>
+            <span class="surf-badge">2 HOURS</span>
+            <div class="surf-graphic-text">SURF<br>CAMP</div>
             <div class="surf-subtext">By Joystree Rental</div>
           </div>
           <div class="card-body-next">
             <div>
-              <div class="card-cat-tag">Water Sports Camp</div>
-              <div class="card-title-next">SURF CAMP</div>
+              <div class="card-cat-tag">Beginner Camp</div>
+              <div class="card-title-next">SURF CAMP LESSON</div>
               <div class="chips-row">
                 <span class="chip">Board Included</span>
-                <span class="chip">Wetsuit</span>
                 <span class="chip">Pro Coach</span>
               </div>
             </div>
             <div class="card-bottom-row">
               <div class="card-price-next">11.00 € <small>/LESSON</small></div>
               <button class="btn-next-action">
-                Enroll Now
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                Enroll
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </button>
             </div>
           </div>
         </div>
 
+        <!-- CARD 2 -->
         <div class="next-card surf-card">
           <div class="card-thumb">
-            <span class="surf-badge">DURATION: 2 HOURS</span>
-            <div class="surf-graphic-text">SURF<br>SCHOOL</div>
+            <span class="surf-badge">2 HOURS</span>
+            <div class="surf-graphic-text">ADVANCED<br>LESSON</div>
             <div class="surf-subtext">By Joystree Rental</div>
           </div>
           <div class="card-body-next">
             <div>
-              <div class="card-cat-tag">Advanced Wave Riding</div>
-              <div class="card-title-next">SURF LESSON FOR ADVANCED</div>
+              <div class="card-cat-tag">Wave Master</div>
+              <div class="card-title-next">SURF ADVANCED LESSON</div>
               <div class="chips-row">
                 <span class="chip">Wave Analysis</span>
-                <span class="chip">1-on-1 Coaching</span>
+                <span class="chip">1-on-1</span>
               </div>
             </div>
             <div class="card-bottom-row">
               <div class="card-price-next">11.00 € <small>/LESSON</small></div>
               <button class="btn-next-action">
-                Enroll Now
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                Enroll
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="next-card surf-card">
+          <div class="card-thumb" style="background: linear-gradient(135deg, #10b981 0%, #047857 100%);">
+            <span class="surf-badge" style="color: #047857;">3 HOURS</span>
+            <div class="surf-graphic-text">CORNERING<br>CLASS</div>
+            <div class="surf-subtext">By Joystree Rental</div>
+          </div>
+          <div class="card-body-next">
+            <div>
+              <div class="card-cat-tag">Riding School</div>
+              <div class="card-title-next">CORNERING &amp; LEAN CLASS</div>
+              <div class="chips-row">
+                <span class="chip">Track Bike</span>
+                <span class="chip">Suit &amp; Helmet</span>
+              </div>
+            </div>
+            <div class="card-bottom-row">
+              <div class="card-price-next">25.00 € <small>/LESSON</small></div>
+              <button class="btn-next-action">
+                Enroll
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="next-card surf-card">
+          <div class="card-thumb" style="background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%);">
+            <span class="surf-badge" style="color: #4338ca;">4 HOURS</span>
+            <div class="surf-graphic-text">TELEMETRY<br>MASTER</div>
+            <div class="surf-subtext">By Joystree Rental</div>
+          </div>
+          <div class="card-body-next">
+            <div>
+              <div class="card-cat-tag">High Performance</div>
+              <div class="card-title-next">HIGH SPEED TELEMETRY</div>
+              <div class="chips-row">
+                <span class="chip">Data Video</span>
+                <span class="chip">MotoGP Coach</span>
+              </div>
+            </div>
+            <div class="card-bottom-row">
+              <div class="card-price-next">35.00 € <small>/LESSON</small></div>
+              <button class="btn-next-action">
+                Enroll
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </button>
             </div>
           </div>
@@ -1130,7 +1275,7 @@
       </div>
     </section>
 
-    <!-- SECTION 5: MOTORBIKES (NEXT-LEVEL CARDS) -->
+    <!-- SECTION 5: MOTORBIKES (4 CARDS IN A ROW) -->
     <section class="section-row" data-category="motorbikes">
       <div class="section-header">
         <h2>Motorbikes</h2>
@@ -1139,7 +1284,8 @@
           <button class="arrow-btn" aria-label="Next">›</button>
         </div>
       </div>
-      <div class="grid-2col">
+      <div class="grid-4col">
+        <!-- CARD 1 -->
         <div class="next-card bike-card">
           <div class="card-thumb">
             <span class="card-top-tag">⛰ 1050cc Adventure</span>
@@ -1148,23 +1294,23 @@
           <div class="card-body-next">
             <div>
               <div class="card-cat-tag">Dual-Sport Master</div>
-              <div class="card-title-next">SUZUKI V-STROM DL 1050RR</div>
+              <div class="card-title-next">SUZUKI V-STROM 1050RR</div>
               <div class="chips-row">
-                <span class="chip">V-Twin Engine</span>
-                <span class="chip">Long Suspension</span>
-                <span class="chip">Pannier Ready</span>
+                <span class="chip">V-Twin</span>
+                <span class="chip">Pannier</span>
               </div>
             </div>
             <div class="card-bottom-row">
               <div class="card-price-next">100.55 € <small>/DAY</small></div>
               <button class="btn-next-action">
                 Rent Now
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </button>
             </div>
           </div>
         </div>
 
+        <!-- CARD 2 -->
         <div class="next-card bike-card">
           <div class="card-thumb">
             <span class="card-top-tag">🏁 Inline-4 Sportbike</span>
@@ -1173,18 +1319,67 @@
           <div class="card-body-next">
             <div>
               <div class="card-cat-tag">High Performance</div>
-              <div class="card-title-next">HONDA CBR650R</div>
+              <div class="card-title-next">HONDA CBR650R SPORT</div>
               <div class="chips-row">
-                <span class="chip">649cc Inline Four</span>
-                <span class="chip">Showa SFF-BP</span>
-                <span class="chip">Assist Clutch</span>
+                <span class="chip">649cc Inline4</span>
+                <span class="chip">Showa SFF</span>
               </div>
             </div>
             <div class="card-bottom-row">
               <div class="card-price-next">84.28 € <small>/DAY</small></div>
               <button class="btn-next-action">
                 Rent Now
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="next-card bike-card">
+          <div class="card-thumb">
+            <span class="card-top-tag">🌟 Touring King</span>
+            <img src="images/bike_norco.png" alt="BMW R1250 GS Adventure" />
+          </div>
+          <div class="card-body-next">
+            <div>
+              <div class="card-cat-tag">Touring Series</div>
+              <div class="card-title-next">BMW R1250 GS ADVENTURE</div>
+              <div class="chips-row">
+                <span class="chip">1254cc Boxer</span>
+                <span class="chip">ShiftCam</span>
+              </div>
+            </div>
+            <div class="card-bottom-row">
+              <div class="card-price-next">110.00 € <small>/DAY</small></div>
+              <button class="btn-next-action">
+                Rent Now
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="next-card bike-card">
+          <div class="card-thumb">
+            <span class="card-top-tag">🔥 1000cc Flagship</span>
+            <img src="images/hero_bike.png" alt="Yamaha YZF-R1 Superbike" />
+          </div>
+          <div class="card-body-next">
+            <div>
+              <div class="card-cat-tag">Superbike Track</div>
+              <div class="card-title-next">YAMAHA YZF-R1 SUPERBIKE</div>
+              <div class="chips-row">
+                <span class="chip">998cc Crossplane</span>
+                <span class="chip">200 HP</span>
+              </div>
+            </div>
+            <div class="card-bottom-row">
+              <div class="card-price-next">125.00 € <small>/DAY</small></div>
+              <button class="btn-next-action">
+                Rent Now
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </button>
             </div>
           </div>
