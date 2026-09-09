@@ -127,7 +127,7 @@
     align-items: center;
     justify-content: center;
     min-height: 340px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
   .hero-bg-text {
     position: absolute;
@@ -204,6 +204,60 @@
     color: var(--text-primary);
   }
 
+  /* Sleek Floating Horizontal Search Bar (Placed directly under hero bike) */
+  .search-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    max-width: 640px;
+    margin: 20px auto 32px;
+    padding: 6px 8px;
+  }
+  .search-field {
+    flex: 1;
+    padding: 10px 20px;
+    text-align: left;
+    border-right: 1px solid var(--border-color);
+  }
+  .search-field:last-of-type {
+    border-right: none;
+  }
+  .search-field label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .search-field select {
+    border: none;
+    background: transparent;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--text-primary);
+    width: 100%;
+    outline: none;
+    cursor: pointer;
+  }
+  .btn-search {
+    background: #1e232a;
+    color: #ffffff;
+    font-size: 13.5px;
+    font-weight: 700;
+    padding: 12px 32px;
+    border-radius: 10px;
+    transition: background 0.2s ease;
+    border: none;
+  }
+  .btn-search:hover {
+    background: #000000;
+  }
+
   .hero-title-box h1 {
     font-size: 28px;
     font-weight: 800;
@@ -236,148 +290,6 @@
   .dot.active {
     background: #1e232a;
     width: 44px;
-  }
-
-  /* INSTANT RENTAL BOOKING CARD (MATCHED THEME UNDER HERO BIKE SHOWCASE) */
-  .booking-widget-card {
-    background: #ffffff;
-    border: 1.5px solid var(--border-color);
-    border-radius: 24px;
-    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.05);
-    padding: 28px 36px;
-    max-width: 960px;
-    margin: 28px auto 44px;
-    text-align: left;
-  }
-  .booking-widget-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    border-bottom: 1px solid #f1f5f9;
-    padding-bottom: 16px;
-    margin-bottom: 22px;
-  }
-  .booking-widget-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    background: #f1f5f9;
-    border: 1px solid var(--border-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-primary);
-    flex-shrink: 0;
-  }
-  .booking-widget-header h3 {
-    font-size: 18px;
-    font-weight: 800;
-    color: var(--text-primary);
-    margin-bottom: 2px;
-  }
-  .booking-widget-header p {
-    font-size: 13px;
-    color: var(--text-muted);
-    font-weight: 500;
-  }
-
-  .booking-form-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-  }
-  .form-row-2col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
-  .field-group label {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12.5px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 8px;
-  }
-  .select-box-wrap {
-    position: relative;
-  }
-  .select-box-wrap select {
-    width: 100%;
-    background: #ffffff;
-    border: 1.5px solid var(--border-color);
-    border-radius: 12px;
-    padding: 12px 36px 12px 16px;
-    font-size: 13.5px;
-    font-weight: 600;
-    color: var(--text-primary);
-    outline: none;
-    appearance: none;
-    cursor: pointer;
-    transition: border-color 0.2s ease;
-  }
-  .select-box-wrap select:focus {
-    border-color: var(--text-primary);
-  }
-  .arrow-down-icon {
-    position: absolute;
-    right: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 10px;
-    color: var(--text-muted);
-    pointer-events: none;
-  }
-
-  .split-date-time {
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 10px;
-  }
-  .input-with-icon {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: #ffffff;
-    border: 1.5px solid var(--border-color);
-    border-radius: 12px;
-    padding: 10px 14px;
-    transition: border-color 0.2s ease;
-  }
-  .input-with-icon:focus-within {
-    border-color: var(--text-primary);
-  }
-  .input-with-icon input {
-    border: none;
-    background: transparent;
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text-primary);
-    width: 100%;
-    outline: none;
-  }
-
-  .btn-submit-booking-wrap {
-    text-align: center;
-    margin-top: 10px;
-  }
-  .btn-search-vehicles {
-    background: #1e232a;
-    color: #ffffff;
-    font-size: 14.5px;
-    font-weight: 800;
-    padding: 14px 48px;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(30, 35, 42, 0.2);
-    transition: all 0.25s ease;
-    border: none;
-  }
-  .btn-search-vehicles:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.3);
-    background: #000000;
   }
 
   /* CATEGORY PILLS */
@@ -829,7 +741,6 @@
   /* RESPONSIVE LAYOUT */
   @media (max-width: 1100px) {
     .grid-4col { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .form-row-2col { grid-template-columns: 1fr; }
   }
   @media (max-width: 640px) {
     .nav-links { display: none; }
@@ -837,8 +748,8 @@
     .footer-top { grid-template-columns: 1fr 1fr; row-gap: 32px; }
     .hero-side-bike { display: none; }
     .hero-spec-box { position: static; text-align: center; margin-top: 16px; }
-    .booking-widget-card { padding: 20px; }
-    .split-date-time { grid-template-columns: 1fr; }
+    .search-card { flex-direction: column; gap: 12px; }
+    .search-field { width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); }
   }
 </style>
 </head>
@@ -902,88 +813,31 @@
       </div>
     </div>
 
+    <!-- Floating Horizontal Search Bar (Placed directly under hero bike showcase) -->
+    <div class="search-card">
+      <div class="search-field">
+        <label>From</label>
+        <select>
+          <option>Pick a date</option>
+          <option>Tomorrow, 10:00 AM</option>
+          <option>10-09-2026, 12:00 PM</option>
+        </select>
+      </div>
+      <div class="search-field">
+        <label>To</label>
+        <select>
+          <option>Pick a date</option>
+          <option>In 3 Days, 10:00 AM</option>
+          <option>13-09-2026, 12:00 PM</option>
+        </select>
+      </div>
+      <button class="btn-search" onclick="alert('Searching availability for selected dates...');">Search</button>
+    </div>
+
     <!-- Hero Title & Subtitle -->
     <div class="hero-title-box">
       <h1 id="heroTitle">NORCO FLUID HT 1</h1>
       <p id="heroDesc">The Norco Fluid HT 1 is a versatile high-performance motorbike built for efficient acceleration and smooth highway cruising.</p>
-    </div>
-
-    <!-- INSTANT RENTAL BOOKING CARD (PLACED DIRECTLY UNDER THE HERO BIKE SHOWCASE) -->
-    <div class="booking-widget-card">
-      <div class="booking-widget-header">
-        <div class="booking-widget-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg>
-        </div>
-        <div>
-          <h3>Instant Rental Booking</h3>
-          <p>Search available vehicles for your trip</p>
-        </div>
-      </div>
-
-      <form class="booking-form-grid" onsubmit="event.preventDefault(); alert('Searching available vehicles for your selected dates and location...');">
-        <!-- Row 1: Pickup & Drop-off Locations -->
-        <div class="form-row-2col">
-          <div class="field-group">
-            <label><span style="color:#ef4444;">📍</span> Pickup Location</label>
-            <div class="select-box-wrap">
-              <select>
-                <option>Edapally Lulu (pickup)</option>
-                <option>Airport Terminal 1 Garage</option>
-                <option>Downtown Central Station</option>
-              </select>
-              <span class="arrow-down-icon">▼</span>
-            </div>
-          </div>
-
-          <div class="field-group">
-            <label><span style="color:#64748b;">🏁</span> Drop-off Location</label>
-            <div class="select-box-wrap">
-              <select>
-                <option>Edapally Lulu (pickup)</option>
-                <option>Airport Terminal 1 Garage</option>
-                <option>Downtown Central Station</option>
-              </select>
-              <span class="arrow-down-icon">▼</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Row 2: Pickup & Drop-off Dates & Times -->
-        <div class="form-row-2col">
-          <div class="field-group">
-            <label><span style="color:#6366f1;">📅</span> Pickup Date &amp; Time</label>
-            <div class="split-date-time">
-              <div class="input-with-icon">
-                <span style="color:#6366f1;">📅</span>
-                <input type="text" value="10-09-2026" placeholder="DD-MM-YYYY" />
-              </div>
-              <div class="input-with-icon">
-                <span style="color:#64748b;">🕒</span>
-                <input type="text" value="12:00 PM" placeholder="HH:MM" />
-              </div>
-            </div>
-          </div>
-
-          <div class="field-group">
-            <label><span style="color:#64748b;">🕒</span> Drop-off Date &amp; Time</label>
-            <div class="split-date-time">
-              <div class="input-with-icon">
-                <span style="color:#6366f1;">📅</span>
-                <input type="text" value="13-09-2026" placeholder="DD-MM-YYYY" />
-              </div>
-              <div class="input-with-icon">
-                <span style="color:#64748b;">🕒</span>
-                <input type="text" value="12:00 PM" placeholder="HH:MM" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Action Button -->
-        <div class="btn-submit-booking-wrap">
-          <button type="submit" class="btn-search-vehicles">Search Available Vehicles</button>
-        </div>
-      </form>
     </div>
 
     <!-- Carousel Dots -->
