@@ -359,6 +359,48 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
   }
 
+  /* Universal Aesthetic Bike Watermark Tint Backdrop */
+  .card-bike-watermark {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    opacity: 0.07;
+    filter: grayscale(100%) contrast(110%);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+
+  /* Giant Section Watermark Backdrop */
+  .how-it-works-section,
+  .policy-section,
+  .depots-section,
+  .faq-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-bg-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1100px;
+    max-width: 95%;
+    opacity: 0.055;
+    filter: grayscale(100%) contrast(120%) brightness(0.9);
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+
+  .how-it-works-section > *:not(.section-bg-watermark),
+  .policy-section > *:not(.section-bg-watermark),
+  .depots-section > *:not(.section-bg-watermark),
+  .faq-section > *:not(.section-bg-watermark) {
+    position: relative;
+    z-index: 1;
+  }
+
   /* Vision & Mission Aesthetic Card */
   .vision-mission-card {
     background: #ffffff;
@@ -369,17 +411,27 @@
     margin-bottom: 24px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.025);
     position: relative;
+    overflow: hidden;
     transition: all 0.3s ease;
+  }
+  .vision-mission-card .card-bike-watermark {
+    right: -40px;
+    bottom: -35px;
+    width: 360px;
+  }
+  .vision-mission-card:hover .card-bike-watermark,
+  .policy-hero-card:hover .card-bike-watermark,
+  .depot-command-card:hover .card-bike-watermark {
+    opacity: 0.15;
+    transform: scale(1.05) translateY(-4px);
   }
   .vision-mission-card:hover {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
     border-color: #cbd5e1;
   }
-  .vision-header-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 14px;
+  .vision-header-row, .vision-text {
+    position: relative;
+    z-index: 1;
   }
   .vision-tag {
     font-size: 12.5px;
@@ -758,6 +810,12 @@
     overflow: hidden;
     box-shadow: 0 8px 30px rgba(0,0,0,0.035);
     text-align: left;
+    position: relative;
+  }
+  .depot-command-card .card-bike-watermark {
+    right: -60px;
+    bottom: -40px;
+    width: 480px;
   }
   .command-card-top-bar {
     background: #f8fafc;
@@ -1018,17 +1076,26 @@
   @media (max-width: 1100px) {
     .steps-4grid { grid-template-columns: repeat(2, 1fr); }
     .policy-6grid { grid-template-columns: repeat(2, 1fr); }
+    .policy-bento-layout { grid-template-columns: 1fr; }
     .depots-layout-grid { grid-template-columns: 1fr; }
+    .depot-tabs-row { grid-template-columns: repeat(2, 1fr); }
+    .command-card-body { grid-template-columns: 1fr; }
+    .command-right-actions { flex-direction: row; flex-wrap: wrap; }
     .footer-grid-top { grid-template-columns: 1fr 1fr; gap: 32px; }
   }
   @media (max-width: 640px) {
     .steps-4grid { grid-template-columns: 1fr; }
     .policy-6grid { grid-template-columns: 1fr; }
+    .policy-subgrid { grid-template-columns: 1fr; }
+    .full-span-card { grid-column: span 1; }
+    .depot-tabs-row { grid-template-columns: 1fr 1fr; }
     .nav-links { display: none; }
     .search-card { flex-wrap: wrap; gap: 8px; }
     .search-field { width: 48%; border-right: none; }
     .btn-search { width: 100%; margin-left: 0; }
     .footer-grid-top { grid-template-columns: 1fr; }
+    .section-bg-watermark { width: 600px; opacity: 0.04; }
+    .cancellation-flex-boxes { flex-direction: column; }
   }
 </style>
 </head>
@@ -1169,12 +1236,14 @@
        SECTION 1: HOW IT WORKS & VISION MISSION (AESTHETIC LIGHT UI)
        ========================================================= -->
   <section class="how-it-works-section container" id="howitworks">
+    <img src="images/bike_vstrom.png" class="section-bg-watermark" alt="" />
     <div class="step-badge-pill">SIMPLE 4-STEP PROCESS</div>
     <h2 class="section-main-heading" style="font-size: 32px; font-weight: 800; color: #111827; margin-bottom: 8px;">How It Works</h2>
     <p class="section-subtext" style="font-size: 14px; color: #6b7280; font-weight: 400; margin-bottom: 32px;">Rent your dream motorbike in 4 effortless steps with Joystree Rental.</p>
 
     <!-- Vision & Mission Card -->
     <div class="vision-mission-card">
+      <img src="images/hero_bike.png" class="card-bike-watermark" alt="" />
       <div class="vision-header-row">
         <div class="vision-tag">
           <span style="color:#ec4899;">🎯</span> OUR VISION & MISSION
@@ -1242,6 +1311,7 @@
        SECTION 2: POLICY & GUIDELINES (AESTHETIC ASYMMETRIC BENTO)
        ========================================================= -->
   <section class="policy-section container" id="policies">
+    <img src="images/bike_cbr.png" class="section-bg-watermark" alt="" />
     <div class="step-badge-pill">OFFICIAL RENTAL TERMS</div>
     <h2 class="section-main-heading" style="font-size: 32px; font-weight: 800; color: #111827; margin-bottom: 8px;">Policy & Guidelines</h2>
     <p class="section-subtext" style="font-size: 14px; color: #6b7280; font-weight: 400; margin-bottom: 32px;">Transparent, fair, and hassle-free rental terms for your trip across Kerala.</p>
@@ -1249,6 +1319,7 @@
     <div class="policy-bento-layout">
       <!-- Hero Highlight Feature Card (Speed Advisory & Safety) -->
       <div class="policy-hero-card">
+        <img src="images/bike_cbr.png" class="card-bike-watermark" alt="" />
         <div class="hero-card-badge">🚨 KERALA MVD SAFETY COMPLIANT</div>
         <div class="hero-card-icon-halo">🚨</div>
         <h3 class="hero-card-title">Speed Advisory (80 km/h)</h3>
@@ -1380,6 +1451,7 @@
        SECTION 3: KERALA DEPOTS (COMMAND CENTER DASHBOARD)
        ========================================================= -->
   <section class="depots-section container" id="depots">
+    <img src="images/bike_vstrom.png" class="section-bg-watermark" alt="" />
     <div class="step-badge-pill">LOCATIONS & HUBS</div>
     <h2 class="section-main-heading" style="font-size: 32px; font-weight: 800; color: #111827; margin-bottom: 8px;">Kerala Rental Depots</h2>
     <p class="section-subtext" style="font-size: 14px; color: #6b7280; font-weight: 400; margin-bottom: 32px;">Pick up your vehicle at our prime depots or arrange doorstep delivery anywhere in Kerala.</p>
@@ -1421,6 +1493,7 @@
 
     <!-- Command Center Detail Card -->
     <div class="depot-command-card">
+      <img src="images/bike_vstrom.png" class="card-bike-watermark" alt="" />
       <div class="command-card-top-bar">
         <span class="gps-status"><span class="dot-green">●</span> GPS LIVE NETWORK SYNC</span>
         <span class="hub-code" id="depotHubCode">HUB-01 • KOCHI CENTRAL HQ</span>
@@ -1464,6 +1537,7 @@
        SECTION 4: RENTAL KNOWLEDGE BASE (AESTHETIC ACCORDION)
        ========================================================= -->
   <section class="faq-section container" id="faq">
+    <img src="images/bike_vstrom.png" class="section-bg-watermark" alt="" />
     <div class="section-badge-aesthetic">❓ Frequently Asked Questions</div>
     <h2 class="section-main-heading">Rental <span>Knowledge Base</span></h2>
     <p class="section-subtext">Everything you need to know about renting with Joystree Rental.</p>
