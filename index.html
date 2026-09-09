@@ -404,63 +404,127 @@
   /* Vision & Mission Aesthetic Card */
   .vision-mission-card {
     background: #ffffff;
-    border: 1.5px solid #e5e7eb;
-    border-radius: 18px;
-    padding: 32px 36px;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-card);
+    padding: 26px 32px 28px;
     text-align: left;
     margin-bottom: 24px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.025);
+    box-shadow: var(--shadow-sm);
     position: relative;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
   }
-  .vision-mission-card .card-bike-watermark {
-    right: -40px;
-    bottom: -35px;
-    width: 360px;
+  .vision-mission-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--brand-yellow), var(--brand-accent));
   }
-  .vision-mission-card:hover .card-bike-watermark,
   .policy-hero-card:hover .card-bike-watermark,
   .depot-command-card:hover .card-bike-watermark {
     opacity: 0.15;
     transform: scale(1.05) translateY(-4px);
   }
   .vision-mission-card:hover {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-md);
     border-color: #cbd5e1;
+    transform: translateY(-2px);
   }
-  .vision-header-row, .vision-text {
-    position: relative;
-    z-index: 1;
-  }
-  .vision-tag {
-    font-size: 12.5px;
-    font-weight: 800;
-    color: #111827;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
+  .vision-header-row {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 14px;
+    padding-bottom: 18px;
+    margin-bottom: 18px;
+    border-bottom: 1px dashed var(--border-color);
+  }
+  .vision-icon-halo {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    font-size: 19px;
+    background: linear-gradient(140deg, #fff7e6, #ffedd5);
+    border: 1px solid #fde3b0;
+  }
+  .vision-title-block {
+    flex: 1;
+    min-width: 0;
+  }
+  .vision-tag {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+  .vision-title-sub {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-top: 3px;
   }
   .vision-badge-sub {
+    flex-shrink: 0;
     background: #f1f5f9;
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--border-color);
     color: #475569;
     font-size: 11.5px;
     font-weight: 700;
-    padding: 5px 14px;
-    border-radius: 20px;
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+    white-space: nowrap;
   }
   .vision-text {
     font-size: 14px;
     color: #4b5563;
-    line-height: 1.75;
+    line-height: 1.8;
     font-weight: 450;
+    max-width: 900px;
   }
   .vision-text strong {
-    color: #111827;
+    color: var(--text-primary);
     font-weight: 800;
+  }
+  .vision-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 22px;
+  }
+  .vision-pillar {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    background: #f8fafc;
+    border: 1px solid #eef2f7;
+    border-radius: 14px;
+    padding: 12px 14px;
+    transition: background 0.25s ease, border-color 0.25s ease;
+  }
+  .vision-pillar:hover {
+    background: #fffdf6;
+    border-color: #fde3b0;
+  }
+  .vision-pillar .vp-icon {
+    font-size: 16px;
+    line-height: 1;
+  }
+  .vision-pillar strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+  .vision-pillar small {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    font-weight: 500;
   }
 
   /* 4 Step Cards Aesthetic Horizontal Grid */
@@ -1082,6 +1146,7 @@
     .command-card-body { grid-template-columns: 1fr; }
     .command-right-actions { flex-direction: row; flex-wrap: wrap; }
     .footer-grid-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .vision-pillars { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 640px) {
     .steps-4grid { grid-template-columns: 1fr; }
@@ -1096,6 +1161,10 @@
     .footer-grid-top { grid-template-columns: 1fr; }
     .section-bg-watermark { width: 600px; opacity: 0.04; }
     .cancellation-flex-boxes { flex-direction: column; }
+    .vision-mission-card { padding: 22px 22px 24px; }
+    .vision-header-row { flex-wrap: wrap; }
+    .vision-badge-sub { order: 3; width: 100%; text-align: center; }
+    .vision-pillars { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -1243,16 +1312,40 @@
 
     <!-- Vision & Mission Card -->
     <div class="vision-mission-card">
-      <img src="images/hero_bike.png" class="card-bike-watermark" alt="" />
       <div class="vision-header-row">
-        <div class="vision-tag">
-          <span style="color:#ec4899;">🎯</span> OUR VISION & MISSION
+        <div class="vision-icon-halo">🎯</div>
+        <div class="vision-title-block">
+          <div class="vision-tag">Our Vision &amp; Mission</div>
+          <div class="vision-title-sub">What drives Joystree Rental across Kerala</div>
         </div>
-        <div class="vision-badge-sub">Excellence & Integrity</div>
+        <div class="vision-badge-sub">Excellence &amp; Integrity</div>
       </div>
       <p class="vision-text">
         To be the leading provider of affordable and reliable motorbike rental solutions, enabling customers to <strong>rent a motorbike and bike in Kerala</strong> seamlessly. As a trusted platform, we focus on delivering exceptional customer service, transparency, and innovation.
       </p>
+      <div class="vision-pillars">
+        <div class="vision-pillar">
+          <span class="vp-icon">🤝</span>
+          <div>
+            <strong>Customer Service</strong>
+            <small>Support at every step</small>
+          </div>
+        </div>
+        <div class="vision-pillar">
+          <span class="vp-icon">🔍</span>
+          <div>
+            <strong>Transparency</strong>
+            <small>No hidden charges</small>
+          </div>
+        </div>
+        <div class="vision-pillar">
+          <span class="vp-icon">⚡</span>
+          <div>
+            <strong>Innovation</strong>
+            <small>Fast, modern booking</small>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- 4 Step Cards Grid -->
@@ -1311,7 +1404,6 @@
        SECTION 2: POLICY & GUIDELINES (AESTHETIC ASYMMETRIC BENTO)
        ========================================================= -->
   <section class="policy-section container" id="policies">
-    <img src="images/bike_cbr.png" class="section-bg-watermark" alt="" />
     <div class="step-badge-pill">OFFICIAL RENTAL TERMS</div>
     <h2 class="section-main-heading" style="font-size: 32px; font-weight: 800; color: #111827; margin-bottom: 8px;">Policy & Guidelines</h2>
     <p class="section-subtext" style="font-size: 14px; color: #6b7280; font-weight: 400; margin-bottom: 32px;">Transparent, fair, and hassle-free rental terms for your trip across Kerala.</p>
@@ -1451,7 +1543,6 @@
        SECTION 3: KERALA DEPOTS (COMMAND CENTER DASHBOARD)
        ========================================================= -->
   <section class="depots-section container" id="depots">
-    <img src="images/bike_vstrom.png" class="section-bg-watermark" alt="" />
     <div class="step-badge-pill">LOCATIONS & HUBS</div>
     <h2 class="section-main-heading" style="font-size: 32px; font-weight: 800; color: #111827; margin-bottom: 8px;">Kerala Rental Depots</h2>
     <p class="section-subtext" style="font-size: 14px; color: #6b7280; font-weight: 400; margin-bottom: 32px;">Pick up your vehicle at our prime depots or arrange doorstep delivery anywhere in Kerala.</p>
@@ -1537,7 +1628,6 @@
        SECTION 4: RENTAL KNOWLEDGE BASE (AESTHETIC ACCORDION)
        ========================================================= -->
   <section class="faq-section container" id="faq">
-    <img src="images/bike_vstrom.png" class="section-bg-watermark" alt="" />
     <div class="section-badge-aesthetic">❓ Frequently Asked Questions</div>
     <h2 class="section-main-heading">Rental <span>Knowledge Base</span></h2>
     <p class="section-subtext">Everything you need to know about renting with Joystree Rental.</p>
