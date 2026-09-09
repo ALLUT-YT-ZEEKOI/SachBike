@@ -18,7 +18,6 @@
     --border-color: #e5e7eb;
     --accent-red: #f43f5e;
     --accent-blue: #0ea5e9;
-    --accent-yellow: #ffab00;
     --pill-bg: #f1f3f6;
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
     --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.06);
@@ -115,7 +114,7 @@
 
   /* HERO SECTION */
   .hero-section {
-    padding: 40px 0 48px;
+    padding: 36px 0 48px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -224,7 +223,7 @@
     display: flex;
     justify-content: center;
     gap: 8px;
-    margin: 20px 0 36px;
+    margin: 24px 0 36px;
   }
   .dot {
     height: 4px;
@@ -239,7 +238,7 @@
     width: 44px;
   }
 
-  /* INSTANT RENTAL BOOKING WIDGET (UNDER HERO BIKE) */
+  /* INSTANT RENTAL BOOKING CARD (MATCHED THEME UNDER HERO BIKE SHOWCASE) */
   .booking-widget-card {
     background: #ffffff;
     border: 1.5px solid var(--border-color);
@@ -247,7 +246,7 @@
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.05);
     padding: 28px 36px;
     max-width: 960px;
-    margin: 0 auto 52px;
+    margin: 28px auto 44px;
     text-align: left;
   }
   .booking-widget-header {
@@ -262,11 +261,12 @@
     width: 44px;
     height: 44px;
     border-radius: 12px;
-    background: #fffbeb;
-    border: 1px solid #fef3c7;
+    background: #f1f5f9;
+    border: 1px solid var(--border-color);
     display: flex;
     align-items: center;
     justify-content: center;
+    color: var(--text-primary);
     flex-shrink: 0;
   }
   .booking-widget-header h3 {
@@ -318,7 +318,7 @@
     transition: border-color 0.2s ease;
   }
   .select-box-wrap select:focus {
-    border-color: var(--accent-yellow);
+    border-color: var(--text-primary);
   }
   .arrow-down-icon {
     position: absolute;
@@ -326,7 +326,7 @@
     top: 50%;
     transform: translateY(-50%);
     font-size: 10px;
-    color: #f59e0b;
+    color: var(--text-muted);
     pointer-events: none;
   }
 
@@ -346,7 +346,7 @@
     transition: border-color 0.2s ease;
   }
   .input-with-icon:focus-within {
-    border-color: var(--accent-yellow);
+    border-color: var(--text-primary);
   }
   .input-with-icon input {
     border: none;
@@ -364,20 +364,20 @@
     margin-top: 10px;
   }
   .btn-search-vehicles {
-    background: linear-gradient(180deg, #ffb700 0%, #ff9500 100%);
+    background: #1e232a;
     color: #ffffff;
     font-size: 14.5px;
     font-weight: 800;
     padding: 14px 48px;
     border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(255, 149, 0, 0.35);
+    box-shadow: 0 6px 20px rgba(30, 35, 42, 0.2);
     transition: all 0.25s ease;
     border: none;
   }
   .btn-search-vehicles:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 26px rgba(255, 149, 0, 0.45);
-    background: linear-gradient(180deg, #ffaa00 0%, #e68500 100%);
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.3);
+    background: #000000;
   }
 
   /* CATEGORY PILLS */
@@ -908,18 +908,11 @@
       <p id="heroDesc">The Norco Fluid HT 1 is a versatile high-performance motorbike built for efficient acceleration and smooth highway cruising.</p>
     </div>
 
-    <!-- Carousel Dots -->
-    <div class="carousel-dots">
-      <div class="dot active" onclick="switchHero(0)"></div>
-      <div class="dot" onclick="switchHero(1)"></div>
-      <div class="dot" onclick="switchHero(2)"></div>
-    </div>
-
-    <!-- INSTANT RENTAL BOOKING CARD (PLACED DIRECTLY UNDER THE BIKE SHOWCASE) -->
+    <!-- INSTANT RENTAL BOOKING CARD (PLACED DIRECTLY UNDER THE HERO BIKE SHOWCASE) -->
     <div class="booking-widget-card">
       <div class="booking-widget-header">
         <div class="booking-widget-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg>
         </div>
         <div>
           <h3>Instant Rental Booking</h3>
@@ -958,7 +951,7 @@
         <!-- Row 2: Pickup & Drop-off Dates & Times -->
         <div class="form-row-2col">
           <div class="field-group">
-            <label><span style="color:#8b5cf6;">📅</span> Pickup Date &amp; Time</label>
+            <label><span style="color:#6366f1;">📅</span> Pickup Date &amp; Time</label>
             <div class="split-date-time">
               <div class="input-with-icon">
                 <span style="color:#6366f1;">📅</span>
@@ -991,6 +984,13 @@
           <button type="submit" class="btn-search-vehicles">Search Available Vehicles</button>
         </div>
       </form>
+    </div>
+
+    <!-- Carousel Dots -->
+    <div class="carousel-dots">
+      <div class="dot active" onclick="switchHero(0)"></div>
+      <div class="dot" onclick="switchHero(1)"></div>
+      <div class="dot" onclick="switchHero(2)"></div>
     </div>
 
     <!-- CATEGORY FILTER PILLS -->
