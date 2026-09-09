@@ -16,14 +16,14 @@
     --text-muted: #6c757d;
     --text-light: #9ca3af;
     --border-color: #e5e7eb;
-    --brand-accent: #f59e0b;
+    --brand-accent: #1e232a;
     --brand-yellow: #ffb800;
-    --brand-dark: #0f172a;
+    --brand-dark: #12151a;
     --radius-card: 18px;
     --radius-pill: 30px;
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
-    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.06);
-    --shadow-xl: 0 20px 40px -10px rgba(18, 21, 26, 0.12);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 16px 36px rgba(18, 21, 26, 0.08);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -112,7 +112,7 @@
     background: #f1f3f6;
   }
 
-  /* HERO SECTION */
+  /* HERO SECTION (UNCHANGED PERECT HERO BANNER) */
   .hero-section {
     padding: 36px 0 48px;
     text-align: center;
@@ -302,37 +302,38 @@
     width: 36px;
   }
 
-  /* SECTION PILL BADGES & HEADINGS */
+  /* JOYSTREE DESIGN SYSTEM SECTION HEADINGS & BADGES */
   .section-badge-pill {
     display: inline-block;
-    background: #fff8e7;
-    border: 1.5px solid #fde68a;
-    color: #d97706;
-    font-size: 12px;
-    font-weight: 800;
+    background: #ffffff;
+    border: 1.5px solid var(--border-color);
+    color: var(--text-primary);
+    font-size: 11.5px;
+    font-weight: 700;
     padding: 6px 18px;
     border-radius: 30px;
-    margin-bottom: 12px;
-    letter-spacing: 0.2px;
+    margin-bottom: 14px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
   }
   .section-main-heading {
-    font-size: 32px;
-    font-weight: 900;
+    font-size: 30px;
+    font-weight: 800;
     letter-spacing: -0.6px;
-    margin-bottom: 12px;
-  }
-  .section-main-heading span {
-    color: var(--brand-accent);
+    color: var(--text-primary);
+    margin-bottom: 10px;
   }
   .section-subtext {
     font-size: 14px;
     color: var(--text-muted);
-    max-width: 600px;
-    margin: 0 auto 36px;
+    max-width: 560px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
   }
 
   /* =========================================================
-     SECTION 1: HOW IT WORKS & VISION MISSION
+     SECTION 1: HOW IT WORKS & VISION MISSION (JOYSTREE THEME)
      ========================================================= */
   .how-it-works-section {
     padding: 64px 0 48px;
@@ -341,15 +342,13 @@
 
   /* Vision & Mission Card */
   .vision-mission-card {
-    background: #fffdf2;
-    border: 1.5px solid #fde68a;
-    border-radius: 20px;
-    padding: 28px 36px;
+    background: #ffffff;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-card);
+    padding: 32px 40px;
     text-align: left;
     margin-bottom: 40px;
-    box-shadow: 0 4px 20px rgba(245, 158, 11, 0.05);
-    position: relative;
-    overflow: hidden;
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.04);
   }
   .vision-header-row {
     display: flex;
@@ -360,7 +359,7 @@
   .vision-tag {
     font-size: 12px;
     font-weight: 800;
-    color: #d97706;
+    color: var(--text-primary);
     text-transform: uppercase;
     letter-spacing: 0.5px;
     display: flex;
@@ -368,21 +367,21 @@
     gap: 6px;
   }
   .vision-badge-sub {
-    background: #fef3c7;
-    color: #b45309;
+    background: #f1f5f9;
+    color: #475569;
     font-size: 11px;
-    font-weight: 800;
+    font-weight: 700;
     padding: 4px 12px;
     border-radius: 20px;
   }
   .vision-text {
-    font-size: 14.5px;
-    color: #334155;
-    line-height: 1.7;
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.75;
     font-weight: 500;
   }
   .vision-text strong {
-    color: #0f172a;
+    color: var(--text-primary);
     font-weight: 800;
   }
 
@@ -395,23 +394,16 @@
   .step-card-box {
     background: #ffffff;
     border: 1.5px solid var(--border-color);
-    border-radius: 20px;
+    border-radius: var(--radius-card);
     padding: 28px 24px;
     text-align: left;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.03);
     transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-    position: relative;
-    display: flex;
-    flex-direction: column;
   }
   .step-card-box:hover {
     transform: translateY(-6px);
-    border-color: #fde68a;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.06);
-  }
-  .step-card-box.highlight {
-    border-color: var(--brand-yellow);
-    box-shadow: 0 0 0 3px rgba(255, 184, 0, 0.25);
+    box-shadow: var(--shadow-xl);
+    border-color: rgba(0, 0, 0, 0.15);
   }
 
   .step-card-top {
@@ -421,22 +413,22 @@
     margin-bottom: 16px;
   }
   .step-num-big {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 900;
-    color: #f59e0b;
+    color: var(--text-primary);
   }
   .step-icon-bg {
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
     border-radius: 12px;
-    background: #fff8e7;
+    background: #f1f5f9;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 18px;
   }
   .step-card-title {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 800;
     color: var(--text-primary);
     margin-bottom: 8px;
@@ -448,7 +440,7 @@
   }
 
   /* =========================================================
-     SECTION 2: POLICY & GUIDELINES (6 CARDS GRID)
+     SECTION 2: POLICY & GUIDELINES (JOYSTREE THEME)
      ========================================================= */
   .policy-section {
     padding: 56px 0;
@@ -462,16 +454,16 @@
   .policy-card-item {
     background: #ffffff;
     border: 1.5px solid var(--border-color);
-    border-radius: 20px;
+    border-radius: var(--radius-card);
     padding: 28px;
     text-align: left;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.03);
     transition: all 0.3s ease;
   }
   .policy-card-item:hover {
     transform: translateY(-4px);
-    border-color: #cbd5e1;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    box-shadow: var(--shadow-xl);
+    border-color: rgba(0, 0, 0, 0.15);
   }
 
   .policy-card-header {
@@ -491,7 +483,7 @@
     font-size: 18px;
   }
   .policy-title {
-    font-size: 16px;
+    font-size: 15.5px;
     font-weight: 800;
     color: var(--text-primary);
   }
@@ -501,8 +493,8 @@
   }
   .policy-list li {
     font-size: 12.5px;
-    color: #475569;
-    line-height: 1.6;
+    color: var(--text-muted);
+    line-height: 1.65;
     margin-bottom: 10px;
     position: relative;
     padding-left: 14px;
@@ -511,17 +503,17 @@
     content: '•';
     position: absolute;
     left: 0;
-    color: var(--brand-accent);
+    color: var(--text-primary);
     font-size: 14px;
     font-weight: 900;
   }
   .policy-list li strong {
     color: var(--text-primary);
-    font-weight: 800;
+    font-weight: 700;
   }
 
   /* =========================================================
-     SECTION 3: KERALA DEPOTS & LOCATIONS
+     SECTION 3: KERALA DEPOTS & LOCATIONS (JOYSTREE THEME)
      ========================================================= */
   .depots-section {
     padding: 56px 0;
@@ -542,24 +534,25 @@
     background: #ffffff;
     border: 1.5px solid var(--border-color);
     border-radius: 16px;
-    padding: 16px 20px;
+    padding: 18px 20px;
     text-align: left;
     transition: all 0.25s ease;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
   }
   .depot-item-btn:hover {
-    border-color: #fde68a;
+    border-color: #cbd5e1;
   }
   .depot-item-btn.active {
-    border-color: var(--brand-yellow);
-    box-shadow: 0 0 0 3px rgba(255, 184, 0, 0.25);
-    background: #fffdf5;
+    border-color: var(--brand-dark);
+    background: #ffffff;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
   }
   .depot-name {
-    font-size: 14px;
+    font-size: 13.5px;
     font-weight: 800;
     color: var(--text-primary);
     margin-bottom: 2px;
@@ -571,26 +564,25 @@
   .depot-badge-tag {
     font-size: 10px;
     font-weight: 800;
-    background: #fff8e7;
-    color: #d97706;
+    background: #f1f5f9;
+    color: #475569;
     padding: 3px 8px;
     border-radius: 12px;
     text-transform: uppercase;
     white-space: nowrap;
   }
 
-  /* Dynamic Depot Details Card */
   .depot-map-card {
     background: #ffffff;
     border: 1.5px solid var(--border-color);
-    border-radius: 24px;
+    border-radius: var(--radius-card);
     padding: 40px 32px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.03);
+    box-shadow: 0 10px 32px rgba(0,0,0,0.04);
   }
   .map-icon-box {
     width: 64px;
@@ -600,13 +592,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
+    font-size: 30px;
     margin-bottom: 20px;
   }
   .depot-map-title {
     font-size: 22px;
     font-weight: 900;
     margin-bottom: 8px;
+    color: var(--text-primary);
   }
   .depot-map-addr {
     font-size: 13.5px;
@@ -619,36 +612,36 @@
     gap: 12px;
   }
   .btn-call-depot {
-    background: #0f172a;
+    background: #1e232a;
     color: #ffffff;
     font-size: 13px;
     font-weight: 800;
-    padding: 12px 22px;
+    padding: 12px 24px;
     border-radius: 12px;
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    transition: background 0.2s ease;
+    transition: all 0.2s ease;
   }
   .btn-call-depot:hover {
-    background: var(--brand-accent);
-    color: #0f172a;
+    background: #000000;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
   }
   .btn-whatsapp-depot {
-    background: #25d366;
-    color: #ffffff;
+    background: #ffffff;
+    border: 1.5px solid var(--border-color);
+    color: var(--text-primary);
     font-size: 13px;
     font-weight: 800;
-    padding: 12px 22px;
+    padding: 12px 24px;
     border-radius: 12px;
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    box-shadow: 0 4px 12px rgba(37,211,102,0.25);
-    transition: transform 0.2s ease;
+    transition: all 0.2s ease;
   }
   .btn-whatsapp-depot:hover {
-    transform: translateY(-2px);
+    background: #f1f5f9;
   }
 
   /* =========================================================
@@ -672,10 +665,11 @@
     overflow: hidden;
     transition: border-color 0.2s ease;
     text-align: left;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
   }
   .faq-header-btn {
     width: 100%;
-    padding: 18px 24px;
+    padding: 20px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -686,33 +680,33 @@
   }
   .faq-toggle-icon {
     font-size: 18px;
-    color: var(--brand-accent);
+    color: var(--text-muted);
     transition: transform 0.3s ease;
   }
   .faq-item-card.active .faq-toggle-icon {
     transform: rotate(45deg);
+    color: var(--text-primary);
   }
   .faq-body-text {
     display: none;
-    padding: 0 24px 20px;
+    padding: 0 24px 22px;
     font-size: 13px;
-    color: #475569;
+    color: var(--text-muted);
     line-height: 1.7;
     border-top: 1px solid #f1f5f9;
-    padding-top: 14px;
+    padding-top: 16px;
   }
   .faq-item-card.active .faq-body-text {
     display: block;
   }
 
   /* =========================================================
-     PREMIUM DARK FOOTER
+     JOYSTREE RENTAL FOOTER
      ========================================================= */
-  footer.dark-footer {
-    background: #0f172a;
-    color: #94a3b8;
+  footer.site-footer {
+    background: #ffffff;
+    border-top: 1px solid var(--border-color);
     padding: 64px 0 28px;
-    border-top: 1px solid #1e293b;
   }
   .footer-grid-top {
     display: grid;
@@ -721,9 +715,9 @@
     margin-bottom: 48px;
   }
   .footer-brand-title {
-    font-size: 22px;
-    font-weight: 900;
-    color: #ffffff;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text-primary);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -732,13 +726,13 @@
   .footer-brand-desc {
     font-size: 13px;
     line-height: 1.7;
-    color: #94a3b8;
+    color: var(--text-muted);
     max-width: 320px;
   }
   .footer-col-h {
-    font-size: 14px;
+    font-size: 13.5px;
     font-weight: 800;
-    color: #ffffff;
+    color: var(--text-primary);
     margin-bottom: 16px;
   }
   .footer-links-list {
@@ -749,21 +743,21 @@
   }
   .footer-links-list a {
     font-size: 13px;
-    color: #94a3b8;
+    color: var(--text-muted);
     transition: color 0.2s ease;
   }
   .footer-links-list a:hover {
-    color: #ffffff;
+    color: var(--text-primary);
   }
 
   .footer-bottom-bar {
-    border-top: 1px solid #1e293b;
+    border-top: 1px solid var(--border-color);
     padding-top: 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 12px;
-    color: #64748b;
+    color: var(--text-muted);
   }
 
   /* RESPONSIVE LAYOUT BREAKPOINTS */
@@ -821,7 +815,7 @@
 <!-- MAIN CONTENT -->
 <main>
   
-  <!-- HERO SECTION (UNCHANGED) -->
+  <!-- HERO SECTION (UNCHANGED PERFECT HERO BANNER) -->
   <section class="hero-section container">
 
     <!-- Hero Display Stage -->
@@ -918,11 +912,12 @@
   </section>
 
   <!-- =========================================================
-       NEW SECTION 1: HOW IT WORKS & VISION MISSION
+       SECTION 1: HOW IT WORKS & VISION MISSION (JOYSTREE THEME)
        ========================================================= -->
   <section class="how-it-works-section container" id="howitworks">
     <div class="section-badge-pill">Simple 4-Step Process</div>
-    <h2 class="section-main-heading">How it <span>Works ?</span></h2>
+    <h2 class="section-main-heading">How It Works</h2>
+    <p class="section-subtext">Rent your dream motorbike in 4 effortless steps with Joystree Rental.</p>
 
     <!-- Vision & Mission Card -->
     <div class="vision-mission-card">
@@ -976,7 +971,7 @@
       </div>
 
       <!-- Step 04 -->
-      <div class="step-card-box highlight">
+      <div class="step-card-box">
         <div class="step-card-top">
           <div class="step-num-big">04</div>
           <div class="step-icon-bg">🏁</div>
@@ -990,11 +985,11 @@
   </section>
 
   <!-- =========================================================
-       NEW SECTION 2: SACH BIKES POLICY & GUIDELINES
+       SECTION 2: POLICY & GUIDELINES (JOYSTREE THEME)
        ========================================================= -->
   <section class="policy-section container" id="policies">
     <div class="section-badge-pill">Official Rental Terms</div>
-    <h2 class="section-main-heading">SACH BIKES <span>Policy & Guidelines</span></h2>
+    <h2 class="section-main-heading">Policy & Guidelines</h2>
     <p class="section-subtext">Transparent, fair, and hassle-free rental terms for your trip across Kerala.</p>
 
     <div class="policy-6grid">
@@ -1020,7 +1015,7 @@
         <ul class="policy-list">
           <li><strong>Minimum Rental:</strong> 12 Hours for local / round trips. Special monthly rates (>30 days).</li>
           <li><strong>Operating Hours:</strong> Pickups & drops closed between 12:00 Midnight and 5:00 AM.</li>
-          <li><strong>Grace Period:</strong> 1 Hour grace period provided; late return fine ₹300 + hourly charges apply.</li>
+          <li><strong>Grace Period:</strong> 1 Hour grace period provided; late return fees apply.</li>
         </ul>
       </div>
 
@@ -1057,9 +1052,9 @@
           <div class="policy-title">Doorstep & Airport Delivery</div>
         </div>
         <ul class="policy-list">
-          <li><strong>Free Delivery:</strong> Within a 5 km radius of SACH Bikes depots.</li>
+          <li><strong>Free Delivery:</strong> Within a 5 km radius of Joystree depots.</li>
           <li><strong>Cochin Airport (COK):</strong> Flat ₹300 one-way terminal pickup/drop fee.</li>
-          <li><strong>One-Way Drop:</strong> Multi-location drops across Kerala districts & states supported.</li>
+          <li><strong>One-Way Drop:</strong> Multi-location drops across Kerala districts supported.</li>
         </ul>
       </div>
 
@@ -1079,11 +1074,11 @@
   </section>
 
   <!-- =========================================================
-       NEW SECTION 3: SACH BIKES KERALA DEPOTS & LOCATIONS
+       SECTION 3: KERALA DEPOTS & LOCATIONS (JOYSTREE THEME)
        ========================================================= -->
   <section class="depots-section container" id="depots">
     <div class="section-badge-pill">Locations & Hubs</div>
-    <h2 class="section-main-heading">SACH BIKES <span>Kerala Depots</span></h2>
+    <h2 class="section-main-heading">Kerala Rental Depots</h2>
     <p class="section-subtext">Pick up your vehicle at our prime depots or arrange doorstep delivery anywhere in Kerala.</p>
 
     <div class="depots-layout-grid">
@@ -1122,7 +1117,7 @@
         </div>
       </div>
 
-      <!-- Right Column: Interactive Map & Depot Details Box -->
+      <!-- Right Column: Dynamic Depot Details Box -->
       <div class="depot-map-card">
         <div class="map-icon-box">🗺️</div>
         <h3 class="depot-map-title" id="depotTitle">Kochi - Kaloor Stadium HQ</h3>
@@ -1134,7 +1129,7 @@
           <a href="tel:+917034060000" class="btn-call-depot">
             📞 Call Depot Manager
           </a>
-          <a href="https://wa.me/917034060000?text=Hi%20SACH%20Bikes,%20I%20want%20the%20depot%20location" target="_blank" class="btn-whatsapp-depot">
+          <a href="https://wa.me/917034060000?text=Hi%20Joystree%20Rental,%20I%20want%20the%20depot%20location" target="_blank" class="btn-whatsapp-depot">
             💬 WhatsApp Location
           </a>
         </div>
@@ -1143,11 +1138,12 @@
   </section>
 
   <!-- =========================================================
-       NEW SECTION 4: RENTAL KNOWLEDGE BASE (FAQ ACCORDION)
+       SECTION 4: RENTAL KNOWLEDGE BASE (JOYSTREE THEME)
        ========================================================= -->
   <section class="faq-section container" id="faq">
     <div class="section-badge-pill">Frequently Asked Questions</div>
-    <h2 class="section-main-heading">Rental <span>Knowledge Base</span></h2>
+    <h2 class="section-main-heading">Rental Knowledge Base</h2>
+    <p class="section-subtext">Everything you need to know about renting with Joystree Rental.</p>
 
     <div class="faq-wrap">
       <!-- FAQ 1 -->
@@ -1198,17 +1194,17 @@
 
 </main>
 
-<!-- PREMIUM DARK FOOTER -->
-<footer class="dark-footer">
+<!-- JOYSTREE RENTAL FOOTER -->
+<footer class="site-footer">
   <div class="container">
     <div class="footer-grid-top">
       <div>
         <div class="footer-brand-title">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h2.57a2 2 0 0 1 1.96 1.62l1.07 5.38"/><path d="M9 17.5h6"/><path d="M12 9l-4-3H4"/></svg>
-          SACH BIKES
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h2.57a2 2 0 0 1 1.96 1.62l1.07 5.38"/><path d="M9 17.5h6"/><path d="M12 9l-4-3H4"/></svg>
+          Joystree Rental
         </div>
         <p class="footer-brand-desc">
-          Self Drive SACH BIKES | Kerala's premier self-drive motorbike & bike rental network. Headquarters at Jawaharlal Nehru International Stadium, Kaloor, Kochi with regional depots in Kollam, Adoor, Pathanamthitta, and Kottayam.
+          Joystree Rental | Kerala's premier self-drive motorbike & bike rental network. Headquarters at Jawaharlal Nehru International Stadium, Kaloor, Kochi with regional depots in Kollam, Adoor, Pathanamthitta, and Kottayam.
         </p>
       </div>
 
@@ -1237,14 +1233,14 @@
         <ul class="footer-links-list">
           <li>📍 JNI Stadium, Kaloor, Kochi</li>
           <li>📞 +91 70340 60000</li>
-          <li>✉️ info@sachbikes.com</li>
-          <li>🌐 www.sachbikes.com</li>
+          <li>✉️ info@joystree.com</li>
+          <li>🌐 www.joystree.com</li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom-bar">
-      <div>© 2026 SACH BIKES / Joystree Rental. All rights reserved.</div>
+      <div>© 2026 Joystree Rental. All rights reserved.</div>
       <div style="display:flex; gap:16px;">
         <a href="#policies">Privacy Policy</a>
         <a href="#policies">Terms of Service</a>
