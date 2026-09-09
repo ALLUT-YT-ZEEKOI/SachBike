@@ -1058,24 +1058,13 @@
   }
 
   function openBookingModal(title, priceStr, imgPath) {
-    selectedBikePrice = parseFloat(priceStr);
-    document.getElementById('modalBikeTitle').textContent = title;
-    document.getElementById('modalBikeImg').src = imgPath;
-    document.getElementById('modalRate').textContent = `€${priceStr} / day`;
-    
-    const total = (selectedBikePrice * currentDurationDays).toFixed(2);
-    document.getElementById('modalTotal').textContent = `€${total}`;
-    
-    document.getElementById('bookingModal').classList.add('active');
-  }
+    const sDate = document.getElementById('inputStartDate').value || '2026-09-10';
+    const sTime = document.getElementById('inputStartTime').value || '10:00 AM';
+    const eDate = document.getElementById('inputEndDate').value || '2026-09-13';
+    const eTime = document.getElementById('inputEndTime').value || '10:00 AM';
 
-  function closeBookingModal() {
-    document.getElementById('bookingModal').classList.remove('active');
-  }
-
-  function confirmBooking() {
-    alert(`🎉 Reservation Confirmed!\n\nVehicle: ${document.getElementById('modalBikeTitle').textContent}\nDuration: ${currentDurationDays} Days\nTotal: ${document.getElementById('modalTotal').textContent}\n\nThank you for booking with Joystree Rental!`);
-    closeBookingModal();
+    const url = `booking.html?bike=${encodeURIComponent(title)}&price=${encodeURIComponent(priceStr)}&img=${encodeURIComponent(imgPath)}&startDate=${encodeURIComponent(sDate)}&startTime=${encodeURIComponent(sTime)}&endDate=${encodeURIComponent(eDate)}&endTime=${encodeURIComponent(eTime)}`;
+    window.location.href = url;
   }
 </script>
 </body>
