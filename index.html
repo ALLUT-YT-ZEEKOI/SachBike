@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Joystree Rental — Bike & Motorbike Rentals</title>
+<title>Joystree Rental — Motorbike & Bike Rentals in Kerala</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg-page: #f8f9fb;
@@ -16,14 +16,14 @@
     --text-muted: #6c757d;
     --text-light: #9ca3af;
     --border-color: #e5e7eb;
-    --accent-red: #f43f5e;
-    --accent-blue: #0ea5e9;
-    --pill-bg: #f1f3f6;
+    --brand-accent: #f59e0b;
+    --brand-yellow: #ffb800;
+    --brand-dark: #0f172a;
+    --radius-card: 18px;
+    --radius-pill: 30px;
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
     --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.06);
     --shadow-xl: 0 20px 40px -10px rgba(18, 21, 26, 0.12);
-    --radius-card: 18px;
-    --radius-pill: 30px;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -41,7 +41,7 @@
   img { max-width: 100%; display: block; }
 
   .container {
-    max-width: 1280px;
+    max-width: 1240px;
     margin: 0 auto;
     padding: 0 24px;
   }
@@ -120,7 +120,6 @@
     overflow: hidden;
   }
 
-  /* Hero Display Stage */
   .hero-stage {
     position: relative;
     display: flex;
@@ -138,15 +137,15 @@
     font-weight: 900;
     color: transparent;
     -webkit-text-stroke: 1.5px #e2e8f0;
-    letter-spacing: 2px;
+    letter-spacing: -2px;
     white-space: nowrap;
     user-select: none;
     z-index: 1;
-    text-transform: uppercase;
   }
+
   .hero-side-bike {
     position: absolute;
-    width: 220px;
+    width: 280px;
     top: 50%;
     transform: translateY(-50%);
     opacity: 0.5;
@@ -204,7 +203,7 @@
     color: var(--text-primary);
   }
 
-  /* Sleek Floating Horizontal Search Bar with Start Date, Start Time, End Date, End Time */
+  /* Sleek Floating Horizontal Search Bar */
   .search-card {
     background: #ffffff;
     border-radius: 18px;
@@ -215,6 +214,8 @@
     max-width: 860px;
     margin: 24px auto 32px;
     padding: 8px 12px;
+    position: relative;
+    z-index: 10;
   }
   .search-field {
     flex: 1;
@@ -238,10 +239,6 @@
     display: flex;
     align-items: center;
     gap: 6px;
-  }
-  .input-inline span {
-    font-size: 13px;
-    flex-shrink: 0;
   }
   .input-inline input, .input-inline select {
     border: none;
@@ -285,488 +282,505 @@
     margin: 0 auto;
   }
 
-  /* Dots Indicator */
   .carousel-dots {
     display: flex;
+    align-items: center;
     justify-content: center;
     gap: 8px;
-    margin: 24px 0 36px;
+    margin-top: 24px;
   }
   .dot {
-    height: 4px;
-    width: 28px;
+    width: 24px;
+    height: 3px;
     background: #e2e8f0;
     border-radius: 2px;
     cursor: pointer;
     transition: all 0.3s ease;
   }
   .dot.active {
-    background: #1e232a;
-    width: 44px;
+    background: var(--text-primary);
+    width: 36px;
   }
 
-  /* CATEGORY PILLS */
-  .category-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-bottom: 48px;
+  /* SECTION PILL BADGES & HEADINGS */
+  .section-badge-pill {
+    display: inline-block;
+    background: #fff8e7;
+    border: 1.5px solid #fde68a;
+    color: #d97706;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 6px 18px;
+    border-radius: 30px;
+    margin-bottom: 12px;
+    letter-spacing: 0.2px;
   }
-  .cat-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
-    border-radius: var(--radius-pill);
-    background: #ffffff;
-    border: 1px solid var(--border-color);
-    font-size: 13px;
-    font-weight: 600;
+  .section-main-heading {
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: -0.6px;
+    margin-bottom: 12px;
+  }
+  .section-main-heading span {
+    color: var(--brand-accent);
+  }
+  .section-subtext {
+    font-size: 14px;
     color: var(--text-muted);
-    transition: all 0.2s ease;
-  }
-  .cat-btn:hover {
-    border-color: #cbd5e1;
-    color: var(--text-primary);
-  }
-  .cat-btn.active {
-    background: #1e232a;
-    color: #ffffff;
-    border-color: #1e232a;
-  }
-  .cat-btn svg {
-    width: 16px;
-    height: 16px;
+    max-width: 600px;
+    margin: 0 auto 36px;
   }
 
-  /* PRODUCT SECTIONS */
-  .section-row {
-    margin-bottom: 56px;
+  /* =========================================================
+     SECTION 1: HOW IT WORKS & VISION MISSION
+     ========================================================= */
+  .how-it-works-section {
+    padding: 64px 0 48px;
+    text-align: center;
   }
-  .section-header {
+
+  /* Vision & Mission Card */
+  .vision-mission-card {
+    background: #fffdf2;
+    border: 1.5px solid #fde68a;
+    border-radius: 20px;
+    padding: 28px 36px;
+    text-align: left;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 20px rgba(245, 158, 11, 0.05);
+    position: relative;
+    overflow: hidden;
+  }
+  .vision-header-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 24px;
+    margin-bottom: 14px;
   }
-  .section-header h2 {
-    font-size: 22px;
+  .vision-tag {
+    font-size: 12px;
     font-weight: 800;
-    letter-spacing: -0.3px;
-  }
-  .nav-arrows {
-    display: flex;
-    gap: 8px;
-  }
-  .arrow-btn {
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    border: 1px solid var(--border-color);
-    background: #ffffff;
+    color: #d97706;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: var(--text-primary);
-    font-size: 16px;
-    transition: all 0.2s ease;
+    gap: 6px;
   }
-  .arrow-btn:hover {
-    background: #1e232a;
-    color: #ffffff;
-    border-color: #1e232a;
+  .vision-badge-sub {
+    background: #fef3c7;
+    color: #b45309;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+  .vision-text {
+    font-size: 14.5px;
+    color: #334155;
+    line-height: 1.7;
+    font-weight: 500;
+  }
+  .vision-text strong {
+    color: #0f172a;
+    font-weight: 800;
   }
 
-  /* 4 CARDS PER ROW GRID LAYOUT */
-  .grid-4col {
+  /* 4 Step Cards Grid */
+  .steps-4grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
   }
-
-  /* NEXT-LEVEL CARD SYSTEM */
-  .next-card {
-    background: var(--bg-card);
-    border-radius: var(--radius-card);
-    overflow: hidden;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
-    transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
-    display: flex;
-    flex-direction: column;
-  }
-  .next-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-xl);
-    border-color: rgba(0, 0, 0, 0.12);
-  }
-
-  /* Bike Product Card Thumb */
-  .bike-card .card-thumb {
-    background: radial-gradient(circle at 50% 65%, #ffffff 0%, #edf2f7 100%);
-    height: 195px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    position: relative;
-  }
-  .bike-card .card-thumb img {
-    max-height: 90%;
-    object-fit: contain;
-    filter: drop-shadow(0 10px 14px rgba(0,0,0,0.12));
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-  .bike-card:hover .card-thumb img {
-    transform: scale(1.06) translateY(-4px);
-  }
-
-  .card-top-tag {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(0,0,0,0.06);
-    color: var(--text-primary);
-    border-radius: 20px;
-    padding: 3px 10px;
-    font-size: 10.5px;
-    font-weight: 700;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-  }
-
-  /* NEXT-LEVEL BIKE TOURS CARD THUMBNAIL */
-  .tour-card-next .card-thumb {
-    background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
-    height: 205px;
-    position: relative;
-    padding: 0;
-    overflow: hidden;
-  }
-
-  .tour-map-canvas {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    inset: 0;
-  }
-
-  /* Animated glowing route path */
-  .animated-route-path {
-    stroke-dasharray: 8 6;
-    animation: dashFlow 25s linear infinite;
-    transition: stroke 0.3s ease, stroke-width 0.3s ease;
-  }
-  @keyframes dashFlow {
-    from { stroke-dashoffset: 500; }
-    to { stroke-dashoffset: 0; }
-  }
-  .tour-card-next:hover .animated-route-path {
-    stroke: #f43f5e;
-    stroke-width: 3.5;
-  }
-
-  /* Pulse beacon node animation */
-  .beacon-pulse {
-    animation: pulseRing 2s ease-out infinite;
-  }
-  @keyframes pulseRing {
-    0% { r: 5px; opacity: 1; }
-    100% { r: 18px; opacity: 0; }
-  }
-
-  .glass-badge-left {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #ffffff;
-    border-radius: 20px;
-    padding: 4px 10px;
-    font-size: 10.5px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    z-index: 10;
-  }
-  .glass-badge-right {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #ffffff;
-    color: #0f172a;
-    border-radius: 20px;
-    padding: 4px 11px;
-    font-size: 10.5px;
-    font-weight: 800;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    z-index: 10;
-  }
-
-  .tour-info-strip {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
-    background: rgba(15, 23, 42, 0.78);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 10px;
-    padding: 6px 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: #f8fafc;
-    font-size: 10.5px;
-    font-weight: 600;
-    z-index: 10;
-  }
-
-  /* CARD BODY */
-  .card-body-next {
-    padding: 16px 18px 18px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex: 1;
-  }
-  .card-cat-tag {
-    font-size: 10.5px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    color: var(--accent-red);
-    margin-bottom: 3px;
-  }
-  .card-title-next {
-    font-size: 14.5px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: -0.2px;
-    color: var(--text-primary);
-    margin-bottom: 8px;
-    line-height: 1.3;
-  }
-
-  .chips-row {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    flex-wrap: wrap;
-    margin-bottom: 14px;
-  }
-  .chip {
-    background: #f1f5f9;
-    color: var(--text-muted);
-    font-size: 10px;
-    font-weight: 700;
-    padding: 3px 8px;
-    border-radius: 5px;
-  }
-
-  .card-bottom-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: auto;
-    padding-top: 10px;
-    border-top: 1px solid #f1f5f9;
-  }
-  .card-price-next {
-    font-size: 17px;
-    font-weight: 800;
-    color: var(--text-primary);
-  }
-  .card-price-next small {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-muted);
-  }
-
-  .btn-next-action {
-    background: #1e232a;
-    color: #ffffff;
-    font-size: 11.5px;
-    font-weight: 700;
-    padding: 8px 14px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    transition: all 0.25s ease;
-  }
-  .btn-next-action svg {
-    transition: transform 0.2s ease;
-  }
-  .next-card:hover .btn-next-action {
-    background: #000000;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
-  }
-  .next-card:hover .btn-next-action svg {
-    transform: translateX(3px);
-  }
-
-  /* STEPPER PROCESS */
-  .process-section {
-    padding: 48px 0 64px;
-    text-align: center;
-  }
-  .process-section h2 {
-    font-size: 26px;
-    font-weight: 800;
-    margin-bottom: 40px;
-    letter-spacing: -0.4px;
-  }
-  .stepper-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-  .step-pill {
+  .step-card-box {
     background: #ffffff;
     border: 1.5px solid var(--border-color);
-    padding: 12px 36px;
-    border-radius: 30px;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--text-primary);
-    box-shadow: var(--shadow-sm);
-  }
-  .step-arrow-svg {
-    width: 64px;
-    height: 28px;
-  }
-
-  /* SURF SCHOOL CARDS */
-  .surf-card .card-thumb {
-    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-    color: #ffffff;
-    height: 195px;
+    border-radius: 20px;
+    padding: 28px 24px;
+    text-align: left;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    position: relative;
-    overflow: hidden;
   }
-  .surf-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(255, 255, 255, 0.95);
-    color: #0284c7;
-    border-radius: 20px;
-    padding: 3px 10px;
-    font-size: 10.5px;
-    font-weight: 800;
-    text-transform: uppercase;
+  .step-card-box:hover {
+    transform: translateY(-6px);
+    border-color: #fde68a;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.06);
   }
-  .surf-graphic-text {
-    font-size: 26px;
-    font-weight: 900;
-    letter-spacing: 1px;
-    text-align: center;
-    line-height: 1;
-    margin: auto 0;
-    text-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  }
-  .surf-subtext {
-    font-size: 11px;
-    font-weight: 600;
-    opacity: 0.9;
+  .step-card-box.highlight {
+    border-color: var(--brand-yellow);
+    box-shadow: 0 0 0 3px rgba(255, 184, 0, 0.25);
   }
 
-  /* FOOTER */
-  footer.site-footer {
-    background: #ffffff;
-    border-top: 1px solid var(--border-color);
-    margin-top: 40px;
+  .step-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
   }
-  .footer-top {
-    padding: 56px 0 40px;
-    display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr 1fr;
-    gap: 32px;
+  .step-num-big {
+    font-size: 28px;
+    font-weight: 900;
+    color: #f59e0b;
   }
-  .footer-brand {
-    font-size: 18px;
+  .step-icon-bg {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: #fff8e7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+  }
+  .step-card-title {
+    font-size: 16px;
     font-weight: 800;
-    margin-bottom: 12px;
+    color: var(--text-primary);
+    margin-bottom: 8px;
   }
-  .footer-desc {
-    font-size: 13px;
+  .step-card-desc {
+    font-size: 12.5px;
     color: var(--text-muted);
     line-height: 1.6;
+  }
+
+  /* =========================================================
+     SECTION 2: POLICY & GUIDELINES (6 CARDS GRID)
+     ========================================================= */
+  .policy-section {
+    padding: 56px 0;
+    text-align: center;
+  }
+  .policy-6grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .policy-card-item {
+    background: #ffffff;
+    border: 1.5px solid var(--border-color);
+    border-radius: 20px;
+    padding: 28px;
+    text-align: left;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+    transition: all 0.3s ease;
+  }
+  .policy-card-item:hover {
+    transform: translateY(-4px);
+    border-color: #cbd5e1;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  }
+
+  .policy-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     margin-bottom: 16px;
-    max-width: 260px;
   }
-  .footer-hotline {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--text-primary);
+  .policy-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
   }
-  .footer-col h4 {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 16px;
-  }
-  .footer-col ul {
-    list-style: none;
-  }
-  .footer-col li {
-    margin-bottom: 10px;
-  }
-  .footer-col a {
-    font-size: 13px;
-    color: var(--text-muted);
-    transition: color 0.2s ease;
-  }
-  .footer-col a:hover {
+  .policy-title {
+    font-size: 16px;
+    font-weight: 800;
     color: var(--text-primary);
   }
 
-  .footer-bottom {
-    border-top: 1px solid var(--border-color);
-    padding: 20px 0;
+  .policy-list {
+    list-style: none;
+  }
+  .policy-list li {
+    font-size: 12.5px;
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 14px;
+  }
+  .policy-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--brand-accent);
+    font-size: 14px;
+    font-weight: 900;
+  }
+  .policy-list li strong {
+    color: var(--text-primary);
+    font-weight: 800;
+  }
+
+  /* =========================================================
+     SECTION 3: KERALA DEPOTS & LOCATIONS
+     ========================================================= */
+  .depots-section {
+    padding: 56px 0;
+    text-align: center;
+  }
+  .depots-layout-grid {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+  .depot-list-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .depot-item-btn {
+    background: #ffffff;
+    border: 1.5px solid var(--border-color);
+    border-radius: 16px;
+    padding: 16px 20px;
+    text-align: left;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .depot-item-btn:hover {
+    border-color: #fde68a;
+  }
+  .depot-item-btn.active {
+    border-color: var(--brand-yellow);
+    box-shadow: 0 0 0 3px rgba(255, 184, 0, 0.25);
+    background: #fffdf5;
+  }
+  .depot-name {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+  }
+  .depot-address-sub {
+    font-size: 11.5px;
+    color: var(--text-muted);
+  }
+  .depot-badge-tag {
+    font-size: 10px;
+    font-weight: 800;
+    background: #fff8e7;
+    color: #d97706;
+    padding: 3px 8px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* Dynamic Depot Details Card */
+  .depot-map-card {
+    background: #ffffff;
+    border: 1.5px solid var(--border-color);
+    border-radius: 24px;
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.03);
+  }
+  .map-icon-box {
+    width: 64px;
+    height: 64px;
+    background: #f1f5f9;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  .depot-map-title {
+    font-size: 22px;
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+  .depot-map-addr {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    max-width: 400px;
+    margin-bottom: 24px;
+  }
+  .depot-actions-flex {
+    display: flex;
+    gap: 12px;
+  }
+  .btn-call-depot {
+    background: #0f172a;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 12px 22px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s ease;
+  }
+  .btn-call-depot:hover {
+    background: var(--brand-accent);
+    color: #0f172a;
+  }
+  .btn-whatsapp-depot {
+    background: #25d366;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 12px 22px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 12px rgba(37,211,102,0.25);
+    transition: transform 0.2s ease;
+  }
+  .btn-whatsapp-depot:hover {
+    transform: translateY(-2px);
+  }
+
+  /* =========================================================
+     SECTION 4: RENTAL KNOWLEDGE BASE (FAQ ACCORDION)
+     ========================================================= */
+  .faq-section {
+    padding: 56px 0 80px;
+    text-align: center;
+  }
+  .faq-wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .faq-item-card {
+    background: #ffffff;
+    border: 1.5px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+    text-align: left;
+  }
+  .faq-header-btn {
+    width: 100%;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14.5px;
+    font-weight: 800;
+    color: var(--text-primary);
+    cursor: pointer;
+  }
+  .faq-toggle-icon {
+    font-size: 18px;
+    color: var(--brand-accent);
+    transition: transform 0.3s ease;
+  }
+  .faq-item-card.active .faq-toggle-icon {
+    transform: rotate(45deg);
+  }
+  .faq-body-text {
+    display: none;
+    padding: 0 24px 20px;
+    font-size: 13px;
+    color: #475569;
+    line-height: 1.7;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 14px;
+  }
+  .faq-item-card.active .faq-body-text {
+    display: block;
+  }
+
+  /* =========================================================
+     PREMIUM DARK FOOTER
+     ========================================================= */
+  footer.dark-footer {
+    background: #0f172a;
+    color: #94a3b8;
+    padding: 64px 0 28px;
+    border-top: 1px solid #1e293b;
+  }
+  .footer-grid-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+  .footer-brand-title {
+    font-size: 22px;
+    font-weight: 900;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .footer-brand-desc {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #94a3b8;
+    max-width: 320px;
+  }
+  .footer-col-h {
+    font-size: 14px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 16px;
+  }
+  .footer-links-list {
+    list-style: none;
+  }
+  .footer-links-list li {
+    margin-bottom: 10px;
+  }
+  .footer-links-list a {
+    font-size: 13px;
+    color: #94a3b8;
+    transition: color 0.2s ease;
+  }
+  .footer-links-list a:hover {
+    color: #ffffff;
+  }
+
+  .footer-bottom-bar {
+    border-top: 1px solid #1e293b;
+    padding-top: 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 12px;
-    color: var(--text-muted);
-  }
-  .pay-methods {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    font-weight: 600;
+    color: #64748b;
   }
 
-  /* RESPONSIVE LAYOUT */
+  /* RESPONSIVE LAYOUT BREAKPOINTS */
   @media (max-width: 1100px) {
-    .grid-4col { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-  }
-  @media (max-width: 800px) {
-    .search-card { flex-wrap: wrap; gap: 10px; padding: 12px; }
-    .search-field { width: 48%; border-right: none; }
-    .btn-search { width: 100%; margin-left: 0; margin-top: 8px; }
+    .steps-4grid { grid-template-columns: repeat(2, 1fr); }
+    .policy-6grid { grid-template-columns: repeat(2, 1fr); }
+    .depots-layout-grid { grid-template-columns: 1fr; }
+    .footer-grid-top { grid-template-columns: 1fr 1fr; gap: 32px; }
   }
   @media (max-width: 640px) {
+    .steps-4grid { grid-template-columns: 1fr; }
+    .policy-6grid { grid-template-columns: 1fr; }
     .nav-links { display: none; }
-    .grid-4col { grid-template-columns: 1fr; }
-    .footer-top { grid-template-columns: 1fr 1fr; row-gap: 32px; }
-    .hero-side-bike { display: none; }
-    .hero-spec-box { position: static; text-align: center; margin-top: 16px; }
-    .search-field { width: 100%; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
+    .search-card { flex-wrap: wrap; gap: 8px; }
+    .search-field { width: 48%; border-right: none; }
+    .btn-search { width: 100%; margin-left: 0; }
+    .footer-grid-top { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -775,17 +789,20 @@
 <!-- HEADER -->
 <header class="site-header">
   <div class="container header-wrap">
-    <div class="brand">
+    <a href="index.html" class="brand">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h2.57a2 2 0 0 1 1.96 1.62l1.07 5.38"/><path d="M9 17.5h6"/><path d="M12 9l-4-3H4"/></svg>
       Joystree Rental
-    </div>
+    </a>
+
     <nav class="nav-links">
       <a href="index.html" class="active">Home</a>
-      <a href="search-results.html">Shop</a>
-      <a href="#blog">Blog</a>
-      <a href="#about">About Us</a>
-      <a href="#contact">Contact Us</a>
+      <a href="search-results.html">Shop / Vehicles</a>
+      <a href="#howitworks">How it Works</a>
+      <a href="#policies">Policies</a>
+      <a href="#depots">Kerala Depots</a>
+      <a href="#faq">FAQ</a>
     </nav>
+
     <div class="header-actions">
       <div class="lang-select">
         <span>🇺🇸 EN</span>
@@ -803,7 +820,8 @@
 
 <!-- MAIN CONTENT -->
 <main>
-  <!-- HERO SECTION -->
+  
+  <!-- HERO SECTION (UNCHANGED) -->
   <section class="hero-section container">
 
     <!-- Hero Display Stage -->
@@ -830,7 +848,7 @@
       </div>
     </div>
 
-    <!-- Sleek Floating Horizontal Search Form connecting to search-results.html -->
+    <!-- Sleek Floating Horizontal Search Form -->
     <form action="search-results.html" method="GET" class="search-card">
       <div class="search-field">
         <label>Start Date</label>
@@ -897,609 +915,347 @@
       <div class="dot" onclick="switchHero(1)"></div>
       <div class="dot" onclick="switchHero(2)"></div>
     </div>
+  </section>
 
-    <!-- CATEGORY FILTER PILLS -->
-    <div class="category-nav" id="shop">
-      <button class="cat-btn active" data-filter="all">All</button>
-      <button class="cat-btn" data-filter="bikes">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h2.57a2 2 0 0 1 1.96 1.62l1.07 5.38"/><path d="M9 17.5h6"/><path d="M12 9l-4-3H4"/></svg>
-        Bikes
-      </button>
-      <button class="cat-btn" data-filter="tours">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
-        Bike Tours
-      </button>
-      <button class="cat-btn" data-filter="equipment">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Equipment
-      </button>
-      <button class="cat-btn" data-filter="motorbikes">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 18h12"/><path d="M12 9l4 4h4"/></svg>
-        Motorbikes
-      </button>
-      <button class="cat-btn" data-filter="surf">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M2 12c4-4 8 4 12 0s8 4 8 0"/></svg>
-        Surf School
-      </button>
+  <!-- =========================================================
+       NEW SECTION 1: HOW IT WORKS & VISION MISSION
+       ========================================================= -->
+  <section class="how-it-works-section container" id="howitworks">
+    <div class="section-badge-pill">Simple 4-Step Process</div>
+    <h2 class="section-main-heading">How it <span>Works ?</span></h2>
+
+    <!-- Vision & Mission Card -->
+    <div class="vision-mission-card">
+      <div class="vision-header-row">
+        <div class="vision-tag">
+          🎯 OUR VISION & MISSION
+        </div>
+        <div class="vision-badge-sub">Excellence & Integrity</div>
+      </div>
+      <p class="vision-text">
+        To be the leading provider of affordable and reliable motorbike rental solutions, enabling customers to <strong>rent a motorbike and bike in Kerala</strong> seamlessly. As a trusted platform, we focus on delivering exceptional customer service, transparency, and innovation.
+      </p>
+    </div>
+
+    <!-- 4 Step Cards Grid -->
+    <div class="steps-4grid">
+      <!-- Step 01 -->
+      <div class="step-card-box">
+        <div class="step-card-top">
+          <div class="step-num-big">01</div>
+          <div class="step-icon-bg">🔍</div>
+        </div>
+        <h3 class="step-card-title">Search & Book</h3>
+        <p class="step-card-desc">
+          Use our website to search and book motorbikes or bikes that suit your budget and travel needs.
+        </p>
+      </div>
+
+      <!-- Step 02 -->
+      <div class="step-card-box">
+        <div class="step-card-top">
+          <div class="step-num-big">02</div>
+          <div class="step-icon-bg">🔑</div>
+        </div>
+        <h3 class="step-card-title">Pick Up Your Vehicle</h3>
+        <p class="step-card-desc">
+          Collect from doorstep delivery or any of our conveniently located depots around your city.
+        </p>
+      </div>
+
+      <!-- Step 03 -->
+      <div class="step-card-box">
+        <div class="step-card-top">
+          <div class="step-num-big">03</div>
+          <div class="step-icon-bg">🏍️</div>
+        </div>
+        <h3 class="step-card-title">Ride Your Vehicle</h3>
+        <p class="step-card-desc">
+          Explore wherever you want with your loved ones across Kerala's scenic routes and beyond.
+        </p>
+      </div>
+
+      <!-- Step 04 -->
+      <div class="step-card-box highlight">
+        <div class="step-card-top">
+          <div class="step-num-big">04</div>
+          <div class="step-icon-bg">🏁</div>
+        </div>
+        <h3 class="step-card-title">Return Your Vehicle</h3>
+        <p class="step-card-desc">
+          Drop the motorbike at your preferred return location, and we will take it from there.
+        </p>
+      </div>
     </div>
   </section>
 
-  <!-- PRODUCT SECTIONS (4 CARDS PER ROW) -->
-  <div class="container">
+  <!-- =========================================================
+       NEW SECTION 2: SACH BIKES POLICY & GUIDELINES
+       ========================================================= -->
+  <section class="policy-section container" id="policies">
+    <div class="section-badge-pill">Official Rental Terms</div>
+    <h2 class="section-main-heading">SACH BIKES <span>Policy & Guidelines</span></h2>
+    <p class="section-subtext">Transparent, fair, and hassle-free rental terms for your trip across Kerala.</p>
 
-    <!-- SECTION 1: BIKES (4 CARDS IN A ROW) -->
-    <section class="section-row" data-category="bikes">
-      <div class="section-header">
-        <h2>Bikes</h2>
-        <div class="nav-arrows">
-          <button class="arrow-btn" aria-label="Previous">‹</button>
-          <button class="arrow-btn" aria-label="Next">›</button>
+    <div class="policy-6grid">
+      <!-- Card 1 -->
+      <div class="policy-card-item">
+        <div class="policy-card-header">
+          <div class="policy-icon">📄</div>
+          <div class="policy-title">Required Documents</div>
+        </div>
+        <ul class="policy-list">
+          <li><strong>Indian Nationals:</strong> Original Driving License (1+ yr old) & Aadhaar Card / Passport.</li>
+          <li><strong>Foreign Nationals:</strong> Valid International Driving Permit (IDP) + Passport copy.</li>
+          <li>Digital A4 sheets or expired licenses are strictly not accepted.</li>
+        </ul>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="policy-card-item">
+        <div class="policy-card-header">
+          <div class="policy-icon">⏰</div>
+          <div class="policy-title">Rental & Hours</div>
+        </div>
+        <ul class="policy-list">
+          <li><strong>Minimum Rental:</strong> 12 Hours for local / round trips. Special monthly rates (>30 days).</li>
+          <li><strong>Operating Hours:</strong> Pickups & drops closed between 12:00 Midnight and 5:00 AM.</li>
+          <li><strong>Grace Period:</strong> 1 Hour grace period provided; late return fine ₹300 + hourly charges apply.</li>
+        </ul>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="policy-card-item">
+        <div class="policy-card-header">
+          <div class="policy-icon">💳</div>
+          <div class="policy-title">Security Deposit Refund</div>
+        </div>
+        <ul class="policy-list">
+          <li>Refundable security deposit collected at delivery.</li>
+          <li>Processed & refunded within <strong>7 working days</strong> post return.</li>
+          <li>FASTag toll charges, speed advisories, and vehicle inspection deducted if applicable.</li>
+        </ul>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="policy-card-item">
+        <div class="policy-card-header">
+          <div class="policy-icon">🚨</div>
+          <div class="policy-title">Speed Advisory (80 km/h)</div>
+        </div>
+        <ul class="policy-list">
+          <li>All vehicles monitored via GPS with an <strong>80 km/h speed limit advisory</strong> as per Kerala MVD.</li>
+          <li>Fine of <strong>₹1,500</strong> charged per overspeed violation event.</li>
+          <li>Ensures maximum road safety on Kerala highways and hilly terrain.</li>
+        </ul>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="policy-card-item">
+        <div class="policy-card-header">
+          <div class="policy-icon">🚚</div>
+          <div class="policy-title">Doorstep & Airport Delivery</div>
+        </div>
+        <ul class="policy-list">
+          <li><strong>Free Delivery:</strong> Within a 5 km radius of SACH Bikes depots.</li>
+          <li><strong>Cochin Airport (COK):</strong> Flat ₹300 one-way terminal pickup/drop fee.</li>
+          <li><strong>One-Way Drop:</strong> Multi-location drops across Kerala districts & states supported.</li>
+        </ul>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="policy-card-item">
+        <div class="policy-card-header">
+          <div class="policy-icon">❌</div>
+          <div class="policy-title">Cancellation Policy</div>
+        </div>
+        <ul class="policy-list">
+          <li><strong>> 24 Hours prior to trip:</strong> 100% full booking refund.</li>
+          <li><strong>< 24 Hours prior to trip:</strong> 50% booking amount refund.</li>
+          <li>Non-production of original documents treated as late cancellation (no refund).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       NEW SECTION 3: SACH BIKES KERALA DEPOTS & LOCATIONS
+       ========================================================= -->
+  <section class="depots-section container" id="depots">
+    <div class="section-badge-pill">Locations & Hubs</div>
+    <h2 class="section-main-heading">SACH BIKES <span>Kerala Depots</span></h2>
+    <p class="section-subtext">Pick up your vehicle at our prime depots or arrange doorstep delivery anywhere in Kerala.</p>
+
+    <div class="depots-layout-grid">
+      <!-- Left Column: Clickable Depots List -->
+      <div class="depot-list-col">
+        <div class="depot-item-btn active" onclick="switchDepot(0, this)">
+          <div>
+            <div class="depot-name">📍 Kochi - Kaloor Stadium HQ</div>
+            <div class="depot-address-sub">JNI Stadium Complex, Kaloor, Kochi - 682017</div>
+          </div>
+          <span class="depot-badge-tag">24/7 OPEN</span>
+        </div>
+
+        <div class="depot-item-btn" onclick="switchDepot(1, this)">
+          <div>
+            <div class="depot-name">📍 Cochin Airport (COK) Depot</div>
+            <div class="depot-address-sub">Nedumbassery Terminal Express Pickup & Drop</div>
+          </div>
+          <span class="depot-badge-tag">AIRPORT EXPRESS</span>
+        </div>
+
+        <div class="depot-item-btn" onclick="switchDepot(2, this)">
+          <div>
+            <div class="depot-name">📍 Kollam City Hub</div>
+            <div class="depot-address-sub">South Kerala Service & Fleet Depot, Kollam</div>
+          </div>
+          <span class="depot-badge-tag">SOUTH KERALA</span>
+        </div>
+
+        <div class="depot-item-btn" onclick="switchDepot(3, this)">
+          <div>
+            <div class="depot-name">📍 Adoor & Kottayam Depots</div>
+            <div class="depot-address-sub">Regional pickup & doorstep delivery hubs</div>
+          </div>
+          <span class="depot-badge-tag">REGIONAL DEPOT</span>
         </div>
       </div>
-      <div class="grid-4col">
-        <!-- CARD 1 -->
-        <div class="next-card bike-card">
-          <div class="card-thumb">
-            <span class="card-top-tag">⚡ Electric Sport</span>
-            <img src="images/bike_green.png" alt="Specialized Rockhopper Elite" />
-          </div>
-          <div class="card-body-next">
-            <div>
-              <div class="card-cat-tag">Urban &amp; Highway</div>
-              <div class="card-title-next">SPECIALIZED ROCKHOPPER ELITE</div>
-              <div class="chips-row">
-                <span class="chip">Dual Battery</span>
-                <span class="chip">180 KM Range</span>
-              </div>
-            </div>
-            <div class="card-bottom-row">
-              <div class="card-price-next">6.60 € <small>/DAY</small></div>
-              <button class="btn-next-action">
-                Rent Now
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
 
-        <!-- CARD 2 -->
-        <div class="next-card bike-card">
-          <div class="card-thumb">
-            <span class="card-top-tag">🔥 Popular</span>
-            <img src="images/bike_norco.png" alt="Norco Fluid FS 4 Black 29" />
-          </div>
-          <div class="card-body-next">
-            <div>
-              <div class="card-cat-tag">Cafe Racer</div>
-              <div class="card-title-next">NORCO FLUID FS 4 BLACK 29</div>
-              <div class="chips-row">
-                <span class="chip">Brembo Clutch</span>
-                <span class="chip">High Torque</span>
-              </div>
-            </div>
-            <div class="card-bottom-row">
-              <div class="card-price-next">8.26 € <small>/DAY</small></div>
-              <button class="btn-next-action">
-                Rent Now
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
+      <!-- Right Column: Interactive Map & Depot Details Box -->
+      <div class="depot-map-card">
+        <div class="map-icon-box">🗺️</div>
+        <h3 class="depot-map-title" id="depotTitle">Kochi - Kaloor Stadium HQ</h3>
+        <p class="depot-map-addr" id="depotAddr">
+          Jawaharlal Nehru Stadium Complex, Kaloor, Kochi - 682017
+        </p>
 
-        <!-- CARD 3 -->
-        <div class="next-card bike-card">
-          <div class="card-thumb">
-            <span class="card-top-tag">🏆 Flagship</span>
-            <img src="images/hero_bike.png" alt="Ducati Panigale V4 S" />
-          </div>
-          <div class="card-body-next">
-            <div>
-              <div class="card-cat-tag">Track Superbike</div>
-              <div class="card-title-next">DUCATI PANIGALE V4 S</div>
-              <div class="chips-row">
-                <span class="chip">998cc V4</span>
-                <span class="chip">200 HP</span>
-              </div>
-            </div>
-            <div class="card-bottom-row">
-              <div class="card-price-next">45.00 € <small>/DAY</small></div>
-              <button class="btn-next-action">
-                Rent Now
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 4 -->
-        <div class="next-card bike-card">
-          <div class="card-thumb">
-            <span class="card-top-tag">🏁 Sportbike</span>
-            <img src="images/bike_cbr.png" alt="Yamaha YZF-R1M Apex" />
-          </div>
-          <div class="card-body-next">
-            <div>
-              <div class="card-cat-tag">Apex Series</div>
-              <div class="card-title-next">YAMAHA YZF-R1M APEX</div>
-              <div class="chips-row">
-                <span class="chip">Carbon Fairing</span>
-                <span class="chip">Quickshifter</span>
-              </div>
-            </div>
-            <div class="card-bottom-row">
-              <div class="card-price-next">52.00 € <small>/DAY</small></div>
-              <button class="btn-next-action">
-                Rent Now
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
-            </div>
-          </div>
+        <div class="depot-actions-flex">
+          <a href="tel:+917034060000" class="btn-call-depot">
+            📞 Call Depot Manager
+          </a>
+          <a href="https://wa.me/917034060000?text=Hi%20SACH%20Bikes,%20I%20want%20the%20depot%20location" target="_blank" class="btn-whatsapp-depot">
+            💬 WhatsApp Location
+          </a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- SECTION 2: BIKE TOURS (4 CARDS IN A ROW) -->
-    <section class="section-row" data-category="tours">
-      <div class="section-header">
-        <h2>Bike Tours</h2>
-        <div class="nav-arrows">
-          <button class="arrow-btn" aria-label="Previous">‹</button>
-          <button class="arrow-btn" aria-label="Next">›</button>
+  <!-- =========================================================
+       NEW SECTION 4: RENTAL KNOWLEDGE BASE (FAQ ACCORDION)
+       ========================================================= -->
+  <section class="faq-section container" id="faq">
+    <div class="section-badge-pill">Frequently Asked Questions</div>
+    <h2 class="section-main-heading">Rental <span>Knowledge Base</span></h2>
+
+    <div class="faq-wrap">
+      <!-- FAQ 1 -->
+      <div class="faq-item-card active">
+        <div class="faq-header-btn" onclick="toggleFaq(this)">
+          <span>What documents are required to rent a self-drive bike/vehicle?</span>
+          <span class="faq-toggle-icon">✕</span>
+        </div>
+        <div class="faq-body-text">
+          Indian Nationals require an Original Driving License (held for at least 1 year) and an Aadhaar Card or Passport. Foreign Nationals require an International Driving Permit (IDP), country driving license, and passport copy.
         </div>
       </div>
-      <div class="grid-4col">
-        <!-- TOUR CARD 1 -->
-        <div class="next-card tour-card-next">
-          <div class="card-thumb">
-            <span class="glass-badge-left">⭐ 4.9</span>
-            <span class="glass-badge-right">📍 500 Mi</span>
 
-            <svg class="tour-map-canvas" viewBox="0 0 300 200" fill="none">
-              <path d="M -20 160 C 80 120, 180 200, 320 140" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
-              <path d="M 30 -10 Q 150 120 320 220" stroke="rgba(255,255,255,0.1)" stroke-width="6"/>
-              <path class="animated-route-path" d="M 50 160 Q 150 40 260 130" stroke="#f43f5e" stroke-width="3" fill="none" stroke-linecap="round"/>
-              <circle cx="50" cy="160" r="10" fill="rgba(244, 63, 94, 0.25)" class="beacon-pulse"/>
-              <circle cx="50" cy="160" r="4" fill="#f43f5e"/>
-              <circle cx="260" cy="130" r="5" fill="#ffffff" stroke="#f43f5e" stroke-width="2.5"/>
-            </svg>
-
-            <div class="tour-info-strip">
-              <span>⛰ 2,100m</span>
-              <span>⏱ 3 Days</span>
-            </div>
-          </div>
-          <div class="card-body-next">
-            <div>
-              <div class="card-cat-tag">Volcanic Pass</div>
-              <div class="card-title-next">TEIDE VOLCANO PASS TOUR</div>
-              <div class="chips-row">
-                <span class="chip">Hotel Inc.</span>
-                <span class="chip">Fuel Sup.</span>
-              </div>
-            </div>
-            <div class="card-bottom-row">
-              <div class="card-price-next">10.00 € <small>/person</small></div>
-              <button class="btn-next-action">
-                Book
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
-            </div>
-          </div>
+      <!-- FAQ 2 -->
+      <div class="faq-item-card">
+        <div class="faq-header-btn" onclick="toggleFaq(this)">
+          <span>When and how is the security deposit refunded?</span>
+          <span class="faq-toggle-icon">+</span>
         </div>
-
-        <!-- TOUR CARD 2 -->
-        <div class="next-card tour-card-next">
-          <div class="card-thumb">
-            <span class="glass-badge-left">🔥 Hot</span>
-            <span class="glass-badge-right">📍 500 Mi</span>
-
-            <svg class="tour-map-canvas" viewBox="0 0 300 200" fill="none">
-              <path d="M -20 180 C 120 100, 200 210, 320 150" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
-              <path d="M -10 60 Q 180 180 320 70" stroke="rgba(255,255,255,0.1)" stroke-width="6"/>
-              <path class="animated-route-path" d="M 50 65 Q 160 170 260 80" stroke="#0ea5e9" stroke-width="3" fill="none" stroke-linecap="round"/>
-              <circle cx="50" cy="65" r="10" fill="rgba(14, 165, 233, 0.25)" class="beacon-pulse"/>
-              <circle cx="50" cy="65" r="4" fill="#0ea5e9"/>
-              <circle cx="260" cy="80" r="5" fill="#ffffff" stroke="#0ea5e9" stroke-width="2.5"/>
-            </svg>
-
-            <div class="tour-info-strip">
-              <span>🌊 Coastal</span>
-              <span>⏱ 4 Days</span>
-            </div>
-          </div>
-          <div class="card-body-next">
-            <div>
-              <div class="card-cat-tag">Scenic Highway</div>
-              <div class="card-title-next">NEW YORK COASTAL TOUR</div>
-              <div class="chips-row">
-                <span class="chip">Ocean View</span>
-                <span class="chip">GPS Lead</span>
-              </div>
-            </div>
-            <div class="card-bottom-row">
-              <div class="card-price-next">20.00 € <small>/person</small></div>
-              <button class="btn-next-action">
-                Book
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- TOUR CARD 3 -->
-        <div class="next-card tour-card-next">
-          <div class="card-thumb">
-            <span class="glass-badge-left">⛰ Alpine</span>
-            <span class="glass-badge-right">📍 450 Mi</span>
-
-            <svg class="tour-map-canvas" viewBox="0 0 300 200" fill="none">
-              <path d="M -10 140 Q 140 30 310 170" stroke="rgba(255,255,255,0.1)" stroke-width="6"/>
-              <path class="animated-route-path" d="M 40 140 Q 140 30 250 130" stroke="#10b981" stroke-width="3" fill="none" stroke-linecap="round"/>
-              <circle cx="40" cy="140" r="10" fill="rgba(16, 185, 129, 0.25)" class="beacon-pulse"/>
-              <circle cx="40" cy="140" r="4" fill="#10b981"/>
-              <circle cx="250" cy="130" r="5" fill="#ffffff" stroke="#10b981" stroke-width="2.5"/>
-            </svg>
-
-            <div class="tour-info-strip">
-              <span>🏔 Mountain</span>
-              <span>⏱ 2 Days</span>
-            </div>
-          </div>
-          <div class="card-body-next">
-            <div>
-              <div class="card-cat-tag">Alpine Circuit</div>
-              <div class="card-title-next">ALPINE PASS DISCOVERY</div>
-              <div class="chips-row">
-                <span class="chip">2,400m Elev</span>
-                <span class="chip">Lead Rider</span>
-              </div>
-            </div>
-            <div class="card-bottom-row">
-              <div class="card-price-next">15.00 € <small>/person</small></div>
-              <button class="btn-next-action">
-                Book
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- TOUR CARD 4 -->
-        <div class="next-card tour-card-next">
-          <div class="card-thumb">
-            <span class="glass-badge-left">☀️ Sunset</span>
-            <span class="glass-badge-right">📍 600 Mi</span>
-
-            <svg class="tour-map-canvas" viewBox="0 0 300 200" fill="none">
-              <path d="M -10 80 Q 150 200 310 90" stroke="rgba(255,255,255,0.1)" stroke-width="6"/>
-              <path class="animated-route-path" d="M 45 80 Q 150 180 255 90" stroke="#f59e0b" stroke-width="3" fill="none" stroke-linecap="round"/>
-              <circle cx="45" cy="80" r="10" fill="rgba(245, 158, 11, 0.25)" class="beacon-pulse"/>
-              <circle cx="45" cy="80" r="4" fill="#f59e0b"/>
-              <circle cx="255" cy="90" r="5" fill="#ffffff" stroke="#f59e0b" stroke-width="2.5"/>
-            </svg>
-
-            <div class="tour-info-strip">
-              <span>🌅 Sunset Pass</span>
-              <span>⏱ 5 Days</span>
-            </div>
-          </div>
-          <div class="card-body-next">
-            <div>
-              <div class="card-cat-tag">Pacific Highway</div>
-              <div class="card-title-next">PACIFIC COAST HIGHWAY</div>
-              <div class="chips-row">
-                <span class="chip">Luxury Stay</span>
-                <span class="chip">Photo Van</span>
-              </div>
-            </div>
-            <div class="card-bottom-row">
-              <div class="card-price-next">25.00 € <small>/person</small></div>
-              <button class="btn-next-action">
-                Book
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
-            </div>
-          </div>
+        <div class="faq-body-text">
+          The security deposit is refunded back to your original bank account/UPI within 7 working days after returning the vehicle cleanly.
         </div>
       </div>
-    </section>
 
-    <!-- SECTION 3: STEPPER PROCESS -->
-    <section class="process-section">
-      <h2>Book Your Ride In Just Two Minutes</h2>
-      <div class="stepper-row">
-        <div class="step-pill">CHOOSE</div>
-        <svg class="step-arrow-svg" viewBox="0 0 70 30" fill="none">
-          <path d="M 5 25 Q 35 2 65 20" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4"/>
-          <path d="M 60 22 L 66 20 L 64 14" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <div class="step-pill" style="border-color: #1e232a;">Reservation</div>
-        <svg class="step-arrow-svg" viewBox="0 0 70 30" fill="none">
-          <path d="M 5 10 Q 35 28 65 8" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4"/>
-          <path d="M 60 6 L 66 8 L 63 14" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <div class="step-pill">Summary</div>
-      </div>
-    </section>
-
-    <!-- SECTION 4: SURF SCHOOL (4 CARDS IN A ROW) -->
-    <section class="section-row" data-category="surf">
-      <div class="section-header">
-        <h2>Surf School</h2>
-        <div class="nav-arrows">
-          <button class="arrow-btn" aria-label="Previous">‹</button>
-          <button class="arrow-btn" aria-label="Next">›</button>
+      <!-- FAQ 3 -->
+      <div class="faq-item-card">
+        <div class="faq-header-btn" onclick="toggleFaq(this)">
+          <span>What is the speed limit policy in Kerala?</span>
+          <span class="faq-toggle-icon">+</span>
+        </div>
+        <div class="faq-body-text">
+          All our vehicles are equipped with GPS monitoring with an 80 km/h speed limit advisory in accordance with Kerala MVD road safety rules.
         </div>
       </div>
-      <div class="grid-4col">
-        <!-- CARD 1 -->
-        <div class="next-card surf-card">
-          <div class="card-thumb">
-            <span class="surf-badge">2 HOURS</span>
-            <div class="surf-graphic-text">SURF<br>CAMP</div>
-            <div class="surf-subtext">By Joystree Rental</div>
-          </div>
-          <div class="card-body-next">
-            <div>
-              <div class="card-cat-tag">Beginner Camp</div>
-              <div class="card-title-next">SURF CAMP LESSON</div>
-              <div class="chips-row">
-                <span class="chip">Board Included</span>
-                <span class="chip">Pro Coach</span>
-              </div>
-            </div>
-            <div class="card-bottom-row">
-              <div class="card-price-next">11.00 € <small>/LESSON</small></div>
-              <button class="btn-next-action">
-                Enroll
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
 
-        <!-- CARD 2 -->
-        <div class="next-card surf-card">
-          <div class="card-thumb">
-            <span class="surf-badge">2 HOURS</span>
-            <div class="surf-graphic-text">ADVANCED<br>LESSON</div>
-            <div class="surf-subtext">By Joystree Rental</div>
-          </div>
-          <div class="card-body-next">
-            <div>
-              <div class="card-cat-tag">Wave Master</div>
-              <div class="card-title-next">SURF ADVANCED LESSON</div>
-              <div class="chips-row">
-                <span class="chip">Wave Analysis</span>
-                <span class="chip">1-on-1</span>
-              </div>
-            </div>
-            <div class="card-bottom-row">
-              <div class="card-price-next">11.00 € <small>/LESSON</small></div>
-              <button class="btn-next-action">
-                Enroll
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
-            </div>
-          </div>
+      <!-- FAQ 4 -->
+      <div class="faq-item-card">
+        <div class="faq-header-btn" onclick="toggleFaq(this)">
+          <span>What is the cancellation policy?</span>
+          <span class="faq-toggle-icon">+</span>
         </div>
-
-        <!-- CARD 3 -->
-        <div class="next-card surf-card">
-          <div class="card-thumb" style="background: linear-gradient(135deg, #10b981 0%, #047857 100%);">
-            <span class="surf-badge" style="color: #047857;">3 HOURS</span>
-            <div class="surf-graphic-text">CORNERING<br>CLASS</div>
-            <div class="surf-subtext">By Joystree Rental</div>
-          </div>
-          <div class="card-body-next">
-            <div>
-              <div class="card-cat-tag">Riding School</div>
-              <div class="card-title-next">CORNERING &amp; LEAN CLASS</div>
-              <div class="chips-row">
-                <span class="chip">Track Bike</span>
-                <span class="chip">Suit &amp; Helmet</span>
-              </div>
-            </div>
-            <div class="card-bottom-row">
-              <div class="card-price-next">25.00 € <small>/LESSON</small></div>
-              <button class="btn-next-action">
-                Enroll
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 4 -->
-        <div class="next-card surf-card">
-          <div class="card-thumb" style="background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%);">
-            <span class="surf-badge" style="color: #4338ca;">4 HOURS</span>
-            <div class="surf-graphic-text">TELEMETRY<br>MASTER</div>
-            <div class="surf-subtext">By Joystree Rental</div>
-          </div>
-          <div class="card-body-next">
-            <div>
-              <div class="card-cat-tag">High Performance</div>
-              <div class="card-title-next">HIGH SPEED TELEMETRY</div>
-              <div class="chips-row">
-                <span class="chip">Data Video</span>
-                <span class="chip">MotoGP Coach</span>
-              </div>
-            </div>
-            <div class="card-bottom-row">
-              <div class="card-price-next">35.00 € <small>/LESSON</small></div>
-              <button class="btn-next-action">
-                Enroll
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
-            </div>
-          </div>
+        <div class="faq-body-text">
+          Cancellations made more than 24 hours prior to trip start receive a 100% full booking refund. Cancellations under 24 hours receive a 50% refund.
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- SECTION 5: MOTORBIKES (4 CARDS IN A ROW) -->
-    <section class="section-row" data-category="motorbikes">
-      <div class="section-header">
-        <h2>Motorbikes</h2>
-        <div class="nav-arrows">
-          <button class="arrow-btn" aria-label="Previous">‹</button>
-          <button class="arrow-btn" aria-label="Next">›</button>
-        </div>
-      </div>
-      <div class="grid-4col">
-        <!-- CARD 1 -->
-        <div class="next-card bike-card">
-          <div class="card-thumb">
-            <span class="card-top-tag">⛰ 1050cc Adventure</span>
-            <img src="images/bike_vstrom.png" alt="Suzuki V-Strom DL 1050RR" />
-          </div>
-          <div class="card-body-next">
-            <div>
-              <div class="card-cat-tag">Dual-Sport Master</div>
-              <div class="card-title-next">SUZUKI V-STROM 1050RR</div>
-              <div class="chips-row">
-                <span class="chip">V-Twin</span>
-                <span class="chip">Pannier</span>
-              </div>
-            </div>
-            <div class="card-bottom-row">
-              <div class="card-price-next">100.55 € <small>/DAY</small></div>
-              <button class="btn-next-action">
-                Rent Now
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 2 -->
-        <div class="next-card bike-card">
-          <div class="card-thumb">
-            <span class="card-top-tag">🏁 Inline-4 Sportbike</span>
-            <img src="images/bike_cbr.png" alt="Honda CBR650R" />
-          </div>
-          <div class="card-body-next">
-            <div>
-              <div class="card-cat-tag">High Performance</div>
-              <div class="card-title-next">HONDA CBR650R SPORT</div>
-              <div class="chips-row">
-                <span class="chip">649cc Inline4</span>
-                <span class="chip">Showa SFF</span>
-              </div>
-            </div>
-            <div class="card-bottom-row">
-              <div class="card-price-next">84.28 € <small>/DAY</small></div>
-              <button class="btn-next-action">
-                Rent Now
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 3 -->
-        <div class="next-card bike-card">
-          <div class="card-thumb">
-            <span class="card-top-tag">🌟 Touring King</span>
-            <img src="images/bike_norco.png" alt="BMW R1250 GS Adventure" />
-          </div>
-          <div class="card-body-next">
-            <div>
-              <div class="card-cat-tag">Touring Series</div>
-              <div class="card-title-next">BMW R1250 GS ADVENTURE</div>
-              <div class="chips-row">
-                <span class="chip">1254cc Boxer</span>
-                <span class="chip">ShiftCam</span>
-              </div>
-            </div>
-            <div class="card-bottom-row">
-              <div class="card-price-next">110.00 € <small>/DAY</small></div>
-              <button class="btn-next-action">
-                Rent Now
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 4 -->
-        <div class="next-card bike-card">
-          <div class="card-thumb">
-            <span class="card-top-tag">🔥 1000cc Flagship</span>
-            <img src="images/hero_bike.png" alt="Yamaha YZF-R1 Superbike" />
-          </div>
-          <div class="card-body-next">
-            <div>
-              <div class="card-cat-tag">Superbike Track</div>
-              <div class="card-title-next">YAMAHA YZF-R1 SUPERBIKE</div>
-              <div class="chips-row">
-                <span class="chip">998cc Crossplane</span>
-                <span class="chip">200 HP</span>
-              </div>
-            </div>
-            <div class="card-bottom-row">
-              <div class="card-price-next">125.00 € <small>/DAY</small></div>
-              <button class="btn-next-action">
-                Rent Now
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
 </main>
 
-<!-- FOOTER -->
-<footer class="site-footer">
-  <div class="container footer-top">
-    <div>
-      <div class="footer-brand">Joystree Rental</div>
-      <p class="footer-desc">2024 All rights reserved.<br>Lorem ipsum dolor sit amet consectetur.</p>
-      <div class="footer-hotline">Hotline: 951-***-6483</div>
+<!-- PREMIUM DARK FOOTER -->
+<footer class="dark-footer">
+  <div class="container">
+    <div class="footer-grid-top">
+      <div>
+        <div class="footer-brand-title">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h2.57a2 2 0 0 1 1.96 1.62l1.07 5.38"/><path d="M9 17.5h6"/><path d="M12 9l-4-3H4"/></svg>
+          SACH BIKES
+        </div>
+        <p class="footer-brand-desc">
+          Self Drive SACH BIKES | Kerala's premier self-drive motorbike & bike rental network. Headquarters at Jawaharlal Nehru International Stadium, Kaloor, Kochi with regional depots in Kollam, Adoor, Pathanamthitta, and Kottayam.
+        </p>
+      </div>
+
+      <div>
+        <div class="footer-col-h">Navigation</div>
+        <ul class="footer-links-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="search-results.html">Book Now</a></li>
+          <li><a href="#policies">Rental Policies</a></li>
+          <li><a href="#depots">Kerala Depots</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-h">Popular Rentals</div>
+        <ul class="footer-links-list">
+          <li><a href="search-results.html">Specialized Rockhopper</a></li>
+          <li><a href="search-results.html">Norco Fluid FS 4</a></li>
+          <li><a href="search-results.html">Ducati Panigale V4 S</a></li>
+          <li><a href="search-results.html">Yamaha YZF-R1M Superbike</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-h">Contact HQ</div>
+        <ul class="footer-links-list">
+          <li>📍 JNI Stadium, Kaloor, Kochi</li>
+          <li>📞 +91 70340 60000</li>
+          <li>✉️ info@sachbikes.com</li>
+          <li>🌐 www.sachbikes.com</li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-col">
-      <h4>Link</h4>
-      <ul>
-        <li><a href="#">Rent Guides</a></li>
-        <li><a href="#">Our Location</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Our Bikes</a></li>
-        <li><a href="#">FAQs</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Social Media</h4>
-      <ul>
-        <li><a href="#">Facebook</a></li>
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">LinkedIn</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Legal</h4>
-      <ul>
-        <li><a href="#">Terms &amp; Agreements</a></li>
-        <li><a href="#">Deliver &amp; Return Policy</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="container footer-bottom">
-    <div>© 2024 Joystree Rental. All rights reserved.</div>
-    <div class="pay-methods">
-      <span>🌐 English ▾</span>
-      <span>stripe</span>
-      <span>Pay</span>
-      <span>G Pay</span>
+
+    <div class="footer-bottom-bar">
+      <div>© 2026 SACH BIKES / Joystree Rental. All rights reserved.</div>
+      <div style="display:flex; gap:16px;">
+        <a href="#policies">Privacy Policy</a>
+        <a href="#policies">Terms of Service</a>
+        <a href="#policies">Rental Guidelines</a>
+      </div>
     </div>
   </div>
 </footer>
 
 <script>
-  // Hero Data Carousel with transparent PNG paths
+  // Hero Carousel logic
   const heroes = [
     {
       title: "NORCO FLUID HT 1",
@@ -1547,25 +1303,35 @@
     });
   }
 
-  // Category Filter Pills
-  const catBtns = document.querySelectorAll('.cat-btn');
-  const sections = document.querySelectorAll('[data-category]');
+  // Kerala Depots Switcher Logic
+  const depotData = [
+    { title: "Kochi - Kaloor Stadium HQ", addr: "Jawaharlal Nehru Stadium Complex, Kaloor, Kochi - 682017" },
+    { title: "Cochin Airport (COK) Depot", addr: "Nedumbassery Terminal Express Pickup & Drop Location" },
+    { title: "Kollam City Hub", addr: "South Kerala Service & Fleet Depot, Kollam" },
+    { title: "Adoor & Kottayam Depots", addr: "Regional pickup & doorstep delivery hubs across Pathanamthitta & Kottayam" }
+  ];
 
-  catBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      catBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+  function switchDepot(index, elem) {
+    document.querySelectorAll('.depot-item-btn').forEach(d => d.classList.remove('active'));
+    elem.classList.add('active');
 
-      const filter = btn.dataset.filter;
-      sections.forEach(sec => {
-        if (filter === 'all' || sec.dataset.category === filter) {
-          sec.style.display = 'block';
-        } else {
-          sec.style.display = 'none';
-        }
-      });
-    });
-  });
+    document.getElementById('depotTitle').textContent = depotData[index].title;
+    document.getElementById('depotAddr').textContent = depotData[index].addr;
+  }
+
+  // FAQ Accordion Logic
+  function toggleFaq(elem) {
+    const card = elem.parentElement;
+    const isActive = card.classList.contains('active');
+    
+    document.querySelectorAll('.faq-item-card').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.faq-toggle-icon').forEach(i => i.textContent = '+');
+
+    if (!isActive) {
+      card.classList.add('active');
+      elem.querySelector('.faq-toggle-icon').textContent = '✕';
+    }
+  }
 </script>
 </body>
 </html>
