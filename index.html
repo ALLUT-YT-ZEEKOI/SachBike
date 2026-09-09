@@ -780,8 +780,8 @@
       Joystree Rental
     </div>
     <nav class="nav-links">
-      <a href="#" class="active">Home</a>
-      <a href="#shop">Shop</a>
+      <a href="index.html" class="active">Home</a>
+      <a href="search-results.html">Shop</a>
       <a href="#blog">Blog</a>
       <a href="#about">About Us</a>
       <a href="#contact">Contact Us</a>
@@ -830,20 +830,20 @@
       </div>
     </div>
 
-    <!-- Sleek Floating Horizontal Search Bar with Start Date, Start Time, End Date, End Time -->
-    <div class="search-card">
+    <!-- Sleek Floating Horizontal Search Form connecting to search-results.html -->
+    <form action="search-results.html" method="GET" class="search-card">
       <div class="search-field">
         <label>Start Date</label>
         <div class="input-inline">
           <span style="color:#6366f1;">📅</span>
-          <input type="date" value="2026-09-10" />
+          <input type="date" name="startDate" value="2026-09-10" />
         </div>
       </div>
       <div class="search-field">
         <label>Start Time</label>
         <div class="input-inline">
           <span style="color:#64748b;">🕒</span>
-          <select>
+          <select name="startTime">
             <option>09:00 AM</option>
             <option selected>10:00 AM</option>
             <option>11:00 AM</option>
@@ -861,14 +861,14 @@
         <label>End Date</label>
         <div class="input-inline">
           <span style="color:#6366f1;">📅</span>
-          <input type="date" value="2026-09-13" />
+          <input type="date" name="endDate" value="2026-09-13" />
         </div>
       </div>
       <div class="search-field">
         <label>End Time</label>
         <div class="input-inline">
           <span style="color:#64748b;">🕒</span>
-          <select>
+          <select name="endTime">
             <option>09:00 AM</option>
             <option selected>10:00 AM</option>
             <option>11:00 AM</option>
@@ -882,8 +882,8 @@
           </select>
         </div>
       </div>
-      <button class="btn-search" onclick="alert('Searching availability for selected dates and times...');">Search</button>
-    </div>
+      <button type="submit" class="btn-search">Search</button>
+    </form>
 
     <!-- Hero Title & Subtitle -->
     <div class="hero-title-box">
