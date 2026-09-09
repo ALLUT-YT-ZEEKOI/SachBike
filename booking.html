@@ -34,11 +34,20 @@
     line-height: 1.5;
     padding-bottom: 60px;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 
   a { color: inherit; text-decoration: none; }
   button { font-family: inherit; cursor: pointer; border: none; background: none; }
   img { max-width: 100%; display: block; }
+
+  /* CONFETTI CANVAS */
+  #confettiCanvas {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+  }
 
   .container {
     max-width: 1240px;
@@ -171,6 +180,11 @@
     gap: 32px;
     align-items: start;
     margin-top: 12px;
+  }
+  .checkout-grid.single-col {
+    grid-template-columns: 1fr;
+    max-width: 720px;
+    margin: 0 auto;
   }
 
   /* STEP VIEWS */
@@ -412,24 +426,215 @@
     color: #0f172a;
   }
 
-  /* STEP 3 SUCCESS SCREEN */
-  .success-banner-card {
+  /* ADVANCED STEP 3 CONFIRMATION UI & ANIMATIONS */
+  .success-hero-box {
     text-align: center;
-    padding: 40px 24px;
+    padding: 32px 20px 24px;
+    position: relative;
   }
-  .check-glow-circle {
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    color: #ffffff;
-    font-size: 36px;
-    font-weight: 900;
+
+  /* ANIMATED RIPPLE PULSE CHECKMARK */
+  .pulse-check-wrapper {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 24px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 20px;
-    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.35);
+  }
+  .pulse-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(16, 185, 129, 0.2);
+    animation: pulseExpand 2s infinite ease-out;
+  }
+  .pulse-ring.ring-2 {
+    animation-delay: 0.6s;
+  }
+  @keyframes pulseExpand {
+    0% { transform: scale(0.8); opacity: 1; }
+    100% { transform: scale(1.6); opacity: 0; }
+  }
+
+  .check-circle-3d {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 5;
+    box-shadow: 0 14px 30px rgba(16, 185, 129, 0.4);
+  }
+  .check-svg {
+    width: 44px;
+    height: 44px;
+    stroke: #ffffff;
+    stroke-width: 3.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: drawCheck 0.8s 0.3s forwards cubic-bezier(0.65, 0, 0.45, 1);
+  }
+  @keyframes drawCheck {
+    to { stroke-dashoffset: 0; }
+  }
+
+  /* LUXURY BOARDING PASS TICKET UI */
+  .luxury-ticket-card {
+    background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+    color: #ffffff;
+    border-radius: 24px;
+    position: relative;
+    padding: 32px;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.3);
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+
+  /* SHINE SWEEP ANIMATION */
+  .luxury-ticket-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -150%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.08) 50%, transparent 100%);
+    transform: skewX(-25deg);
+    animation: shineSweep 4s infinite ease-in-out;
+  }
+  @keyframes shineSweep {
+    0% { left: -150%; }
+    40% { left: 150%; }
+    100% { left: 150%; }
+  }
+
+  /* Ticket Side Perforated Circles */
+  .ticket-notch {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: var(--bg-page);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .ticket-notch.left { left: -12px; }
+  .ticket-notch.right { right: -12px; }
+
+  .ticket-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    border-bottom: 1px stroke rgba(255, 255, 255, 0.15);
+    margin-bottom: 20px;
+  }
+  .ticket-brand {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--brand-accent);
+    text-transform: uppercase;
+  }
+  .ticket-id-badge {
+    background: rgba(245, 158, 11, 0.2);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    color: var(--brand-yellow);
+    font-size: 12px;
+    font-weight: 800;
+    padding: 4px 14px;
+    border-radius: 20px;
+  }
+
+  .ticket-grid-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
+  .ticket-item label {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .ticket-item val {
+    font-size: 14px;
+    font-weight: 800;
+    color: #ffffff;
+    display: block;
+  }
+
+  .ticket-barcode-wrap {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .fake-barcode-lines {
+    height: 36px;
+    background: repeating-linear-gradient(
+      90deg,
+      #0f172a 0, #0f172a 3px,
+      #ffffff 3px, #ffffff 6px,
+      #0f172a 6px, #0f172a 10px,
+      #ffffff 10px, #ffffff 12px
+    );
+    border-radius: 4px;
+  }
+
+  /* ACTION CONTROLS GRID FOR STEP 3 */
+  .action-buttons-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .btn-action-whatsapp {
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 800;
+    padding: 16px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+    transition: transform 0.2s ease;
+  }
+  .btn-action-whatsapp:hover {
+    transform: translateY(-2px);
+  }
+  .btn-action-secondary {
+    background: #ffffff;
+    border: 1.5px solid var(--border-color);
+    color: var(--text-primary);
+    font-size: 13.5px;
+    font-weight: 800;
+    padding: 12px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+  }
+  .btn-action-secondary:hover {
+    background: var(--brand-dark);
+    color: #ffffff;
   }
 
   /* RIGHT SIDEBAR: ORDER SUMMARY CARD */
@@ -576,10 +781,14 @@
     .km-plans-grid-new { grid-template-columns: 1fr; }
     .bike-stage-card { grid-template-columns: 1fr; text-align: center; }
     .form-grid-2col { grid-template-columns: 1fr; }
+    .ticket-grid-details { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
+
+<!-- CONFETTI CANVAS FOR CELEBRATION -->
+<canvas id="confettiCanvas"></canvas>
 
 <!-- HEADER -->
 <header class="site-header">
@@ -623,10 +832,10 @@
   </div>
 
   <!-- 2-COLUMN DASHBOARD LAYOUT -->
-  <div class="checkout-grid">
+  <div class="checkout-grid" id="mainDashboardGrid">
 
     <!-- LEFT COLUMN: MAIN STEPS CONTENT -->
-    <div class="left-main-col">
+    <div class="left-main-col" id="leftMainCol">
 
       <!-- STEP 1: VEHICLE SHOWCASE & KM PLAN SELECTION -->
       <div class="step-content-view active" id="viewStep1">
@@ -754,34 +963,81 @@
         </div>
       </div>
 
-      <!-- STEP 3: BOOKING CONFIRMED SUCCESS VIEW -->
+      <!-- STEP 3: ADVANCED CONFIRMATION SUCCESS VIEW -->
       <div class="step-content-view" id="viewStep3">
-        <div class="checkout-card success-banner-card">
-          <div class="check-glow-circle">✓</div>
-          <h1 style="font-size:28px; font-weight:900; margin-bottom:6px;">Booking Confirmed!</h1>
-          <p style="font-size:14px; color:var(--text-muted); margin-bottom:20px;">Your vehicle has been reserved successfully.</p>
+        <div class="checkout-card success-hero-box">
           
-          <div style="background:#fff8e7; border:1.5px solid #fde68a; color:#d97706; display:inline-block; font-size:13px; font-weight:800; padding:6px 20px; border-radius:20px; margin-bottom:24px;">
-            Booking ID: <span id="successBookingId">#2602</span>
+          <!-- ANIMATED PULSE RIPPLE & DRAWING CHECKMARK -->
+          <div class="pulse-check-wrapper">
+            <div class="pulse-ring"></div>
+            <div class="pulse-ring ring-2"></div>
+            <div class="check-circle-3d">
+              <svg class="check-svg" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
           </div>
 
-          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:16px; padding:20px; max-width:440px; margin:0 auto 24px; text-align:left; font-size:13px; line-height:1.8;">
-            <div><strong>Customer:</strong> <span id="succCustName">Ameen</span></div>
-            <div><strong>Vehicle:</strong> <span id="succBikeTitle">NORCO FLUID FS 4 BLACK 29</span></div>
-            <div><strong>Pickup Hub:</strong> Main Station (pickup)</div>
-            <div><strong>Dates:</strong> 10 Sept 2026 — 13 Sept 2026</div>
-            <div><strong>Total Paid:</strong> <span id="succPaidTotal" style="color:var(--brand-accent); font-weight:900;">€45.00</span></div>
+          <h1 style="font-size:32px; font-weight:900; letter-spacing:-0.5px; margin-bottom:6px;">Booking Confirmed!</h1>
+          <p style="font-size:14px; color:var(--text-muted); margin-bottom:28px;">Your vehicle has been reserved and locked in our system.</p>
+
+          <!-- LUXURY DIGITAL BOARDING PASS / TICKET CARD -->
+          <div class="luxury-ticket-card">
+            <div class="ticket-notch left"></div>
+            <div class="ticket-notch right"></div>
+
+            <div class="ticket-header-row">
+              <div class="ticket-brand">JOYSTREE OFFICIAL PASS</div>
+              <div class="ticket-id-badge" id="successBookingId">RESERVATION #2602</div>
+            </div>
+
+            <div class="ticket-grid-details">
+              <div class="ticket-item">
+                <label>RIDER NAME</label>
+                <val id="succCustName">Ameen</val>
+              </div>
+              <div class="ticket-item">
+                <label>RESERVED MOTORBIKE</label>
+                <val id="succBikeTitle">NORCO FLUID FS 4 BLACK 29</val>
+              </div>
+              <div class="ticket-item">
+                <label>PICKUP LOCATION</label>
+                <val>Main Station Hub</val>
+              </div>
+              <div class="ticket-item">
+                <label>TOTAL PAID</label>
+                <val id="succPaidTotal" style="color:var(--brand-yellow);">€45.00</val>
+              </div>
+            </div>
+
+            <!-- Barcode SVG -->
+            <div class="ticket-barcode-wrap">
+              <div class="fake-barcode-lines"></div>
+              <div style="font-size:10px; font-weight:800; color:#64748b; margin-top:4px; letter-spacing:2px;">
+                * 2 6 0 2 - JOYSTREE - VERIFIED *
+              </div>
+            </div>
           </div>
 
-          <a href="https://wa.me/?text=Hi%20Joystree%20Rental,%20I%20have%20confirmed%20my%20motorbike%20booking!" target="_blank" style="background:#25d366; color:#ffffff; font-size:15px; font-weight:800; padding:14px; border-radius:12px; display:inline-flex; align-items:center; justify-content:center; gap:8px; width:100%; max-width:440px; box-shadow:0 4px 14px rgba(37,211,102,0.3); margin-bottom:16px;">
-            💬 Contact Us on WhatsApp
-          </a>
+          <!-- ACTION CONTROLS GRID -->
+          <div class="action-buttons-grid">
+            <a href="https://wa.me/?text=Hi%20Joystree%20Rental,%20I%20have%20confirmed%20my%20booking!" target="_blank" class="btn-action-whatsapp">
+              💬 Instant WhatsApp Confirmation
+            </a>
+            <button type="button" class="btn-action-secondary" onclick="alert('📥 Pass downloaded! Saved to your downloads folder.')">
+              📥 Download Digital Rental Ticket (PDF)
+            </button>
+            <button type="button" class="btn-action-secondary" onclick="alert('📅 Booking added to your Google Calendar!')">
+              🗓️ Add to Google Calendar
+            </button>
+          </div>
 
-          <div>
+          <div style="margin-top:24px;">
             <a href="index.html" style="font-size:13px; font-weight:700; color:var(--text-muted); text-decoration:underline;">
               Return to Home Page
             </a>
           </div>
+
         </div>
       </div>
 
@@ -915,7 +1171,7 @@
   }
 
   function goToStep(stepNum) {
-    if (stepNum > activeStep) return; // Only backward allowed by clicking nodes
+    if (stepNum > activeStep) return;
     setActiveStepView(stepNum);
   }
 
@@ -929,7 +1185,7 @@
         return;
       }
       document.getElementById('succCustName').textContent = name;
-      document.getElementById('successBookingId').textContent = '#' + Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('successBookingId').textContent = 'RESERVATION #' + Math.floor(1000 + Math.random() * 9000);
       setActiveStepView(3);
     }
   }
@@ -949,6 +1205,7 @@
       document.getElementById('circle3').textContent = '3';
       document.getElementById('btnNextStepCta').textContent = 'Continue to Details →';
       document.getElementById('sidebarCol').style.display = 'block';
+      document.getElementById('mainDashboardGrid').classList.remove('single-col');
     } else if (stepNum === 2) {
       progressFill.style.width = '50%';
       document.getElementById('stepNode1').className = 'step-node completed';
@@ -958,6 +1215,7 @@
       document.getElementById('circle2').textContent = '2';
       document.getElementById('btnNextStepCta').textContent = `Pay & Reserve ${document.getElementById('sidebarTotal').textContent} →`;
       document.getElementById('sidebarCol').style.display = 'block';
+      document.getElementById('mainDashboardGrid').classList.remove('single-col');
     } else if (stepNum === 3) {
       progressFill.style.width = '100%';
       document.getElementById('stepNode1').className = 'step-node completed';
@@ -967,6 +1225,10 @@
       document.getElementById('circle2').textContent = '✓';
       document.getElementById('circle3').textContent = '✓';
       document.getElementById('sidebarCol').style.display = 'none';
+      document.getElementById('mainDashboardGrid').classList.add('single-col');
+
+      // FIRE CELEBRATION CONFETTI CANNON
+      fireConfettiCannon();
     }
 
     // Toggle Content Views
@@ -992,6 +1254,61 @@
   function handleCustomerForm(e) {
     e.preventDefault();
     proceedNextStep();
+  }
+
+  /* PURE JASS CONFETTI PARTICLES ENGINE */
+  function fireConfettiCannon() {
+    const canvas = document.getElementById('confettiCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    const colors = ['#f59e0b', '#ffb800', '#10b981', '#3b82f6', '#ec4899', '#8b5cf6'];
+
+    for (let i = 0; i < 120; i++) {
+      particles.push({
+        x: canvas.width / 2,
+        y: canvas.height / 2,
+        vx: (Math.random() - 0.5) * 18,
+        vy: (Math.random() - 0.8) * 18,
+        size: Math.random() * 8 + 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rotation: Math.random() * 360,
+        rSpeed: (Math.random() - 0.5) * 10,
+        opacity: 1
+      });
+    }
+
+    let animationFrame;
+    function renderConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      let activeParticles = 0;
+
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.3; // Gravity
+        p.rotation += p.rSpeed;
+        p.opacity -= 0.008;
+
+        if (p.opacity > 0) {
+          activeParticles++;
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rotation * Math.PI) / 180);
+          ctx.globalAlpha = Math.max(0, p.opacity);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+          ctx.restore();
+        }
+      });
+
+      if (activeParticles > 0) {
+        animationFrame = requestAnimationFrame(renderConfetti);
+      }
+    }
+    renderConfetti();
   }
 </script>
 </body>
