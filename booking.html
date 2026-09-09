@@ -34,6 +34,7 @@
     line-height: 1.5;
     padding-bottom: 60px;
     -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
     overflow-x: hidden;
   }
 
@@ -434,6 +435,18 @@
     position: relative;
   }
 
+  .success-title {
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+  .success-sub {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+  }
+
   /* ANIMATED RIPPLE PULSE CHECKMARK */
   .pulse-check-wrapper {
     position: relative;
@@ -772,17 +785,92 @@
     box-shadow: 0 16px 36px rgba(245, 158, 11, 0.35);
   }
 
-  /* RESPONSIVE BREAKPOINTS */
+  /* =========================================================
+     RESPONSIVE BREAKPOINTS
+     ========================================================= */
+
   @media (max-width: 960px) {
     .checkout-grid { grid-template-columns: 1fr; }
-    .sidebar-summary-card { position: static; }
+    /* Sticky sidebar has to release once it stacks below the content */
+    .summary-sidebar-card { position: static; }
     .km-plans-grid-new { grid-template-columns: repeat(2, 1fr); }
   }
+
+  /* --- Tablet --- */
+  @media (max-width: 768px) {
+    .stepper-container { padding: 24px 0 20px; }
+    .stepper-line-bg,
+    .stepper-line-progress { left: 16%; }
+    .stepper-line-bg { right: 16%; }
+    .step-label { font-size: 11.5px; }
+    .checkout-card { padding: 22px 20px; }
+    .success-hero-box { padding: 26px 16px 20px; }
+  }
+
+  /* --- Phone --- */
   @media (max-width: 640px) {
-    .km-plans-grid-new { grid-template-columns: 1fr; }
+    .container { padding: 0 16px; }
+
+    /* Two plans per row — they are short enough to pair up on a phone */
+    .km-plans-grid-new { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .km-plan-card-new { padding: 16px 13px; }
+    .plan-km-heading { font-size: 14px; }
+    .plan-km-sub { font-size: 11px; margin-bottom: 10px; }
+    .plan-price-main { font-size: 15px; }
+    .plan-popular-tag { left: 10px; font-size: 9px; padding: 2px 8px; }
+    .km-plan-card-new.selected::after { top: 10px; right: 10px; width: 19px; height: 19px; font-size: 11px; }
+
     .bike-stage-card { grid-template-columns: 1fr; text-align: center; }
-    .form-grid-2col { grid-template-columns: 1fr; }
+    .bike-stage-thumb { height: 170px; }
+    .spec-chips-wrap { justify-content: center; }
+    .bike-stage-info h2 { font-size: 19px; }
+    .form-grid-2col { grid-template-columns: 1fr; gap: 16px; }
     .ticket-grid-details { grid-template-columns: 1fr; }
+
+    /* Compact stepper: give each node an equal share so labels stay centred */
+    .stepper-line-bg,
+    .stepper-line-progress { top: 44px; left: 18%; }
+    .stepper-line-bg { right: 18%; }
+    .stepper-steps-wrap { justify-content: space-around; }
+    .step-node { flex: 1 1 0; min-width: 0; }
+    .step-circle { width: 34px; height: 34px; font-size: 13px; }
+    .step-label { font-size: 10.5px; margin-top: 8px; text-align: center; }
+
+    .section-title-box h3 { font-size: 16px; }
+    .section-title-box p { font-size: 12.5px; }
+    .success-title { font-size: 24px; }
+    .success-sub { font-size: 13px; margin-bottom: 22px; }
+    .pulse-check-wrapper { width: 74px; height: 74px; margin-bottom: 18px; }
+    .check-circle-3d { width: 66px; height: 66px; }
+    .check-svg { width: 36px; height: 36px; }
+
+    /* Phone keyboards zoom inputs under 16px, so bump the font size */
+    .input-field-next { font-size: 16px; padding: 13px 15px; }
+    .input-flex-group { flex-direction: column; }
+    .btn-action-inline { padding: 13px 20px; }
+
+    .luxury-ticket-card { padding: 24px 20px; border-radius: 20px; }
+    .ticket-header-row { flex-wrap: wrap; gap: 8px; }
+    .btn-action-whatsapp { font-size: 14px; padding: 15px; }
+    .btn-action-secondary { font-size: 12.5px; }
+
+    .summary-sidebar-card { padding: 20px 18px; }
+    .sidebar-total-price { font-size: 21px; }
+    .btn-next-step-cta { font-size: 14.5px; padding: 15px; }
+  }
+
+  /* --- Small phone --- */
+  @media (max-width: 420px) {
+    .brand-logo { height: 36px; }
+    .stepper-line-bg,
+    .stepper-line-progress { display: none; }
+    .stepper-steps-wrap { gap: 8px; }
+    .step-label { font-size: 10px; }
+    .checkout-card { padding: 18px 16px; }
+    .luxury-ticket-card { padding: 20px 16px; }
+    .ticket-notch { display: none; }
+    .promo-input-box { flex-direction: column; }
+    .promo-input-box button { padding: 12px; }
   }
 </style>
 </head>
@@ -978,8 +1066,8 @@
             </div>
           </div>
 
-          <h1 style="font-size:32px; font-weight:900; letter-spacing:-0.5px; margin-bottom:6px;">Booking Confirmed!</h1>
-          <p style="font-size:14px; color:var(--text-muted); margin-bottom:28px;">Your vehicle has been reserved and locked in our system.</p>
+          <h1 class="success-title">Booking Confirmed!</h1>
+          <p class="success-sub">Your vehicle has been reserved and locked in our system.</p>
 
           <!-- LUXURY DIGITAL BOARDING PASS / TICKET CARD -->
           <div class="luxury-ticket-card">

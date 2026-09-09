@@ -34,6 +34,8 @@
     color: var(--text-primary);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
   }
 
   a { color: inherit; text-decoration: none; }
@@ -111,6 +113,45 @@
   }
   .icon-circle-btn:hover {
     background: #f1f3f6;
+  }
+
+  /* MOBILE NAV TOGGLE (HAMBURGER) */
+  .nav-toggle-btn {
+    display: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .nav-toggle-btn span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--text-primary);
+    transition: transform 0.28s ease, opacity 0.18s ease;
+  }
+  .nav-toggle-btn.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-toggle-btn.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle-btn.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  .nav-backdrop {
+    position: fixed;
+    inset: 74px 0 0;
+    background: rgba(18, 21, 26, 0.45);
+    z-index: 98;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+  }
+  .nav-backdrop.show {
+    opacity: 1;
+    visibility: visible;
   }
 
   /* SEARCH RESULTS PAGE HEADER */
@@ -266,7 +307,23 @@
     gap: 10px;
     margin-bottom: 28px;
     overflow-x: auto;
-    padding-bottom: 4px;
+    padding-bottom: 2px;
+    scroll-behavior: smooth;
+    /* Swipe to scroll — the native bar is noise on a tab strip */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    /* Fade the trailing edge so it reads as "there is more this way".
+       The .at-end class removes it once there is nothing left to scroll,
+       which also covers wide screens where every chip already fits. */
+    mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 34px), transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 34px), transparent 100%);
+  }
+  .filter-chips-row::-webkit-scrollbar {
+    display: none;
+  }
+  .filter-chips-row.at-end {
+    mask-image: none;
+    -webkit-mask-image: none;
   }
   .filter-chip {
     padding: 8px 18px;
@@ -278,6 +335,7 @@
     color: var(--text-muted);
     transition: all 0.2s ease;
     white-space: nowrap;
+    flex-shrink: 0;
   }
   .filter-chip:hover, .filter-chip.active {
     background: var(--brand-dark);
@@ -530,19 +588,116 @@
     color: var(--text-muted);
   }
 
-  /* RESPONSIVE BREAKPOINTS */
+  /* =========================================================
+     RESPONSIVE BREAKPOINTS
+     ========================================================= */
+
   @media (max-width: 1100px) {
-    .grid-4col { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .grid-4col { grid-template-columns: repeat(3, 1fr); gap: 20px; }
   }
+
+  /* --- Tablet: swap the nav for a slide-down drawer --- */
+  @media (max-width: 900px) {
+    .nav-toggle-btn { display: flex; }
+    .lang-select { display: none; }
+
+    .nav-links {
+      position: fixed;
+      top: 74px;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 6px 24px 18px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.10);
+      font-size: 15px;
+      max-height: calc(100vh - 74px);
+      overflow-y: auto;
+      transform: translateY(-100%);
+      visibility: hidden;
+      transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.32s;
+      z-index: 99;
+    }
+    .nav-links.open {
+      transform: translateY(0);
+      visibility: visible;
+    }
+    .nav-links a {
+      padding: 15px 4px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .nav-links a:last-child { border-bottom: none; }
+
+    .grid-4col { grid-template-columns: repeat(2, 1fr); }
+  }
+
   @media (max-width: 768px) {
     .edit-search-grid { grid-template-columns: 1fr 1fr; }
     .search-summary-card { flex-direction: column; align-items: flex-start; gap: 10px; }
     .summary-divider { display: none; }
+    .results-header-section { padding: 24px 0 16px; }
+    .results-title { font-size: 26px; }
   }
+
+  /* --- Phone --- */
   @media (max-width: 640px) {
-    .grid-4col { grid-template-columns: 1fr; }
-    .nav-links { display: none; }
-    .results-title { font-size: 24px; }
+    .container { padding: 0 16px; }
+    .nav-links { padding: 6px 16px 18px; }
+
+    .grid-4col { grid-template-columns: 1fr; gap: 18px; margin-bottom: 40px; }
+    .results-title { font-size: 23px; }
+
+    /* Stack the badge and modify button instead of squeezing them */
+    .results-top-bar {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+    }
+    .btn-modify-search { justify-content: center; }
+
+    .edit-search-drawer { padding: 18px 16px; }
+    .edit-search-grid { grid-template-columns: 1fr; gap: 14px; }
+    .btn-update-search { width: 100%; padding: 14px; }
+
+    .search-summary-card { padding: 16px 18px; gap: 12px; }
+    .filter-chips-row {
+      margin-bottom: 22px;
+      /* Let chips scroll edge-to-edge instead of clipping */
+      margin-inline: -16px;
+      padding-inline: 16px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .filter-chip { padding: 10px 18px; font-size: 13px; }
+
+    .card-thumb { height: 190px; }
+    .card-footer-row {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+    }
+    .btn-select-vehicle { justify-content: center; padding: 13px 16px; }
+
+    .modal-card { padding: 24px 20px; border-radius: 20px; }
+    .modal-title { font-size: 19px; }
+    .modal-img { max-height: 140px; }
+
+    footer.site-footer { padding: 44px 0 20px; }
+    .footer-bottom {
+      flex-direction: column;
+      gap: 10px;
+      text-align: left;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .brand-logo { height: 36px; }
+    .header-actions { gap: 8px; }
+    .icon-circle-btn { width: 34px; height: 34px; }
+    .results-title { font-size: 21px; }
+    .card-thumb { height: 170px; }
   }
 </style>
 </head>
@@ -555,7 +710,7 @@
       <img src="images/logo.png" alt="SachCarz Rent a Car" class="brand-logo" />
     </a>
 
-    <nav class="nav-links">
+    <nav class="nav-links" id="primaryNav">
       <a href="index.html">Home</a>
       <a href="search-results.html" class="active">Shop / Vehicles</a>
       <a href="#blog">Blog</a>
@@ -571,9 +726,13 @@
       <button class="icon-circle-btn" title="Cart">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
       </button>
+      <button class="nav-toggle-btn" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </header>
+<div class="nav-backdrop" id="navBackdrop"></div>
 
 <!-- MAIN SEARCH RESULTS PAGE -->
 <main class="container">
@@ -1043,9 +1202,27 @@
     toggleEditDrawer();
   }
 
+  // Keep the filter strip's trailing fade in sync with its scroll position
+  (function () {
+    const row = document.querySelector('.filter-chips-row');
+    if (!row) return;
+
+    function updateFade() {
+      const atEnd = row.scrollLeft + row.clientWidth >= row.scrollWidth - 1;
+      row.classList.toggle('at-end', atEnd);
+    }
+
+    row.addEventListener('scroll', updateFade, { passive: true });
+    window.addEventListener('resize', updateFade);
+    updateFade();
+  })();
+
   function filterBikes(category, btnElem) {
     document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
     btnElem.classList.add('active');
+
+    // Pull a partly off-screen chip fully into view when tapped
+    btnElem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
 
     const cards = document.querySelectorAll('.bike-card');
     cards.forEach(card => {
@@ -1056,6 +1233,29 @@
       }
     });
   }
+
+  // Mobile navigation drawer
+  (function () {
+    const toggle = document.getElementById('navToggle');
+    const nav = document.getElementById('primaryNav');
+    const backdrop = document.getElementById('navBackdrop');
+    if (!toggle || !nav) return;
+
+    function setOpen(open) {
+      nav.classList.toggle('open', open);
+      toggle.classList.toggle('open', open);
+      if (backdrop) backdrop.classList.toggle('show', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+
+    toggle.addEventListener('click', () => setOpen(!nav.classList.contains('open')));
+    if (backdrop) backdrop.addEventListener('click', () => setOpen(false));
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
+    window.addEventListener('resize', () => { if (window.innerWidth > 900) setOpen(false); });
+  })();
 
   function openBookingModal(title, priceStr, imgPath) {
     const sDate = document.getElementById('inputStartDate').value || '2026-09-10';
