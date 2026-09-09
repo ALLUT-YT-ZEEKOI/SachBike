@@ -299,8 +299,8 @@
 
   .km-plans-grid-new {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
   }
   .km-plan-card-new {
     background: #ffffff;
@@ -359,7 +359,8 @@
     margin-bottom: 2px;
   }
   .plan-km-sub {
-    font-size: 11.5px;
+    /* Sized so "1260 km total included" stays on one line in a 4-up card */
+    font-size: 11px;
     font-weight: 600;
     color: var(--text-muted);
     margin-bottom: 12px;
@@ -789,11 +790,18 @@
      RESPONSIVE BREAKPOINTS
      ========================================================= */
 
-  @media (max-width: 960px) {
+  /* The 380px sidebar leaves the plans too little room for 4 across here,
+     which would wrap the "xxx km total included" line onto two rows. */
+  @media (max-width: 1180px) {
+    .km-plans-grid-new { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* Below this the fixed 380px sidebar squeezes the main column too hard,
+     so the summary drops underneath and content gets the full width. */
+  @media (max-width: 1024px) {
     .checkout-grid { grid-template-columns: 1fr; }
     /* Sticky sidebar has to release once it stacks below the content */
     .summary-sidebar-card { position: static; }
-    .km-plans-grid-new { grid-template-columns: repeat(2, 1fr); }
   }
 
   /* --- Tablet --- */

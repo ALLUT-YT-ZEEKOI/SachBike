@@ -408,14 +408,23 @@
   }
 
   /* Universal Aesthetic Bike Watermark Tint Backdrop */
+  /* Fills the card and scales the bike down to fit, so the whole vehicle
+     stays inside the container instead of being cropped at the edges.
+     object-position decides which corner it hugs. */
   .card-bike-watermark {
     position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 18px;
+    object-fit: contain;
+    object-position: center;
     pointer-events: none;
     user-select: none;
     z-index: 0;
     opacity: 0.07;
     filter: grayscale(100%) contrast(110%);
-    transition: opacity 0.35s ease, transform 0.35s ease;
+    transition: opacity 0.35s ease;
   }
 
   /* Giant Section Watermark Backdrop */
@@ -471,10 +480,17 @@
     height: 100%;
     background: linear-gradient(180deg, var(--brand-yellow), var(--brand-accent));
   }
+  /* Opacity only — a hover scale would push the bike past the card edge */
   .policy-hero-card:hover .card-bike-watermark,
   .depot-command-card:hover .card-bike-watermark {
     opacity: 0.15;
-    transform: scale(1.05) translateY(-4px);
+  }
+
+  /* Lift the real card content above the watermark so text stays crisp */
+  .policy-hero-card > *:not(.card-bike-watermark),
+  .depot-command-card > *:not(.card-bike-watermark) {
+    position: relative;
+    z-index: 1;
   }
   .vision-mission-card:hover {
     box-shadow: var(--shadow-md);
@@ -669,6 +685,10 @@
     display: flex;
     flex-direction: column;
     position: relative;
+    overflow: hidden;
+  }
+  .policy-hero-card .card-bike-watermark {
+    object-position: center 62%;
   }
   .hero-card-badge {
     font-size: 10.5px;
@@ -927,9 +947,8 @@
     position: relative;
   }
   .depot-command-card .card-bike-watermark {
-    right: -60px;
-    bottom: -40px;
-    width: 480px;
+    padding: 22px;
+    object-position: right bottom;
   }
   .command-card-top-bar {
     background: #f8fafc;
