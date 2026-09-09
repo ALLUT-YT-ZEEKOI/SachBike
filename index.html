@@ -204,21 +204,21 @@
     color: var(--text-primary);
   }
 
-  /* Sleek Floating Horizontal Search Bar (Placed directly under hero bike) */
+  /* Sleek Floating Horizontal Search Bar with Start Date, Start Time, End Date, End Time */
   .search-card {
     background: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
-    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.06);
+    border: 1.5px solid var(--border-color);
     display: flex;
     align-items: center;
-    max-width: 640px;
-    margin: 20px auto 32px;
-    padding: 6px 8px;
+    max-width: 860px;
+    margin: 24px auto 32px;
+    padding: 8px 12px;
   }
   .search-field {
     flex: 1;
-    padding: 10px 20px;
+    padding: 6px 14px;
     text-align: left;
     border-right: 1px solid var(--border-color);
   }
@@ -227,18 +227,28 @@
   }
   .search-field label {
     display: block;
-    font-size: 11px;
+    font-size: 10.5px;
     font-weight: 700;
     color: var(--text-light);
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
   }
-  .search-field select {
+  .input-inline {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .input-inline span {
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .input-inline input, .input-inline select {
     border: none;
     background: transparent;
-    font-size: 13.5px;
-    font-weight: 600;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
     color: var(--text-primary);
     width: 100%;
     outline: none;
@@ -248,14 +258,17 @@
     background: #1e232a;
     color: #ffffff;
     font-size: 13.5px;
-    font-weight: 700;
-    padding: 12px 32px;
-    border-radius: 10px;
-    transition: background 0.2s ease;
+    font-weight: 800;
+    padding: 12px 30px;
+    border-radius: 12px;
+    transition: all 0.2s ease;
     border: none;
+    white-space: nowrap;
+    margin-left: 8px;
   }
   .btn-search:hover {
     background: #000000;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
   }
 
   .hero-title-box h1 {
@@ -742,14 +755,18 @@
   @media (max-width: 1100px) {
     .grid-4col { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   }
+  @media (max-width: 800px) {
+    .search-card { flex-wrap: wrap; gap: 10px; padding: 12px; }
+    .search-field { width: 48%; border-right: none; }
+    .btn-search { width: 100%; margin-left: 0; margin-top: 8px; }
+  }
   @media (max-width: 640px) {
     .nav-links { display: none; }
     .grid-4col { grid-template-columns: 1fr; }
     .footer-top { grid-template-columns: 1fr 1fr; row-gap: 32px; }
     .hero-side-bike { display: none; }
     .hero-spec-box { position: static; text-align: center; margin-top: 16px; }
-    .search-card { flex-direction: column; gap: 12px; }
-    .search-field { width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); }
+    .search-field { width: 100%; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
   }
 </style>
 </head>
@@ -813,25 +830,59 @@
       </div>
     </div>
 
-    <!-- Floating Horizontal Search Bar (Placed directly under hero bike showcase) -->
+    <!-- Sleek Floating Horizontal Search Bar with Start Date, Start Time, End Date, End Time -->
     <div class="search-card">
       <div class="search-field">
-        <label>From</label>
-        <select>
-          <option>Pick a date</option>
-          <option>Tomorrow, 10:00 AM</option>
-          <option>10-09-2026, 12:00 PM</option>
-        </select>
+        <label>Start Date</label>
+        <div class="input-inline">
+          <span style="color:#6366f1;">📅</span>
+          <input type="date" value="2026-09-10" />
+        </div>
       </div>
       <div class="search-field">
-        <label>To</label>
-        <select>
-          <option>Pick a date</option>
-          <option>In 3 Days, 10:00 AM</option>
-          <option>13-09-2026, 12:00 PM</option>
-        </select>
+        <label>Start Time</label>
+        <div class="input-inline">
+          <span style="color:#64748b;">🕒</span>
+          <select>
+            <option>09:00 AM</option>
+            <option selected>10:00 AM</option>
+            <option>11:00 AM</option>
+            <option>12:00 PM</option>
+            <option>01:00 PM</option>
+            <option>02:00 PM</option>
+            <option>03:00 PM</option>
+            <option>04:00 PM</option>
+            <option>05:00 PM</option>
+            <option>06:00 PM</option>
+          </select>
+        </div>
       </div>
-      <button class="btn-search" onclick="alert('Searching availability for selected dates...');">Search</button>
+      <div class="search-field">
+        <label>End Date</label>
+        <div class="input-inline">
+          <span style="color:#6366f1;">📅</span>
+          <input type="date" value="2026-09-13" />
+        </div>
+      </div>
+      <div class="search-field">
+        <label>End Time</label>
+        <div class="input-inline">
+          <span style="color:#64748b;">🕒</span>
+          <select>
+            <option>09:00 AM</option>
+            <option selected>10:00 AM</option>
+            <option>11:00 AM</option>
+            <option>12:00 PM</option>
+            <option>01:00 PM</option>
+            <option>02:00 PM</option>
+            <option>03:00 PM</option>
+            <option>04:00 PM</option>
+            <option>05:00 PM</option>
+            <option>06:00 PM</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn-search" onclick="alert('Searching availability for selected dates and times...');">Search</button>
     </div>
 
     <!-- Hero Title & Subtitle -->
