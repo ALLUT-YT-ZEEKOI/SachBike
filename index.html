@@ -18,6 +18,9 @@
     --brand-accent: #f59e0b;
     --brand-yellow: #ffb800;
     --brand-dark: #12151a;
+    /* One rhythm for every section: each pads this much top and bottom,
+       so the gap between any two sections is exactly twice this value. */
+    --section-space: 34px;
     --radius-card: 20px;
     --radius-pill: 30px;
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
@@ -159,8 +162,8 @@
   /* These sections also carry .container, so only ever set vertical padding
      here — a `padding` shorthand would wipe out the container's side gutters. */
   .hero-section {
-    padding-top: 36px;
-    padding-bottom: 48px;
+    padding-top: var(--section-space);
+    padding-bottom: var(--section-space);
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -387,8 +390,8 @@
      SECTION 1: HOW IT WORKS & VISION MISSION (AESTHETIC LIGHT UI)
      ========================================================= */
   .how-it-works-section {
-    padding-top: 64px;
-    padding-bottom: 48px;
+    padding-top: var(--section-space);
+    padding-bottom: var(--section-space);
     text-align: center;
   }
 
@@ -662,8 +665,8 @@
      SECTION 2: POLICY & GUIDELINES (AESTHETIC ASYMMETRIC BENTO)
      ========================================================= */
   .policy-section {
-    padding-top: 64px;
-    padding-bottom: 64px;
+    padding-top: var(--section-space);
+    padding-bottom: var(--section-space);
     text-align: center;
   }
 
@@ -875,8 +878,8 @@
      SECTION 3: KERALA DEPOTS (COMMAND CENTER DASHBOARD)
      ========================================================= */
   .depots-section {
-    padding-top: 64px;
-    padding-bottom: 64px;
+    padding-top: var(--section-space);
+    padding-bottom: var(--section-space);
     text-align: center;
   }
 
@@ -1086,8 +1089,8 @@
      SECTION 4: RENTAL KNOWLEDGE BASE (AESTHETIC ACCORDION)
      ========================================================= */
   .faq-section {
-    padding-top: 64px;
-    padding-bottom: 96px;
+    padding-top: var(--section-space);
+    padding-bottom: var(--section-space);
     text-align: center;
   }
   .faq-wrap {
@@ -1152,7 +1155,8 @@
   footer.site-footer {
     background: #ffffff;
     border-top: 1px solid var(--border-color);
-    padding: 64px 0 28px;
+    padding-top: var(--section-space);
+    padding-bottom: 28px;
   }
   .footer-grid-top {
     display: grid;
@@ -1277,11 +1281,7 @@
 
   /* --- Large phone / small tablet --- */
   @media (max-width: 860px) {
-    .hero-section { padding-top: 24px; padding-bottom: 36px; }
-    .how-it-works-section { padding-top: 48px; padding-bottom: 40px; }
-    .policy-section,
-    .depots-section { padding-top: 48px; padding-bottom: 48px; }
-    .faq-section { padding-top: 48px; padding-bottom: 64px; }
+    :root { --section-space: 28px; }
     .section-main-heading { font-size: 26px; }
 
     /* Search bar becomes a 2-up card stack */
@@ -1316,6 +1316,7 @@
 
   /* --- Phone --- */
   @media (max-width: 640px) {
+    :root { --section-space: 24px; }
     .container { padding-left: 16px; padding-right: 16px; }
 
     .steps-4grid { grid-template-columns: 1fr; }
@@ -1368,7 +1369,6 @@
     .faq-header-btn { padding: 18px 18px; font-size: 14px; gap: 12px; }
     .faq-body-text { padding: 0 18px 20px; padding-top: 16px; }
 
-    footer.site-footer { padding: 48px 0 24px; }
     .footer-brand-desc { max-width: none; }
     .footer-bottom-bar {
       flex-direction: column;
