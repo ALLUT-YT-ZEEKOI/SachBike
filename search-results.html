@@ -68,9 +68,10 @@
     flex-shrink: 0;
   }
   .brand-logo {
-    height: 42px;
+    height: 48px;
     width: auto;
     display: block;
+    border-radius: 8px;
   }
   .nav-links {
     display: flex;
@@ -584,8 +585,15 @@
     margin-top: 32px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-size: 12px;
     color: var(--text-muted);
+  }
+  .footer-brand-logo {
+    height: 44px;
+    width: auto;
+    display: block;
+    border-radius: 8px;
   }
 
   /* =========================================================
@@ -693,7 +701,7 @@
   }
 
   @media (max-width: 420px) {
-    .brand-logo { height: 36px; }
+    .brand-logo { height: 40px; }
     .header-actions { gap: 8px; }
     .icon-circle-btn { width: 34px; height: 34px; }
     .results-title { font-size: 21px; }
@@ -707,7 +715,7 @@
 <header class="site-header">
   <div class="container header-wrap">
     <a href="index.html" class="brand" aria-label="SachCarz Rent a Car — Home">
-      <img src="images/logo.png" alt="SachCarz Rent a Car" class="brand-logo" />
+      <img src="images/logo-bikes.png" alt="BIKES" class="brand-logo" />
     </a>
 
     <nav class="nav-links" id="primaryNav">
@@ -1093,7 +1101,12 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <div>© 2026 Joystree Rental. All rights reserved.</div>
+      <div style="display:flex; align-items:center; gap:14px;">
+        <a href="index.html" aria-label="BIKES — Home">
+          <img src="images/logo-bikes.png" alt="BIKES" class="footer-brand-logo" />
+        </a>
+        <span>© 2026 BIKES. All rights reserved.</span>
+      </div>
       <div style="display:flex; gap:16px; font-weight:600;">
         <span>Privacy Policy</span>
         <span>Terms of Service</span>

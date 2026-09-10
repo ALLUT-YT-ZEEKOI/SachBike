@@ -72,9 +72,10 @@
     flex-shrink: 0;
   }
   .brand-logo {
-    height: 42px;
+    height: 48px;
     width: auto;
     display: block;
+    border-radius: 8px;
   }
   .nav-links {
     display: flex;
@@ -1075,6 +1076,13 @@
     gap: 8px;
     margin-bottom: 12px;
   }
+  .footer-brand-logo {
+    height: 56px;
+    width: auto;
+    display: block;
+    border-radius: 10px;
+    margin-bottom: 14px;
+  }
   .footer-brand-desc {
     font-size: 13px;
     line-height: 1.7;
@@ -1282,7 +1290,7 @@
 
   /* --- Small phone --- */
   @media (max-width: 420px) {
-    .brand-logo { height: 36px; }
+    .brand-logo { height: 40px; }
     .header-actions { gap: 8px; }
     .icon-circle-btn { width: 34px; height: 34px; }
 
@@ -1293,6 +1301,35 @@
     .depot-slide { padding: 24px 44px 18px; }
     .depot-slide img { height: 150px; }
   }
+
+  /* =========================================================
+     SCROLL REVEAL (standard fade-up)
+     ========================================================= */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.08s; }
+  .reveal-delay-2 { transition-delay: 0.16s; }
+  .reveal-delay-3 { transition-delay: 0.24s; }
+  .reveal-delay-4 { transition-delay: 0.32s; }
+  .reveal-delay-5 { transition-delay: 0.40s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
 </style>
 </head>
 <body>
@@ -1301,7 +1338,7 @@
 <header class="site-header">
   <div class="container header-wrap">
     <a href="index.html" class="brand" aria-label="SachCarz Rent a Car — Home">
-      <img src="images/logo.png" alt="SachCarz Rent a Car" class="brand-logo" />
+      <img src="images/logo-bikes.png" alt="BIKES" class="brand-logo" />
     </a>
 
     <nav class="nav-links" id="primaryNav">
@@ -1803,12 +1840,11 @@
   <div class="container">
     <div class="footer-grid-top">
       <div>
-        <div class="footer-brand-title">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h2.57a2 2 0 0 1 1.96 1.62l1.07 5.38"/><path d="M9 17.5h6"/><path d="M12 9l-4-3H4"/></svg>
-          Joystree Rental
-        </div>
+        <a href="index.html" aria-label="BIKES — Home">
+          <img src="images/logo-bikes.png" alt="BIKES" class="footer-brand-logo" />
+        </a>
         <p class="footer-brand-desc">
-          Joystree Rental | Kerala's premier self-drive motorbike & bike rental network. Headquarters at Jawaharlal Nehru International Stadium, Kaloor, Kochi with regional depots in Kollam, Adoor, Pathanamthitta, and Kottayam.
+          BIKES | Kerala's premier self-drive motorbike &amp; bike rental network. Headquarters at Jawaharlal Nehru International Stadium, Kaloor, Kochi with regional depots in Kollam, Adoor, Pathanamthitta, and Kottayam.
         </p>
       </div>
 
@@ -1976,6 +2012,62 @@
       elem.querySelector('.faq-toggle-icon').textContent = '✕';
     }
   }
+
+  // Standard scroll-reveal animations (fade-up as elements enter view)
+  (function initScrollReveal() {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const targets = document.querySelectorAll([
+      '.how-it-works-section .step-badge-pill',
+      '.how-it-works-section .section-main-heading',
+      '.how-it-works-section .section-subtext',
+      '.vision-mission-card',
+      '.step-card-box',
+      '.policy-section .section-badge-aesthetic',
+      '.policy-section .section-main-heading',
+      '.policy-section .section-subtext',
+      '.policy-hero-card',
+      '.policy-mini-card',
+      '.depots-section .step-badge-pill',
+      '.depots-section .section-main-heading',
+      '.depots-section .section-subtext',
+      '.depot-slider',
+      '.depot-slider-dots',
+      '.faq-section .section-badge-aesthetic',
+      '.faq-section .section-main-heading',
+      '.faq-section .section-subtext',
+      '.faq-item-card',
+      '.footer-grid-top > *',
+      '.footer-bottom-bar'
+    ].join(','));
+
+    targets.forEach((el) => el.classList.add('reveal'));
+
+    document.querySelectorAll('.steps-4grid, .policy-subgrid, .faq-wrap, .footer-grid-top').forEach((group) => {
+      [...group.children].forEach((child, idx) => {
+        if (!child.classList.contains('reveal')) return;
+        if (idx > 0 && idx <= 5) child.classList.add('reveal-delay-' + idx);
+      });
+    });
+
+    if (reduceMotion) {
+      targets.forEach((el) => el.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    targets.forEach((el) => observer.observe(el));
+  })();
 </script>
 </body>
 </html>
