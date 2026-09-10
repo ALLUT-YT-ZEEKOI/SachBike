@@ -484,14 +484,12 @@
     background: linear-gradient(180deg, var(--brand-yellow), var(--brand-accent));
   }
   /* Opacity only — a hover scale would push the bike past the card edge */
-  .policy-hero-card:hover .card-bike-watermark,
-  .depot-command-card:hover .card-bike-watermark {
+  .policy-hero-card:hover .card-bike-watermark {
     opacity: 0.15;
   }
 
   /* Lift the real card content above the watermark so text stays crisp */
-  .policy-hero-card > *:not(.card-bike-watermark),
-  .depot-command-card > *:not(.card-bike-watermark) {
+  .policy-hero-card > *:not(.card-bike-watermark) {
     position: relative;
     z-index: 1;
   }
@@ -883,206 +881,110 @@
     text-align: center;
   }
 
-  /* 4 Depot Tabs Row */
-  .depot-tabs-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-  .depot-tab-card {
-    background: #ffffff;
-    border: 1.5px solid #e5e7eb;
-    border-radius: 16px;
-    padding: 18px 20px;
-    text-align: left;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.02);
-  }
-  .depot-tab-card:hover {
-    border-color: #cbd5e1;
-    transform: translateY(-2px);
-  }
-  .depot-tab-card.active {
-    border-color: #111827;
-    background: #ffffff;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-  }
-  .depot-tab-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 6px;
-  }
-  .depot-city-title {
-    font-size: 12px;
-    font-weight: 800;
-    color: #64748b;
-    text-transform: uppercase;
-  }
-  .depot-pill-tag {
-    font-size: 9.5px;
-    font-weight: 800;
-    padding: 3px 8px;
-    border-radius: 10px;
-    text-transform: uppercase;
-  }
-  .depot-pill-tag.open { background: #f0fdf4; color: #16a34a; }
-  .depot-pill-tag.express { background: #eff6ff; color: #2563eb; }
-  .depot-pill-tag.south { background: #fefce8; color: #ca8a04; }
-  .depot-pill-tag.regional { background: #f1f5f9; color: #475569; }
-
-  .depot-tab-name {
-    font-size: 14.5px;
-    font-weight: 800;
-    color: #111827;
-  }
-
-  /* Command Center Main Card */
-  .depot-command-card {
-    background: #ffffff;
-    border: 1.5px solid #e5e7eb;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.035);
-    text-align: left;
+  /* Fleet bike image slider */
+  .depot-slider {
     position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+    border: 1.5px solid #e5e7eb;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    min-height: 380px;
   }
-  .depot-command-card .card-bike-watermark {
-    padding: 22px;
-    object-position: right bottom;
-  }
-  .command-card-top-bar {
-    background: #f8fafc;
-    border-bottom: 1px solid #e2e8f0;
-    padding: 14px 28px;
+  .depot-slider-track {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 11.5px;
-    font-weight: 800;
+    height: 100%;
+    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
   }
-  .gps-status {
-    color: #16a34a;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    letter-spacing: 0.5px;
-  }
-  .dot-green {
-    font-size: 10px;
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0% { opacity: 1; }
-    50% { opacity: 0.4; }
-    100% { opacity: 1; }
-  }
-  .hub-code {
-    color: #64748b;
-    letter-spacing: 0.5px;
-  }
-
-  .command-card-body {
-    padding: 36px 32px;
-    display: grid;
-    grid-template-columns: 1fr 340px;
-    gap: 32px;
-    align-items: center;
-  }
-  .map-badge-icon {
-    width: 48px;
-    height: 48px;
-    background: #f1f5f9;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    margin-bottom: 16px;
-  }
-  .depot-map-title {
-    font-size: 22px;
-    font-weight: 900;
-    color: #111827;
-    margin-bottom: 6px;
-  }
-  .depot-map-addr {
-    font-size: 14px;
-    color: #6b7280;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    max-width: 500px;
-  }
-
-  .depot-facilities-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  .depot-facilities-pills span {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    color: #475569;
-    font-size: 12px;
-    font-weight: 700;
-    padding: 6px 14px;
-    border-radius: 20px;
-  }
-
-  .command-right-actions {
+  .depot-slide {
+    position: relative;
+    flex: 0 0 100%;
+    min-width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    background: #f8fafc;
-    padding: 24px;
-    border-radius: 16px;
-    border: 1px solid #f1f5f9;
+    align-items: center;
+    justify-content: center;
+    padding: 36px 72px 28px;
+    box-sizing: border-box;
   }
-  .action-box-title {
-    font-size: 11px;
+  .depot-slide img {
+    width: min(720px, 100%);
+    height: 260px;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    filter: drop-shadow(0 18px 28px rgba(15, 23, 42, 0.18));
+  }
+  .depot-slide-caption {
+    margin-top: 18px;
+    text-align: center;
+    max-width: 560px;
+  }
+  .depot-slide-caption strong {
+    display: block;
+    font-size: 22px;
     font-weight: 800;
-    color: #94a3b8;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: -0.4px;
+    color: #0f172a;
     margin-bottom: 6px;
+    text-transform: uppercase;
   }
-  .btn-call-depot {
-    background: #111827;
-    color: #ffffff;
-    font-size: 13.5px;
-    font-weight: 800;
-    padding: 13px 20px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    transition: all 0.25s ease;
-    width: 100%;
+  .depot-slide-caption span {
+    display: block;
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.5;
   }
-  .btn-call-depot:hover {
-    background: #000000;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-  }
-  .btn-whatsapp-depot {
+  .depot-slider-nav {
+    position: absolute;
+    top: 42%;
+    transform: translateY(-50%);
+    z-index: 3;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid #e2e8f0;
     background: #ffffff;
-    border: 1.5px solid #e5e7eb;
-    color: #111827;
-    font-size: 13.5px;
-    font-weight: 800;
-    padding: 13px 20px;
-    border-radius: 12px;
+    color: #0f172a;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    transition: all 0.25s ease;
-    width: 100%;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
   }
-  .btn-whatsapp-depot:hover {
-    background: #f1f5f9;
+  .depot-slider-nav:hover {
+    background: #0f172a;
+    color: #ffffff;
+    border-color: #0f172a;
+    transform: translateY(-50%) scale(1.05);
+  }
+  .depot-slider-nav.prev { left: 16px; }
+  .depot-slider-nav.next { right: 16px; }
+  .depot-slider-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+  }
+  .depot-slider-dots .depot-dot {
+    width: 24px;
+    height: 3px;
+    border-radius: 2px;
+    border: none;
+    padding: 0;
+    background: #e2e8f0;
+    cursor: pointer;
+    transition: width 0.3s ease, background 0.3s ease;
+  }
+  .depot-slider-dots .depot-dot.active {
+    width: 36px;
+    background: #0f172a;
   }
 
   /* =========================================================
@@ -1220,9 +1122,8 @@
     .policy-6grid { grid-template-columns: repeat(2, 1fr); }
     .policy-bento-layout { grid-template-columns: 1fr; }
     .depots-layout-grid { grid-template-columns: 1fr; }
-    .depot-tabs-row { grid-template-columns: repeat(2, 1fr); }
-    .command-card-body { grid-template-columns: 1fr; }
-    .command-right-actions { flex-direction: row; flex-wrap: wrap; }
+    .depot-slider { min-height: 340px; }
+    .depot-slide img { height: 220px; }
     .footer-grid-top { grid-template-columns: 1fr 1fr; gap: 32px; }
     .vision-pillars { grid-template-columns: repeat(2, 1fr); }
     .hero-side-bike { width: 210px; }
@@ -1308,10 +1209,7 @@
     }
 
     .policy-hero-card { padding: 26px 22px; }
-    .command-card-body { padding: 26px 22px; gap: 24px; }
-    .command-card-top-bar { padding: 12px 22px; flex-wrap: wrap; gap: 6px; }
-    .depot-map-title { font-size: 19px; }
-    .depot-map-addr { font-size: 13.5px; }
+    .depot-slide-caption strong { font-size: 20px; }
   }
 
   /* --- Phone --- */
@@ -1323,7 +1221,6 @@
     .policy-6grid { grid-template-columns: 1fr; }
     .policy-subgrid { grid-template-columns: 1fr; }
     .full-span-card { grid-column: span 1; }
-    .depot-tabs-row { grid-template-columns: 1fr 1fr; gap: 12px; }
     .footer-grid-top { grid-template-columns: 1fr; gap: 28px; }
     .section-bg-watermark { width: 600px; opacity: 0.04; }
     .cancellation-flex-boxes { flex-direction: column; align-items: stretch; }
@@ -1361,10 +1258,14 @@
     .policy-mini-card { padding: 20px 18px; }
     .hero-card-title { font-size: 18px; }
 
-    .command-card-body { padding: 22px 18px; }
-    .command-card-top-bar { padding: 12px 18px; }
-    .command-right-actions { flex-direction: column; padding: 20px; }
-    .depot-map-title { font-size: 18px; }
+    .depot-slider { min-height: 300px; }
+    .depot-slide { padding: 28px 52px 22px; }
+    .depot-slide img { height: 180px; }
+    .depot-slider-nav { width: 36px; height: 36px; font-size: 17px; top: 38%; }
+    .depot-slider-nav.prev { left: 10px; }
+    .depot-slider-nav.next { right: 10px; }
+    .depot-slide-caption strong { font-size: 17px; }
+    .depot-slide-caption span { font-size: 13px; }
 
     .faq-header-btn { padding: 18px 18px; font-size: 14px; gap: 12px; }
     .faq-body-text { padding: 0 18px 20px; padding-top: 16px; }
@@ -1386,11 +1287,11 @@
     .icon-circle-btn { width: 34px; height: 34px; }
 
     .search-field { flex: 1 1 100%; }
-    .depot-tabs-row { grid-template-columns: 1fr; }
     .section-main-heading { font-size: 21px; }
     .vision-icon-halo { width: 38px; height: 38px; border-radius: 12px; font-size: 17px; }
     .faq-badge-tag { display: none; }
-    .depot-facilities-pills span { font-size: 11px; padding: 5px 12px; }
+    .depot-slide { padding: 24px 44px 18px; }
+    .depot-slide img { height: 150px; }
   }
 </style>
 </head>
@@ -1772,84 +1673,59 @@
        SECTION 3: KERALA DEPOTS (COMMAND CENTER DASHBOARD)
        ========================================================= -->
   <section class="depots-section container" id="depots">
-    <div class="step-badge-pill">LOCATIONS & HUBS</div>
-    <h2 class="section-main-heading">Kerala Rental Depots</h2>
-    <p class="section-subtext">Pick up your vehicle at our prime depots or arrange doorstep delivery anywhere in Kerala.</p>
+    <div class="step-badge-pill">FLEET SHOWCASE</div>
+    <h2 class="section-main-heading">Our Rental Bikes</h2>
+    <p class="section-subtext">Browse the bikes available across our Kerala depots — tap through the gallery to explore the fleet.</p>
 
-    <!-- 4 Depot Tab Cards Row -->
-    <div class="depot-tabs-row">
-      <div class="depot-tab-card active" onclick="switchDepot(0, this)">
-        <div class="depot-tab-top">
-          <span class="depot-city-title">📍 Kochi HQ</span>
-          <span class="depot-pill-tag open">🟢 24/7 OPEN</span>
+    <div class="depot-slider" id="depotSlider" aria-roledescription="carousel" aria-label="Bike fleet gallery">
+      <div class="depot-slider-track" id="depotSliderTrack">
+        <div class="depot-slide">
+          <img src="images/hero_bike.png" alt="Norco Fluid HT 1" />
+          <div class="depot-slide-caption">
+            <strong>Norco Fluid HT 1</strong>
+            <span>Versatile high-performance motorbike for city rides and highway cruising.</span>
+          </div>
         </div>
-        <div class="depot-tab-name">Kaloor Stadium HQ</div>
+        <div class="depot-slide">
+          <img src="images/bike_vstrom.png" alt="Suzuki V-Strom" />
+          <div class="depot-slide-caption">
+            <strong>Suzuki V-Strom</strong>
+            <span>Adventure-ready touring bike built for long Kerala road trips.</span>
+          </div>
+        </div>
+        <div class="depot-slide">
+          <img src="images/bike_green.png" alt="E-EV Green Cruiser" />
+          <div class="depot-slide-caption">
+            <strong>E-EV Green Cruiser</strong>
+            <span>Quiet electric ride with smooth torque for everyday city travel.</span>
+          </div>
+        </div>
+        <div class="depot-slide">
+          <img src="images/bike_cbr.png" alt="Honda CBR" />
+          <div class="depot-slide-caption">
+            <strong>Honda CBR</strong>
+            <span>Sportbike performance with comfortable ergonomics for daily riding.</span>
+          </div>
+        </div>
+        <div class="depot-slide">
+          <img src="images/bike_norco.png" alt="Norco Fluid FS 4" />
+          <div class="depot-slide-caption">
+            <strong>Norco Fluid FS 4</strong>
+            <span>Full-suspension trail machine ready for mountain and coastal routes.</span>
+          </div>
+        </div>
       </div>
 
-      <div class="depot-tab-card" onclick="switchDepot(1, this)">
-        <div class="depot-tab-top">
-          <span class="depot-city-title">✈️ Cochin Airport</span>
-          <span class="depot-pill-tag express">⚡ EXPRESS</span>
-        </div>
-        <div class="depot-tab-name">COK Terminal Depot</div>
-      </div>
-
-      <div class="depot-tab-card" onclick="switchDepot(2, this)">
-        <div class="depot-tab-top">
-          <span class="depot-city-title">🌴 Kollam Hub</span>
-          <span class="depot-pill-tag south">🟢 SOUTH KERALA</span>
-        </div>
-        <div class="depot-tab-name">City Fleet Hub</div>
-      </div>
-
-      <div class="depot-tab-card" onclick="switchDepot(3, this)">
-        <div class="depot-tab-top">
-          <span class="depot-city-title">📍 Regional Depots</span>
-          <span class="depot-pill-tag regional">📍 REGIONAL</span>
-        </div>
-        <div class="depot-tab-name">Adoor & Kottayam</div>
-      </div>
+      <button type="button" class="depot-slider-nav prev" onclick="moveDepotSlide(-1)" aria-label="Previous bike">‹</button>
+      <button type="button" class="depot-slider-nav next" onclick="moveDepotSlide(1)" aria-label="Next bike">›</button>
     </div>
 
-    <!-- Command Center Detail Card -->
-    <div class="depot-command-card">
-      <img src="images/bike_vstrom.png" class="card-bike-watermark" alt="" />
-      <div class="command-card-top-bar">
-        <span class="gps-status"><span class="dot-green">●</span> GPS LIVE NETWORK SYNC</span>
-        <span class="hub-code" id="depotHubCode">HUB-01 • KOCHI CENTRAL HQ</span>
-      </div>
-
-      <div class="command-card-body">
-        <div class="command-left-info">
-          <div class="map-badge-icon">🗺️</div>
-          <h3 class="depot-map-title" id="depotTitle">Kochi - Kaloor Stadium HQ</h3>
-          <p class="depot-map-addr" id="depotAddr">
-            Jawaharlal Nehru Stadium Complex, Kaloor, Kochi - 682017
-          </p>
-
-          <div class="depot-facilities-pills">
-            <span>🛡️ 24/7 Roadside Assist</span>
-            <span>🔑 Instant Handover</span>
-            <span>🛵 Helmets Included</span>
-            <span>🚚 Doorstep Delivery</span>
-          </div>
-        </div>
-
-        <div class="command-right-actions">
-          <div class="action-card-box">
-            <div class="action-box-title">Direct Depot Manager</div>
-            <a href="tel:+917034060000" class="btn-call-depot">
-              📞 Call Depot Manager
-            </a>
-          </div>
-          <div class="action-card-box">
-            <div class="action-box-title">Instant Directions</div>
-            <a href="https://wa.me/917034060000?text=Hi%20Joystree%20Rental,%20I%20want%20the%20depot%20location" target="_blank" class="btn-whatsapp-depot">
-              💬 WhatsApp Location
-            </a>
-          </div>
-        </div>
-      </div>
+    <div class="depot-slider-dots" id="depotSliderDots">
+      <button type="button" class="depot-dot active" onclick="goDepotSlide(0)" aria-label="Show bike 1"></button>
+      <button type="button" class="depot-dot" onclick="goDepotSlide(1)" aria-label="Show bike 2"></button>
+      <button type="button" class="depot-dot" onclick="goDepotSlide(2)" aria-label="Show bike 3"></button>
+      <button type="button" class="depot-dot" onclick="goDepotSlide(3)" aria-label="Show bike 4"></button>
+      <button type="button" class="depot-dot" onclick="goDepotSlide(4)" aria-label="Show bike 5"></button>
     </div>
   </section>
 
@@ -2050,22 +1926,41 @@
     });
   }
 
-  // Kerala Depots Switcher Logic
-  const depotData = [
-    { title: "Kochi - Kaloor Stadium HQ", addr: "Jawaharlal Nehru Stadium Complex, Kaloor, Kochi - 682017", code: "HUB-01 • KOCHI CENTRAL HQ" },
-    { title: "Cochin Airport (COK) Depot", addr: "Nedumbassery Terminal Express Pickup & Drop Location", code: "HUB-02 • COK AIRPORT EXPRESS" },
-    { title: "Kollam City Hub", addr: "South Kerala Service & Fleet Depot, Kollam", code: "HUB-03 • KOLLAM SOUTH HUB" },
-    { title: "Adoor & Kottayam Depots", addr: "Regional pickup & doorstep delivery hubs across Pathanamthitta & Kottayam", code: "HUB-04 • REGIONAL NETWORK" }
-  ];
+  // Fleet bike image slider
+  let depotSlideIndex = 0;
+  let depotAutoTimer = null;
+  const depotSlideCount = 5;
 
-  function switchDepot(index, elem) {
-    document.querySelectorAll('.depot-tab-card').forEach(d => d.classList.remove('active'));
-    elem.classList.add('active');
+  function goDepotSlide(index) {
+    depotSlideIndex = ((index % depotSlideCount) + depotSlideCount) % depotSlideCount;
 
-    document.getElementById('depotTitle').textContent = depotData[index].title;
-    document.getElementById('depotAddr').textContent = depotData[index].addr;
-    const hubElem = document.getElementById('depotHubCode');
-    if (hubElem) hubElem.textContent = depotData[index].code;
+    const track = document.getElementById('depotSliderTrack');
+    if (track) track.style.transform = `translateX(-${depotSlideIndex * 100}%)`;
+
+    document.querySelectorAll('#depotSliderDots .depot-dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === depotSlideIndex);
+    });
+
+    restartDepotAutoplay();
+  }
+
+  function moveDepotSlide(step) {
+    goDepotSlide(depotSlideIndex + step);
+  }
+
+  function restartDepotAutoplay() {
+    if (depotAutoTimer) clearInterval(depotAutoTimer);
+    depotAutoTimer = setInterval(() => moveDepotSlide(1), 4500);
+  }
+
+  restartDepotAutoplay();
+
+  const depotSliderEl = document.getElementById('depotSlider');
+  if (depotSliderEl) {
+    depotSliderEl.addEventListener('mouseenter', () => {
+      if (depotAutoTimer) clearInterval(depotAutoTimer);
+    });
+    depotSliderEl.addEventListener('mouseleave', restartDepotAutoplay);
   }
 
   // FAQ Accordion Logic
