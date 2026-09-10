@@ -309,6 +309,199 @@
     outline: none;
     cursor: pointer;
   }
+
+  /* Custom date + time pickers */
+  .search-field {
+    position: relative;
+  }
+  .picker-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+    text-align: left;
+  }
+  .picker-trigger .picker-icon {
+    font-size: 14px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .picker-trigger .picker-value {
+    flex: 1;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .picker-trigger .picker-caret {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    color: #737373;
+    transition: transform 0.2s ease;
+  }
+  .picker-trigger[aria-expanded="true"] .picker-caret {
+    transform: rotate(180deg);
+    color: var(--brand-accent);
+  }
+
+  .picker-panel {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 0;
+    z-index: 80;
+    background: #ffffff;
+    border: 1.5px solid #e5e5e5;
+    border-radius: 16px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+    padding: 12px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+    pointer-events: none;
+  }
+  .picker-panel.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .picker-panel.time-panel {
+    min-width: 168px;
+    max-height: 260px;
+    overflow-y: auto;
+    padding: 8px;
+  }
+  .picker-panel.date-panel {
+    width: 292px;
+    padding: 14px;
+  }
+
+  .time-option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    color: #0a0a0a;
+    padding: 10px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .time-option:hover {
+    background: #f5f5f5;
+  }
+  .time-option.active {
+    background: #0a0a0a;
+    color: #ffffff;
+  }
+
+  .cal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .cal-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: #0a0a0a;
+  }
+  .cal-nav {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    border: 1.5px solid #e5e5e5;
+    background: #ffffff;
+    color: #0a0a0a;
+    font-size: 16px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  }
+  .cal-nav:hover {
+    background: #0a0a0a;
+    border-color: #0a0a0a;
+    color: #ffffff;
+  }
+  .cal-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    margin-bottom: 6px;
+  }
+  .cal-weekdays span {
+    text-align: center;
+    font-size: 10.5px;
+    font-weight: 800;
+    color: #a3a3a3;
+    text-transform: uppercase;
+    padding: 4px 0;
+  }
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+  }
+  .cal-day {
+    aspect-ratio: 1;
+    border: none;
+    background: transparent;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #0a0a0a;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .cal-day:hover:not(:disabled):not(.selected) {
+    background: #f5f5f5;
+  }
+  .cal-day.muted {
+    color: #d4d4d4;
+  }
+  .cal-day.today {
+    box-shadow: inset 0 0 0 1.5px #dc2626;
+    color: #dc2626;
+  }
+  .cal-day.selected {
+    background: #dc2626;
+    color: #ffffff;
+    box-shadow: none;
+  }
+  .cal-day:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+
+  /* Keep picker menus above clipped hero edges */
+  .hero-section {
+    overflow: visible;
+  }
+  .hero-stage {
+    overflow: hidden;
+  }
+  .search-card {
+    overflow: visible;
+    z-index: 40;
+  }
+
   .btn-search {
     background: #0a0a0a;
     color: #ffffff;
@@ -1415,6 +1608,7 @@
     .icon-circle-btn { width: 34px; height: 34px; }
 
     .search-field { flex: 1 1 100%; }
+    .picker-panel.date-panel { width: min(292px, calc(100vw - 48px)); }
     .section-main-heading { font-size: 21px; }
     .vision-icon-halo { width: 38px; height: 38px; border-radius: 12px; font-size: 17px; }
     .faq-badge-tag { display: none; }
@@ -1520,57 +1714,51 @@
     </div>
 
     <!-- Sleek Floating Horizontal Search Form -->
-    <form action="search-results.html" method="GET" class="search-card">
-      <div class="search-field">
+    <form action="search-results.html" method="GET" class="search-card" id="heroSearchForm">
+      <div class="search-field" data-picker="date">
         <label>Start Date</label>
-        <div class="input-inline">
-          <span style="color:#6366f1;">📅</span>
-          <input type="date" name="startDate" value="2026-09-10" />
-        </div>
+        <button type="button" class="picker-trigger" aria-haspopup="dialog" aria-expanded="false">
+          <span class="picker-icon" aria-hidden="true">📅</span>
+          <span class="picker-value" data-display>10 Sep 2026</span>
+          <svg class="picker-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <input type="hidden" name="startDate" value="2026-09-10" data-hidden />
+        <div class="picker-panel date-panel" role="dialog" aria-label="Choose start date"></div>
       </div>
-      <div class="search-field">
+
+      <div class="search-field" data-picker="time">
         <label>Start Time</label>
-        <div class="input-inline">
-          <span style="color:#64748b;">🕒</span>
-          <select name="startTime">
-            <option>09:00 AM</option>
-            <option selected>10:00 AM</option>
-            <option>11:00 AM</option>
-            <option>12:00 PM</option>
-            <option>01:00 PM</option>
-            <option>02:00 PM</option>
-            <option>03:00 PM</option>
-            <option>04:00 PM</option>
-            <option>05:00 PM</option>
-            <option>06:00 PM</option>
-          </select>
-        </div>
+        <button type="button" class="picker-trigger" aria-haspopup="listbox" aria-expanded="false">
+          <span class="picker-icon" aria-hidden="true">🕒</span>
+          <span class="picker-value" data-display>10:00 AM</span>
+          <svg class="picker-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <input type="hidden" name="startTime" value="10:00 AM" data-hidden />
+        <div class="picker-panel time-panel" role="listbox" aria-label="Choose start time"></div>
       </div>
-      <div class="search-field">
+
+      <div class="search-field" data-picker="date">
         <label>End Date</label>
-        <div class="input-inline">
-          <span style="color:#6366f1;">📅</span>
-          <input type="date" name="endDate" value="2026-09-13" />
-        </div>
+        <button type="button" class="picker-trigger" aria-haspopup="dialog" aria-expanded="false">
+          <span class="picker-icon" aria-hidden="true">📅</span>
+          <span class="picker-value" data-display>13 Sep 2026</span>
+          <svg class="picker-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <input type="hidden" name="endDate" value="2026-09-13" data-hidden />
+        <div class="picker-panel date-panel" role="dialog" aria-label="Choose end date"></div>
       </div>
-      <div class="search-field">
+
+      <div class="search-field" data-picker="time">
         <label>End Time</label>
-        <div class="input-inline">
-          <span style="color:#64748b;">🕒</span>
-          <select name="endTime">
-            <option>09:00 AM</option>
-            <option selected>10:00 AM</option>
-            <option>11:00 AM</option>
-            <option>12:00 PM</option>
-            <option>01:00 PM</option>
-            <option>02:00 PM</option>
-            <option>03:00 PM</option>
-            <option>04:00 PM</option>
-            <option>05:00 PM</option>
-            <option>06:00 PM</option>
-          </select>
-        </div>
+        <button type="button" class="picker-trigger" aria-haspopup="listbox" aria-expanded="false">
+          <span class="picker-icon" aria-hidden="true">🕒</span>
+          <span class="picker-value" data-display>10:00 AM</span>
+          <svg class="picker-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <input type="hidden" name="endTime" value="10:00 AM" data-hidden />
+        <div class="picker-panel time-panel" role="listbox" aria-label="Choose end time"></div>
       </div>
+
       <button type="submit" class="btn-search">Search</button>
     </form>
 
@@ -2032,6 +2220,206 @@
     nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setOpen(false)));
     document.addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
     window.addEventListener('resize', () => { if (window.innerWidth > 900) setOpen(false); });
+  })();
+
+  // Custom date calendar + time dropdown for hero search
+  (function initSearchPickers() {
+    const TIMES = [
+      '09:00 AM', '10:00 AM', '11:00 AM', '12:00 PM',
+      '01:00 PM', '02:00 PM', '03:00 PM', '04:00 PM', '05:00 PM', '06:00 PM'
+    ];
+    const WEEKDAYS = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+    const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'];
+
+    function parseISO(iso) {
+      const [y, m, d] = iso.split('-').map(Number);
+      return new Date(y, m - 1, d);
+    }
+    function toISO(date) {
+      const y = date.getFullYear();
+      const m = String(date.getMonth() + 1).padStart(2, '0');
+      const d = String(date.getDate()).padStart(2, '0');
+      return `${y}-${m}-${d}`;
+    }
+    function formatDisplay(iso) {
+      const dt = parseISO(iso);
+      const mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][dt.getMonth()];
+      return `${dt.getDate()} ${mon} ${dt.getFullYear()}`;
+    }
+    function sameDay(a, b) {
+      return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
+    }
+
+    function closeAll(except) {
+      document.querySelectorAll('.search-field[data-picker]').forEach((field) => {
+        if (field === except) return;
+        const trigger = field.querySelector('.picker-trigger');
+        const panel = field.querySelector('.picker-panel');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        if (panel) panel.classList.remove('open');
+      });
+    }
+
+    function placePanel(field) {
+      const panel = field.querySelector('.picker-panel');
+      if (!panel) return;
+      panel.style.left = '0';
+      panel.style.right = 'auto';
+      requestAnimationFrame(() => {
+        const rect = panel.getBoundingClientRect();
+        if (rect.right > window.innerWidth - 12) {
+          panel.style.left = 'auto';
+          panel.style.right = '0';
+        }
+      });
+    }
+
+    function buildTimePanel(field) {
+      const panel = field.querySelector('.picker-panel');
+      const hidden = field.querySelector('[data-hidden]');
+      const display = field.querySelector('[data-display]');
+      panel.innerHTML = '';
+      TIMES.forEach((t) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'time-option' + (hidden.value === t ? ' active' : '');
+        btn.setAttribute('role', 'option');
+        btn.setAttribute('aria-selected', hidden.value === t ? 'true' : 'false');
+        btn.textContent = t;
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          hidden.value = t;
+          display.textContent = t;
+          closeAll();
+        });
+        panel.appendChild(btn);
+      });
+    }
+
+    function buildDatePanel(field, viewDate) {
+      const panel = field.querySelector('.picker-panel');
+      const hidden = field.querySelector('[data-hidden]');
+      const display = field.querySelector('[data-display]');
+      const selected = parseISO(hidden.value);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const view = new Date(viewDate.getFullYear(), viewDate.getMonth(), 1);
+
+      panel.innerHTML = '';
+
+      const header = document.createElement('div');
+      header.className = 'cal-header';
+      const prev = document.createElement('button');
+      prev.type = 'button';
+      prev.className = 'cal-nav';
+      prev.setAttribute('aria-label', 'Previous month');
+      prev.textContent = '‹';
+      const title = document.createElement('div');
+      title.className = 'cal-title';
+      title.textContent = `${MONTHS[view.getMonth()]} ${view.getFullYear()}`;
+      const next = document.createElement('button');
+      next.type = 'button';
+      next.className = 'cal-nav';
+      next.setAttribute('aria-label', 'Next month');
+      next.textContent = '›';
+      prev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        buildDatePanel(field, new Date(view.getFullYear(), view.getMonth() - 1, 1));
+      });
+      next.addEventListener('click', (e) => {
+        e.stopPropagation();
+        buildDatePanel(field, new Date(view.getFullYear(), view.getMonth() + 1, 1));
+      });
+      header.append(prev, title, next);
+      panel.appendChild(header);
+
+      const weekdays = document.createElement('div');
+      weekdays.className = 'cal-weekdays';
+      WEEKDAYS.forEach((w) => {
+        const span = document.createElement('span');
+        span.textContent = w;
+        weekdays.appendChild(span);
+      });
+      panel.appendChild(weekdays);
+
+      const grid = document.createElement('div');
+      grid.className = 'cal-grid';
+      const startPad = view.getDay();
+      const daysInMonth = new Date(view.getFullYear(), view.getMonth() + 1, 0).getDate();
+      const prevMonthDays = new Date(view.getFullYear(), view.getMonth(), 0).getDate();
+
+      for (let i = 0; i < 42; i++) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'cal-day';
+        let dayNum, cellDate, muted = false;
+
+        if (i < startPad) {
+          dayNum = prevMonthDays - startPad + i + 1;
+          cellDate = new Date(view.getFullYear(), view.getMonth() - 1, dayNum);
+          muted = true;
+        } else if (i >= startPad + daysInMonth) {
+          dayNum = i - startPad - daysInMonth + 1;
+          cellDate = new Date(view.getFullYear(), view.getMonth() + 1, dayNum);
+          muted = true;
+        } else {
+          dayNum = i - startPad + 1;
+          cellDate = new Date(view.getFullYear(), view.getMonth(), dayNum);
+        }
+
+        btn.textContent = String(dayNum);
+        if (muted) btn.classList.add('muted');
+        if (sameDay(cellDate, today)) btn.classList.add('today');
+        if (sameDay(cellDate, selected)) btn.classList.add('selected');
+
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          hidden.value = toISO(cellDate);
+          display.textContent = formatDisplay(hidden.value);
+          closeAll();
+        });
+        grid.appendChild(btn);
+      }
+      panel.appendChild(grid);
+    }
+
+    document.querySelectorAll('.search-field[data-picker]').forEach((field) => {
+      const type = field.getAttribute('data-picker');
+      const trigger = field.querySelector('.picker-trigger');
+      const panel = field.querySelector('.picker-panel');
+      const hidden = field.querySelector('[data-hidden]');
+      const display = field.querySelector('[data-display]');
+      if (!trigger || !panel || !hidden) return;
+
+      if (type === 'time') {
+        display.textContent = hidden.value;
+        buildTimePanel(field);
+      } else {
+        display.textContent = formatDisplay(hidden.value);
+        buildDatePanel(field, parseISO(hidden.value));
+      }
+
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = panel.classList.contains('open');
+        closeAll();
+        if (!isOpen) {
+          if (type === 'time') buildTimePanel(field);
+          else buildDatePanel(field, parseISO(hidden.value));
+          panel.classList.add('open');
+          trigger.setAttribute('aria-expanded', 'true');
+          placePanel(field);
+        }
+      });
+
+      panel.addEventListener('click', (e) => e.stopPropagation());
+    });
+
+    document.addEventListener('click', () => closeAll());
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeAll();
+    });
   })();
 
   // Hero Carousel logic
