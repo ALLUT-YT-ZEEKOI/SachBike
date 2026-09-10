@@ -64,7 +64,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 74px;
+    height: 86px;
   }
   .brand {
     display: flex;
@@ -72,7 +72,7 @@
     flex-shrink: 0;
   }
   .brand-logo {
-    height: 48px;
+    height: 70px;
     width: auto;
     display: block;
     border-radius: 8px;
@@ -147,7 +147,7 @@
 
   .nav-backdrop {
     position: fixed;
-    inset: 74px 0 0;
+    inset: 86px 0 0;
     background: rgba(18, 21, 26, 0.45);
     z-index: 98;
     opacity: 0;
@@ -191,6 +191,7 @@
     white-space: nowrap;
     user-select: none;
     z-index: 1;
+    opacity: 0;
   }
 
   .hero-side-bike {
@@ -198,10 +199,11 @@
     width: 280px;
     top: 50%;
     transform: translateY(-50%);
-    opacity: 0.5;
+    opacity: 0;
     z-index: 2;
     transition: opacity 0.3s ease;
     filter: drop-shadow(0 6px 12px rgba(0,0,0,0.1));
+    pointer-events: none;
   }
   .hero-side-bike.left { left: -80px; }
   .hero-side-bike.right { right: -80px; }
@@ -212,10 +214,12 @@
     width: min(520px, 85vw);
     margin: 0 auto;
     filter: drop-shadow(0 18px 24px rgba(0,0,0,0.15));
-    transition: transform 0.4s ease;
+    opacity: 0;
+    transform: translateY(28px) scale(0.94);
   }
-  .hero-main-img-wrap:hover {
-    transform: scale(1.02);
+  .hero-main-img-wrap img {
+    width: 100%;
+    display: block;
   }
 
   .hero-spec-box {
@@ -224,6 +228,8 @@
     top: 10%;
     z-index: 4;
     text-align: right;
+    opacity: 0;
+    transform: translateX(24px);
   }
   .hero-spec-box .starts {
     font-size: 11px;
@@ -266,6 +272,8 @@
     padding: 8px 12px;
     position: relative;
     z-index: 10;
+    opacity: 0;
+    transform: translateY(24px);
   }
   .search-field {
     flex: 1;
@@ -331,6 +339,11 @@
     max-width: 520px;
     margin: 0 auto;
   }
+  .hero-title-box,
+  .carousel-dots {
+    opacity: 0;
+    transform: translateY(18px);
+  }
 
   .carousel-dots {
     display: flex;
@@ -350,6 +363,113 @@
   .dot.active {
     background: var(--text-primary);
     width: 36px;
+  }
+
+  /* ---------- Hero pure animations ---------- */
+  @keyframes heroBgIn {
+    from { opacity: 0; transform: translate(-50%, -46%) scale(0.96); }
+    to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  }
+  @keyframes heroBgPulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    50%      { transform: translate(-50%, -52%) scale(1.015); opacity: 0.85; }
+  }
+  @keyframes heroSideInL {
+    from { opacity: 0; transform: translate(-48px, -50%); }
+    to   { opacity: 0.5; transform: translate(0, -50%); }
+  }
+  @keyframes heroSideInR {
+    from { opacity: 0; transform: translate(48px, -50%); }
+    to   { opacity: 0.5; transform: translate(0, -50%); }
+  }
+  @keyframes heroSideDriftL {
+    0%, 100% { transform: translate(0, -50%); }
+    50%      { transform: translate(6px, calc(-50% - 6px)); }
+  }
+  @keyframes heroSideDriftR {
+    0%, 100% { transform: translate(0, -50%); }
+    50%      { transform: translate(-6px, calc(-50% - 6px)); }
+  }
+  @keyframes heroMainIn {
+    from { opacity: 0; transform: translateY(32px) scale(0.92); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes heroFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-12px); }
+  }
+  @keyframes heroSwap {
+    0%   { opacity: 0; transform: translateY(18px) scale(0.96); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes heroSpecIn {
+    from { opacity: 0; transform: translateX(28px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes heroRiseIn {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes heroDotPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(10, 10, 10, 0.2); }
+    50%      { box-shadow: 0 0 0 4px rgba(10, 10, 10, 0); }
+  }
+
+  .hero-section.is-animated .hero-bg-text {
+    animation:
+      heroBgIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both,
+      heroBgPulse 6s ease-in-out 1.2s infinite;
+  }
+  .hero-section.is-animated .hero-side-bike.left {
+    animation:
+      heroSideInL 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both,
+      heroSideDriftL 5.5s ease-in-out 1.2s infinite;
+  }
+  .hero-section.is-animated .hero-side-bike.right {
+    animation:
+      heroSideInR 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both,
+      heroSideDriftR 5.5s ease-in-out 1.3s infinite;
+  }
+  .hero-section.is-animated .hero-main-img-wrap {
+    animation: heroMainIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+  }
+  .hero-section.is-animated .hero-main-img-wrap img {
+    animation: heroFloat 4.2s ease-in-out 1.2s infinite;
+  }
+  .hero-section.is-animated .hero-main-img-wrap.is-swapping img {
+    animation: heroSwap 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .hero-section.is-animated .hero-spec-box {
+    animation: heroSpecIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.45s both;
+  }
+  .hero-section.is-animated .search-card {
+    animation: heroRiseIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.55s both;
+  }
+  .hero-section.is-animated .hero-title-box {
+    animation: heroRiseIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both;
+  }
+  .hero-section.is-animated .carousel-dots {
+    animation: heroRiseIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.85s both;
+  }
+  .hero-section.is-animated .dot.active {
+    background: var(--brand-accent);
+    animation: heroDotPulse 2.2s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-bg-text,
+    .hero-side-bike,
+    .hero-main-img-wrap,
+    .hero-spec-box,
+    .search-card,
+    .hero-title-box,
+    .carousel-dots {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+    }
+    .hero-bg-text { transform: translate(-50%, -50%) !important; }
+    .hero-side-bike { opacity: 0.5 !important; transform: translateY(-50%) !important; }
   }
 
   /* AESTHETIC ELEVATED DESIGN SYSTEM */
@@ -1146,7 +1266,7 @@
 
     .nav-links {
       position: fixed;
-      top: 74px;
+      top: 86px;
       left: 0;
       right: 0;
       flex-direction: column;
@@ -1157,7 +1277,7 @@
       border-bottom: 1px solid var(--border-color);
       box-shadow: 0 18px 40px rgba(0, 0, 0, 0.10);
       font-size: 15px;
-      max-height: calc(100vh - 74px);
+      max-height: calc(100vh - 86px);
       overflow-y: auto;
       transform: translateY(-100%);
       visibility: hidden;
@@ -1290,7 +1410,7 @@
 
   /* --- Small phone --- */
   @media (max-width: 420px) {
-    .brand-logo { height: 40px; }
+    .brand-logo { height: 52px; }
     .header-actions { gap: 8px; }
     .icon-circle-btn { width: 34px; height: 34px; }
 
@@ -1337,7 +1457,7 @@
 <!-- HEADER -->
 <header class="site-header">
   <div class="container header-wrap">
-    <a href="index.html" class="brand" aria-label="SachCarz Rent a Car — Home">
+    <a href="index.html" class="brand" aria-label="BIKES — Home">
       <img src="images/logo-bikes.png" alt="BIKES" class="brand-logo" />
     </a>
 
@@ -1946,21 +2066,69 @@
   ];
 
   let currentHero = 0;
-  function switchHero(index) {
+  let heroAutoTimer = null;
+
+  function switchHero(index, fromAuto) {
+    if (index === currentHero && fromAuto !== true) {
+      // still allow re-trigger animation if clicking same? skip
+    }
     currentHero = index;
     const h = heroes[index];
-    document.getElementById('heroTitle').innerText = h.title;
-    document.getElementById('heroBgText').innerText = h.bgText;
-    document.getElementById('heroPrice').innerHTML = h.price + ' <small>/DAY</small>';
-    document.getElementById('heroSize').innerText = h.size;
-    document.getElementById('heroWeight').innerText = h.weight;
-    document.getElementById('heroMainImg').src = h.img;
-    document.getElementById('heroDesc').innerText = h.desc;
+    const wrap = document.querySelector('.hero-main-img-wrap');
+    const img = document.getElementById('heroMainImg');
+    const title = document.getElementById('heroTitle');
+    const desc = document.getElementById('heroDesc');
+    const bg = document.getElementById('heroBgText');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    document.querySelectorAll('.dot').forEach((dot, i) => {
-      dot.classList.toggle('active', i === index);
-    });
+    const applyCopy = () => {
+      title.innerText = h.title;
+      bg.innerText = h.bgText;
+      document.getElementById('heroPrice').innerHTML = h.price + ' <small>/DAY</small>';
+      document.getElementById('heroSize').innerText = h.size;
+      document.getElementById('heroWeight').innerText = h.weight;
+      img.src = h.img;
+      desc.innerText = h.desc;
+      document.querySelectorAll('.carousel-dots .dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    };
+
+    if (reduceMotion || !wrap) {
+      applyCopy();
+    } else {
+      wrap.classList.remove('is-swapping');
+      // force reflow so the swap animation restarts
+      void wrap.offsetWidth;
+      wrap.classList.add('is-swapping');
+      applyCopy();
+      window.setTimeout(() => wrap.classList.remove('is-swapping'), 600);
+    }
+
+    if (!fromAuto) restartHeroAutoplay();
   }
+
+  function restartHeroAutoplay() {
+    if (heroAutoTimer) clearInterval(heroAutoTimer);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    heroAutoTimer = setInterval(() => {
+      switchHero((currentHero + 1) % heroes.length, true);
+    }, 5000);
+  }
+
+  // Kick off hero entrance animations + auto-rotate
+  (function initHeroMotion() {
+    const hero = document.querySelector('.hero-section');
+    if (!hero) return;
+    requestAnimationFrame(() => {
+      hero.classList.add('is-animated');
+    });
+    restartHeroAutoplay();
+    hero.addEventListener('mouseenter', () => {
+      if (heroAutoTimer) clearInterval(heroAutoTimer);
+    });
+    hero.addEventListener('mouseleave', restartHeroAutoplay);
+  })();
 
   // Fleet bike image slider
   let depotSlideIndex = 0;
