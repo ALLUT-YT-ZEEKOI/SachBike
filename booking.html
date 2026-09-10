@@ -9,20 +9,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-page: #f8fafc;
+    --bg-page: #ffffff;
     --bg-card: #ffffff;
-    --text-primary: #0f172a;
-    --text-muted: #64748b;
-    --text-light: #94a3b8;
-    --border-color: #e2e8f0;
-    --brand-accent: #f59e0b;
-    --brand-yellow: #ffb800;
-    --brand-dark: #0f172a;
-    --brand-dark-card: #1e293b;
+    --text-primary: #0a0a0a;
+    --text-muted: #525252;
+    --text-light: #737373;
+    --border-color: #e5e5e5;
+    --brand-accent: #dc2626;
+    --brand-yellow: #ef4444;
+    --brand-dark: #0a0a0a;
+    --brand-dark-card: #171717;
     --success-green: #10b981;
     --radius-card: 20px;
     --shadow-soft: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
-    --shadow-glow: 0 12px 30px rgba(245, 158, 11, 0.2);
+    --shadow-glow: 0 12px 30px rgba(220, 38, 38, 0.2);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -120,10 +120,10 @@
     top: 0;
     left: 0;
     height: 100%;
-    background: linear-gradient(90deg, #f59e0b 0%, #ffb800 100%);
+    background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%);
     border-radius: 4px;
     transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+    box-shadow: 0 0 10px rgba(220, 38, 38, 0.45);
   }
   .stepper-steps-wrap {
     position: relative;
@@ -155,10 +155,10 @@
     box-shadow: 0 4px 10px rgba(0,0,0,0.04);
   }
   .step-node.active .step-circle {
-    background: #1e293b;
-    border-color: #f59e0b;
+    background: #0a0a0a;
+    border-color: #dc2626;
     color: #ffffff;
-    box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.2);
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.2);
     transform: scale(1.1);
   }
   .step-node.completed .step-circle {
@@ -324,8 +324,8 @@
   }
   .km-plan-card-new.selected {
     border-color: var(--brand-accent);
-    background: #fffdf5;
-    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.15);
+    background: #fef2f2;
+    box-shadow: 0 8px 24px rgba(220, 38, 38, 0.15);
   }
   .km-plan-card-new.selected::after {
     content: '✓';
@@ -348,8 +348,8 @@
     position: absolute;
     top: -10px;
     left: 14px;
-    background: linear-gradient(90deg, #f59e0b, #ffb800);
-    color: #1e293b;
+    background: linear-gradient(90deg, #dc2626, #ef4444);
+    color: #ffffff;
     font-size: 10px;
     font-weight: 900;
     padding: 2px 10px;
@@ -418,7 +418,7 @@
   .input-field-next:focus {
     background: #ffffff;
     border-color: var(--brand-accent);
-    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
   }
   .btn-action-inline {
     background: #0f172a;
@@ -565,8 +565,8 @@
     text-transform: uppercase;
   }
   .ticket-id-badge {
-    background: rgba(245, 158, 11, 0.2);
-    border: 1px solid rgba(245, 158, 11, 0.4);
+    background: rgba(220, 38, 38, 0.2);
+    border: 1px solid rgba(220, 38, 38, 0.4);
     color: var(--brand-yellow);
     font-size: 12px;
     font-weight: 800;
@@ -763,8 +763,8 @@
   }
 
   .sidebar-total-row {
-    background: #fffdf5;
-    border: 1.5px solid #fde68a;
+    background: #fef2f2;
+    border: 1.5px solid #fecaca;
     border-radius: 14px;
     padding: 16px;
     display: flex;
@@ -786,8 +786,8 @@
 
   .btn-next-step-cta {
     width: 100%;
-    background: linear-gradient(135deg, #ffb800 0%, #f59e0b 100%);
-    color: #0f172a;
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: #ffffff;
     font-size: 15px;
     font-weight: 900;
     padding: 16px;
@@ -801,7 +801,7 @@
   }
   .btn-next-step-cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 16px 36px rgba(245, 158, 11, 0.35);
+    box-shadow: 0 16px 36px rgba(220, 38, 38, 0.35);
   }
 
   /* =========================================================
@@ -1374,7 +1374,7 @@
     canvas.height = window.innerHeight;
 
     const particles = [];
-    const colors = ['#f59e0b', '#ffb800', '#10b981', '#3b82f6', '#ec4899', '#8b5cf6'];
+    const colors = ['#dc2626', '#ef4444', '#0a0a0a', '#ffffff', '#f87171', '#404040'];
 
     for (let i = 0; i < 120; i++) {
       particles.push({
