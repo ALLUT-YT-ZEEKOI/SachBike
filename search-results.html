@@ -3,22 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Choose Your Vehicle — Joystree Rental</title>
+<title>Choose Your Vehicle — Kottayam Rentals</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg-page: #ffffff;
     --bg-card: #ffffff;
     --bg-thumb: #f5f5f5;
-    --text-primary: #0a0a0a;
-    --text-muted: #525252;
-    --text-light: #737373;
+    --text-primary: #000000;
+    --text-muted: #6b6b6b;
+    --text-light: #A7A7A7;
     --border-color: #e5e5e5;
-    --brand-accent: #dc2626;
-    --brand-yellow: #ef4444;
-    --brand-dark: #0a0a0a;
+    --brand-accent: #c10000;
+    --brand-yellow: #F4A300; /* Signal Amber */
+    --brand-dark: #000000;
+    --brand-blue: #0dabd6; /* Petrol Blue */
+    --brand-grey: #A7A7A7; /* Road Dust Grey */
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
     --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.06);
     --shadow-xl: 0 20px 40px -10px rgba(18, 21, 26, 0.12);
@@ -29,13 +31,21 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: var(--bg-page);
     color: var(--text-primary);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjust: 100%;
     overflow-x: hidden;
+  }
+
+  .font-brand-secondary,
+  .card-cat,
+  .badge-yellow,
+  .vendor-badge {
+    font-family: 'Copperplate Gothic Light', Copperplate, 'Segoe UI', sans-serif;
+    letter-spacing: 0.05em;
   }
 
   a { color: inherit; text-decoration: none; }
@@ -171,7 +181,7 @@
     gap: 6px;
     background: #fef2f2;
     border: 1.5px solid #fecaca;
-    color: #dc2626;
+    color: #c10000;
     font-size: 12px;
     font-weight: 700;
     padding: 6px 16px;
@@ -486,7 +496,7 @@
   }
 
   .btn-select-vehicle {
-    background: #dc2626;
+    background: #c10000;
     color: #ffffff;
     font-size: 12.5px;
     font-weight: 800;
@@ -496,7 +506,7 @@
     align-items: center;
     gap: 6px;
     transition: all 0.2s ease;
-    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);
+    box-shadow: 0 4px 12px rgba(193, 0, 0, 0.25);
   }
   .btn-select-vehicle:hover {
     background: #0a0a0a;
@@ -560,7 +570,7 @@
 
   .btn-confirm-booking {
     width: 100%;
-    background: #dc2626;
+    background: #c10000;
     color: #ffffff;
     font-size: 15px;
     font-weight: 800;
@@ -839,7 +849,7 @@
     <div class="bike-card" data-category="electric">
       <div class="card-thumb">
         <span class="card-top-tag">⚡ Electric Sport</span>
-        <span class="vendor-badge">JOYSTREE</span>
+        <span class="vendor-badge">KOTTAYAM RENTALS</span>
         <img src="images/bike_green.png" alt="Specialized Rockhopper Elite" />
       </div>
       <div class="card-body">
@@ -861,7 +871,7 @@
     <div class="bike-card" data-category="popular">
       <div class="card-thumb">
         <span class="card-top-tag">🔥 Popular</span>
-        <span class="vendor-badge">JOYSTREE</span>
+        <span class="vendor-badge">KOTTAYAM RENTALS</span>
         <img src="images/bike_norco.png" alt="Norco Fluid FS 4 Black 29" />
       </div>
       <div class="card-body">
@@ -883,7 +893,7 @@
     <div class="bike-card" data-category="superbike">
       <div class="card-thumb">
         <span class="card-top-tag">🏆 Flagship</span>
-        <span class="vendor-badge">JOYSTREE</span>
+        <span class="vendor-badge">KOTTAYAM RENTALS</span>
         <img src="images/bike_vstrom.png" alt="Ducati Panigale V4 S" />
       </div>
       <div class="card-body">
@@ -905,7 +915,7 @@
     <div class="bike-card" data-category="sportbike">
       <div class="card-thumb">
         <span class="card-top-tag">🏁 Sportbike</span>
-        <span class="vendor-badge">JOYSTREE</span>
+        <span class="vendor-badge">KOTTAYAM RENTALS</span>
         <img src="images/bike_cbr.png" alt="Yamaha YZF-R1M Apex" />
       </div>
       <div class="card-body">
@@ -927,7 +937,7 @@
     <div class="bike-card" data-category="sportbike">
       <div class="card-thumb">
         <span class="card-top-tag">⭐ Top Rated</span>
-        <span class="vendor-badge">JOYSTREE</span>
+        <span class="vendor-badge">KOTTAYAM RENTALS</span>
         <img src="images/hero_bike.png" alt="Yamaha R15 V4 Monster" />
       </div>
       <div class="card-body">
@@ -949,7 +959,7 @@
     <div class="bike-card" data-category="superbike">
       <div class="card-thumb">
         <span class="card-top-tag">🔥 M Series</span>
-        <span class="vendor-badge">JOYSTREE</span>
+        <span class="vendor-badge">KOTTAYAM RENTALS</span>
         <img src="images/bike_cbr.png" alt="BMW S1000RR M Package" />
       </div>
       <div class="card-body">
@@ -971,7 +981,7 @@
     <div class="bike-card" data-category="popular">
       <div class="card-thumb">
         <span class="card-top-tag">🛡️ Adventure</span>
-        <span class="vendor-badge">JOYSTREE</span>
+        <span class="vendor-badge">KOTTAYAM RENTALS</span>
         <img src="images/bike_vstrom.png" alt="Suzuki V-Strom 1050 XT" />
       </div>
       <div class="card-body">
@@ -993,7 +1003,7 @@
     <div class="bike-card" data-category="electric">
       <div class="card-thumb">
         <span class="card-top-tag">⚡ Eco Sport</span>
-        <span class="vendor-badge">JOYSTREE</span>
+        <span class="vendor-badge">KOTTAYAM RENTALS</span>
         <img src="images/bike_green.png" alt="Zero SR/F Electric Super Naked" />
       </div>
       <div class="card-body">
@@ -1061,7 +1071,7 @@
         <a href="index.html" aria-label="BIKES — Home">
           <img src="images/logo-bikes.png" alt="BIKES" class="footer-brand-logo" />
         </a>
-        <span>© 2026 BIKES. All rights reserved.</span>
+        <span>© 2026 Kottayam Rentals. All rights reserved.</span>
       </div>
       <div style="display:flex; gap:16px; font-weight:600;">
         <span>Privacy Policy</span>

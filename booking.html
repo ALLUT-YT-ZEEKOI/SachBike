@@ -3,32 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vehicle Checkout — Joystree Rental</title>
+<title>Vehicle Checkout — Kottayam Rentals</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg-page: #ffffff;
     --bg-card: #ffffff;
-    --text-primary: #0a0a0a;
-    --text-muted: #525252;
-    --text-light: #737373;
+    --text-primary: #000000;
+    --text-muted: #6b6b6b;
+    --text-light: #A7A7A7;
     --border-color: #e5e5e5;
-    --brand-accent: #dc2626;
-    --brand-yellow: #ef4444;
-    --brand-dark: #0a0a0a;
+    --brand-accent: #c10000;
+    --brand-yellow: #F4A300; /* Signal Amber */
+    --brand-dark: #000000;
+    --brand-blue: #0dabd6; /* Petrol Blue */
+    --brand-grey: #A7A7A7; /* Road Dust Grey */
     --brand-dark-card: #171717;
     --success-green: #10b981;
     --radius-card: 20px;
     --shadow-soft: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
-    --shadow-glow: 0 12px 30px rgba(220, 38, 38, 0.2);
+    --shadow-glow: 0 12px 30px rgba(193, 0, 0, 0.2);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: var(--bg-page);
     color: var(--text-primary);
     line-height: 1.5;
@@ -36,6 +38,15 @@
     -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjust: 100%;
     overflow-x: hidden;
+  }
+
+  .font-brand-secondary,
+  .ticket-brand,
+  .step-label,
+  .plan-popular-tag,
+  .sidebar-total-label {
+    font-family: 'Copperplate Gothic Light', Copperplate, 'Segoe UI', sans-serif;
+    letter-spacing: 0.06em;
   }
 
   a { color: inherit; text-decoration: none; }
@@ -121,10 +132,10 @@
     top: 0;
     left: 0;
     height: 100%;
-    background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%);
+    background: linear-gradient(90deg, #c10000 0%, #F4A300 100%);
     border-radius: 4px;
     transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 0 10px rgba(220, 38, 38, 0.45);
+    box-shadow: 0 0 10px rgba(193, 0, 0, 0.45);
   }
   .stepper-steps-wrap {
     position: relative;
@@ -157,9 +168,9 @@
   }
   .step-node.active .step-circle {
     background: #0a0a0a;
-    border-color: #dc2626;
+    border-color: #c10000;
     color: #ffffff;
-    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.2);
+    box-shadow: 0 0 0 4px rgba(193, 0, 0, 0.2);
     transform: scale(1.1);
   }
   .step-node.completed .step-circle {
@@ -326,7 +337,7 @@
   .km-plan-card-new.selected {
     border-color: var(--brand-accent);
     background: #fef2f2;
-    box-shadow: 0 8px 24px rgba(220, 38, 38, 0.15);
+    box-shadow: 0 8px 24px rgba(193, 0, 0, 0.15);
   }
   .km-plan-card-new.selected::after {
     content: '✓';
@@ -349,7 +360,7 @@
     position: absolute;
     top: -10px;
     left: 14px;
-    background: linear-gradient(90deg, #dc2626, #ef4444);
+    background: linear-gradient(90deg, #c10000, #F4A300);
     color: #ffffff;
     font-size: 10px;
     font-weight: 900;
@@ -419,7 +430,7 @@
   .input-field-next:focus {
     background: #ffffff;
     border-color: var(--brand-accent);
-    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+    box-shadow: 0 0 0 3px rgba(193, 0, 0, 0.15);
   }
   .btn-action-inline {
     background: #0f172a;
@@ -566,8 +577,8 @@
     text-transform: uppercase;
   }
   .ticket-id-badge {
-    background: rgba(220, 38, 38, 0.2);
-    border: 1px solid rgba(220, 38, 38, 0.4);
+    background: rgba(193, 0, 0, 0.2);
+    border: 1px solid rgba(193, 0, 0, 0.4);
     color: var(--brand-yellow);
     font-size: 12px;
     font-weight: 800;
@@ -787,7 +798,7 @@
 
   .btn-next-step-cta {
     width: 100%;
-    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    background: linear-gradient(135deg, #F4A300 0%, #c10000 100%);
     color: #ffffff;
     font-size: 15px;
     font-weight: 900;
@@ -802,7 +813,7 @@
   }
   .btn-next-step-cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 16px 36px rgba(220, 38, 38, 0.35);
+    box-shadow: 0 16px 36px rgba(193, 0, 0, 0.35);
   }
 
   /* =========================================================
@@ -1077,7 +1088,7 @@
             <div class="ticket-notch right"></div>
 
             <div class="ticket-header-row">
-              <div class="ticket-brand">JOYSTREE OFFICIAL PASS</div>
+              <div class="ticket-brand">KOTTAYAM RENTALS OFFICIAL PASS</div>
               <div class="ticket-id-badge" id="successBookingId">RESERVATION #2602</div>
             </div>
 
@@ -1104,14 +1115,14 @@
             <div class="ticket-barcode-wrap">
               <div class="fake-barcode-lines"></div>
               <div style="font-size:10px; font-weight:800; color:#64748b; margin-top:4px; letter-spacing:2px;">
-                * 2 6 0 2 - JOYSTREE - VERIFIED *
+                * 2 6 0 2 - KOTTAYAM - VERIFIED *
               </div>
             </div>
           </div>
 
           <!-- ACTION CONTROLS GRID -->
           <div class="action-buttons-grid">
-            <a href="https://wa.me/?text=Hi%20Joystree%20Rental,%20I%20have%20confirmed%20my%20booking!" target="_blank" class="btn-action-whatsapp">
+            <a href="https://wa.me/?text=Hi%20Kottayam%20Rentals%2C%20I%20have%20confirmed%20my%20booking!" target="_blank" class="btn-action-whatsapp">
               💬 Instant WhatsApp Confirmation
             </a>
             <button type="button" class="btn-action-secondary" onclick="alert('📥 Pass downloaded! Saved to your downloads folder.')">
@@ -1170,7 +1181,7 @@
 
         <div class="promo-input-box">
           <input type="text" placeholder="Promo code" />
-          <button type="button" onclick="alert('Promo code JOYSTREE applied! 10% discount added.')">Apply</button>
+          <button type="button" onclick="alert('Promo code KOTTAYAM applied! 10% discount added.')">Apply</button>
         </div>
 
         <div class="sidebar-total-row">
@@ -1353,7 +1364,7 @@
     canvas.height = window.innerHeight;
 
     const particles = [];
-    const colors = ['#dc2626', '#ef4444', '#0a0a0a', '#ffffff', '#f87171', '#404040'];
+    const colors = ['#c10000', '#F4A300', '#000000', '#ffffff', '#0dabd6', '#A7A7A7'];
 
     for (let i = 0; i < 120; i++) {
       particles.push({

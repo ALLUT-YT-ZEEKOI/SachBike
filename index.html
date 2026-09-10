@@ -3,21 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Joystree Rental — Motorbike & Bike Rentals in Kerala</title>
+<title>Kottayam Rentals — Motorbike & Bike Rentals in Kerala</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg-page: #ffffff;
     --bg-card: #ffffff;
-    --text-primary: #0a0a0a;
-    --text-muted: #525252;
-    --text-light: #737373;
+    --text-primary: #000000;
+    --text-muted: #6b6b6b;
+    --text-light: #A7A7A7;
     --border-color: #e5e5e5;
-    --brand-accent: #dc2626;
-    --brand-yellow: #ef4444;
-    --brand-dark: #0a0a0a;
+    --brand-accent: #c10000;
+    --brand-yellow: #F4A300; /* Signal Amber */
+    --brand-dark: #000000;
+    --brand-blue: #0dabd6; /* Petrol Blue */
+    --brand-grey: #A7A7A7; /* Road Dust Grey */
     /* One rhythm for every section: each pads this much top and bottom,
        so the gap between any two sections is exactly twice this value. */
     --section-space: 34px;
@@ -31,13 +33,26 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: var(--bg-page);
     color: var(--text-primary);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjust: 100%;
     overflow-x: hidden;
+  }
+
+  /* Secondary brand typeface (Copperplate Gothic Light) for tags & accents */
+  .font-brand-secondary,
+  .step-badge-pill,
+  .section-badge-aesthetic,
+  .vision-tag,
+  .vision-badge-sub,
+  .depot-city-title,
+  .card-cat,
+  .ticket-brand {
+    font-family: 'Copperplate Gothic Light', Copperplate, 'Segoe UI', sans-serif;
+    letter-spacing: 0.06em;
   }
 
   a { color: inherit; text-decoration: none; }
@@ -477,11 +492,11 @@
     color: #d4d4d4;
   }
   .cal-day.today {
-    box-shadow: inset 0 0 0 1.5px #dc2626;
-    color: #dc2626;
+    box-shadow: inset 0 0 0 1.5px #c10000;
+    color: #c10000;
   }
   .cal-day.selected {
-    background: #dc2626;
+    background: #c10000;
     color: #ffffff;
     box-shadow: none;
   }
@@ -515,8 +530,8 @@
     margin-left: 8px;
   }
   .btn-search:hover {
-    background: #dc2626;
-    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.3);
+    background: #c10000;
+    box-shadow: 0 4px 14px rgba(193, 0, 0, 0.3);
   }
 
   .hero-title-box h1 {
@@ -956,7 +971,7 @@
     font-size: 18px;
   }
   .icon-bg-blue { background: #eff6ff; color: #2563eb; }
-  .icon-bg-amber { background: #fef2f2; color: #dc2626; }
+  .icon-bg-amber { background: #fef2f2; color: #c10000; }
   .icon-bg-green { background: #f0fdf4; color: #16a34a; }
   .icon-bg-rose { background: #f8fafc; color: #475569; }
 
@@ -1177,7 +1192,7 @@
     font-weight: 900;
   }
   .cancel-val.green { color: #16a34a; }
-  .cancel-val.amber { color: #dc2626; }
+  .cancel-val.amber { color: #c10000; }
   .cancel-note {
     font-size: 12px;
     color: #94a3b8;
@@ -1367,7 +1382,7 @@
     display: block;
   }
 
-  /* JOYSTREE RENTAL FOOTER */
+  /* KOTTAYAM RENTALS FOOTER */
   footer.site-footer {
     background: #ffffff;
     border-top: 1px solid var(--border-color);
@@ -1783,7 +1798,7 @@
     <img src="images/bike_vstrom.png" class="section-bg-watermark" alt="" />
     <div class="step-badge-pill">SIMPLE 4-STEP PROCESS</div>
     <h2 class="section-main-heading">How It Works</h2>
-    <p class="section-subtext">Rent your dream motorbike in 4 effortless steps with Joystree Rental.</p>
+    <p class="section-subtext">Rent your dream motorbike in 4 effortless steps with Kottayam Rentals.</p>
 
     <!-- Vision & Mission Card -->
     <div class="vision-mission-card">
@@ -1791,7 +1806,7 @@
         <div class="vision-icon-halo">🎯</div>
         <div class="vision-title-block">
           <div class="vision-tag">Our Vision &amp; Mission</div>
-          <div class="vision-title-sub">What drives Joystree Rental across Kerala</div>
+          <div class="vision-title-sub">What drives Kottayam Rentals across Kerala</div>
         </div>
         <div class="vision-badge-sub">Excellence &amp; Integrity</div>
       </div>
@@ -1891,7 +1906,7 @@
         <div class="hero-card-icon-halo">🚨</div>
         <h3 class="hero-card-title">Speed Advisory (80 km/h)</h3>
         <p class="hero-card-intro">
-          All Joystree motorbikes and bikes are monitored via GPS with an <strong>80 km/h speed limit advisory</strong> in accordance with Kerala MVD road safety rules.
+          All Kottayam Rentals motorbikes and bikes are monitored via GPS with an <strong>80 km/h speed limit advisory</strong> in accordance with Kerala MVD road safety rules.
         </p>
         
         <div class="hero-card-features-list">
@@ -1981,7 +1996,7 @@
             </div>
           </div>
           <ul class="mini-policy-list">
-            <li><strong>Free Delivery:</strong> Within 5 km radius of Joystree depots.</li>
+            <li><strong>Free Delivery:</strong> Within 5 km radius of Kottayam Rentals depots.</li>
             <li><strong>Cochin Airport (COK):</strong> Flat ₹300 one-way terminal pickup/drop.</li>
             <li><strong>One-Way Drop:</strong> Multi-location drops across Kerala supported.</li>
           </ul>
@@ -2080,7 +2095,7 @@
   <section class="faq-section container" id="faq">
     <div class="section-badge-aesthetic">❓ Frequently Asked Questions</div>
     <h2 class="section-main-heading">Rental <span>Knowledge Base</span></h2>
-    <p class="section-subtext">Everything you need to know about renting with Joystree Rental.</p>
+    <p class="section-subtext">Everything you need to know about renting with Kottayam Rentals.</p>
 
     <div class="faq-wrap">
       <!-- FAQ 1 -->
@@ -2143,7 +2158,7 @@
 
 </main>
 
-<!-- JOYSTREE RENTAL FOOTER -->
+<!-- KOTTAYAM RENTALS FOOTER -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid-top">
@@ -2152,7 +2167,7 @@
           <img src="images/logo-bikes.png" alt="BIKES" class="footer-brand-logo" />
         </a>
         <p class="footer-brand-desc">
-          BIKES | Kerala's premier self-drive motorbike &amp; bike rental network. Headquarters at Jawaharlal Nehru International Stadium, Kaloor, Kochi with regional depots in Kollam, Adoor, Pathanamthitta, and Kottayam.
+          Kottayam Rentals | Kerala's premier self-drive motorbike &amp; bike rental network. Headquarters at Jawaharlal Nehru International Stadium, Kaloor, Kochi with regional depots in Kollam, Adoor, Pathanamthitta, and Kottayam.
         </p>
       </div>
 
@@ -2181,14 +2196,14 @@
         <ul class="footer-links-list">
           <li>📍 JNI Stadium, Kaloor, Kochi</li>
           <li>📞 +91 70340 60000</li>
-          <li>✉️ info@joystree.com</li>
-          <li>🌐 www.joystree.com</li>
+          <li>✉️ info@kottayamrentals.com</li>
+          <li>🌐 www.kottayamrentals.com</li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom-bar">
-      <div>© 2026 Joystree Rental. All rights reserved.</div>
+      <div>© 2026 Kottayam Rentals. All rights reserved.</div>
       <div style="display:flex; gap:16px;">
         <a href="#policies">Privacy Policy</a>
         <a href="#policies">Terms of Service</a>
