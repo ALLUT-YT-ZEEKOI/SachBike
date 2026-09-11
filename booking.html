@@ -43,7 +43,6 @@
   .font-brand-secondary,
   .ticket-brand,
   .step-label,
-  .plan-popular-tag,
   .sidebar-total-label {
     font-family: 'Copperplate Gothic Light', Copperplate, 'Segoe UI', sans-serif;
     letter-spacing: 0.06em;
@@ -279,25 +278,10 @@
     font-size: 13px;
     font-weight: 600;
     color: var(--text-muted);
-    margin-bottom: 12px;
-  }
-  .spec-chips-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .spec-chip-item {
-    background: #ffffff;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 4px 10px;
-    font-size: 11.5px;
-    font-weight: 700;
-    color: #475569;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    margin-bottom: 0;
   }
 
-  /* KM PLAN SELECTION SECTION */
+  /* HELMET CHECKBOX SECTION */
   .section-title-box {
     margin-bottom: 20px;
   }
@@ -315,83 +299,63 @@
     margin-top: 2px;
   }
 
-  .km-plans-grid-new {
+  .helmet-check-list {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 1fr;
     gap: 12px;
   }
-  .km-plan-card-new {
-    background: #ffffff;
-    border: 2px solid var(--border-color);
-    border-radius: 16px;
-    padding: 18px 16px;
-    position: relative;
-    cursor: pointer;
-    transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
-  }
-  .km-plan-card-new:hover {
-    border-color: #cbd5e1;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.04);
-  }
-  .km-plan-card-new.selected {
-    border-color: var(--brand-accent);
-    background: #fef2f2;
-    box-shadow: 0 8px 24px rgba(193, 0, 0, 0.15);
-  }
-  .km-plan-card-new.selected::after {
-    content: '✓';
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 22px;
-    height: 22px;
-    background: var(--brand-accent);
-    color: #ffffff;
-    border-radius: 50%;
-    font-size: 12px;
-    font-weight: 900;
+  .helmet-check-row {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 14px;
+    padding: 16px 18px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 14px;
+    background: #ffffff;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
   }
-
-  .plan-popular-tag {
-    position: absolute;
-    top: -10px;
-    left: 14px;
-    background: linear-gradient(90deg, #c10000, #F4A300);
-    color: #ffffff;
-    font-size: 10px;
-    font-weight: 900;
-    padding: 2px 10px;
-    border-radius: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+  .helmet-check-row:hover {
+    border-color: #d4d4d4;
   }
-
-  .plan-km-heading {
-    font-size: 15px;
+  .helmet-check-row:has(input:checked) {
+    border-color: var(--brand-accent);
+    background: #fff5f5;
+    box-shadow: 0 4px 14px rgba(193, 0, 0, 0.08);
+  }
+  .helmet-check-row input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--brand-accent);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .helmet-check-copy {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+  }
+  .helmet-check-copy strong {
+    display: block;
+    font-size: 14.5px;
     font-weight: 800;
     color: var(--text-primary);
     margin-bottom: 2px;
   }
-  .plan-km-sub {
-    /* Sized so "1260 km total included" stays on one line in a 4-up card */
-    font-size: 11px;
-    font-weight: 600;
+  .helmet-check-copy span {
+    display: block;
+    font-size: 12.5px;
     color: var(--text-muted);
-    margin-bottom: 12px;
+    font-weight: 500;
   }
-  .plan-price-main {
-    font-size: 16px;
-    font-weight: 900;
+  .helmet-check-price {
+    font-size: 14px;
+    font-weight: 800;
     color: var(--text-primary);
+    white-space: nowrap;
   }
-  .plan-total-est {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--brand-accent);
+  .helmet-check-price.helmet-price-free {
+    color: #16a34a;
   }
 
   /* STEP 2 FORM CUSTOMER DETAILS */
@@ -820,12 +784,6 @@
      RESPONSIVE BREAKPOINTS
      ========================================================= */
 
-  /* The 380px sidebar leaves the plans too little room for 4 across here,
-     which would wrap the "xxx km total included" line onto two rows. */
-  @media (max-width: 1180px) {
-    .km-plans-grid-new { grid-template-columns: repeat(3, 1fr); }
-  }
-
   /* Below this the fixed 380px sidebar squeezes the main column too hard,
      so the summary drops underneath and content gets the full width. */
   @media (max-width: 1024px) {
@@ -847,18 +805,13 @@
   @media (max-width: 640px) {
     .container { padding: 0 16px; }
 
-    /* Two plans per row — they are short enough to pair up on a phone */
-    .km-plans-grid-new { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .km-plan-card-new { padding: 16px 13px; }
-    .plan-km-heading { font-size: 14px; }
-    .plan-km-sub { font-size: 11px; margin-bottom: 10px; }
-    .plan-price-main { font-size: 15px; }
-    .plan-popular-tag { left: 10px; font-size: 9px; padding: 2px 8px; }
-    .km-plan-card-new.selected::after { top: 10px; right: 10px; width: 19px; height: 19px; font-size: 11px; }
+    .helmet-check-row { padding: 14px 12px; gap: 10px; }
+    .helmet-check-copy strong { font-size: 13px; }
+    .helmet-check-copy span { font-size: 11.5px; }
+    .helmet-check-price { font-size: 12.5px; }
 
     .bike-stage-card { grid-template-columns: 1fr; text-align: center; }
     .bike-stage-thumb { height: 170px; }
-    .spec-chips-wrap { justify-content: center; }
     .bike-stage-info h2 { font-size: 19px; }
     .form-grid-2col { grid-template-columns: 1fr; gap: 16px; }
     .t-label { font-size: 10.5px; }
@@ -973,52 +926,34 @@
             </div>
             <h2 id="bikeStageTitle">NORCO FLUID FS 4 BLACK 29</h2>
             <div class="sub-line">Self-ride rental · Main Station Hub</div>
-            <div class="spec-chips-wrap">
-              <span class="spec-chip-item">⚡ Electric Sport</span>
-              <span class="spec-chip-item">⚙️ Automatic</span>
-              <span class="spec-chip-item">🔋 180 KM Range</span>
-              <span class="spec-chip-item">👤 2 Seats</span>
-            </div>
           </div>
         </div>
 
-        <!-- Customise ride: helmet choice -->
+        <!-- Customise ride: helmet checkboxes -->
         <div class="checkout-card">
           <div class="section-title-box">
             <h3>🪖 Customise Your Ride with Helmet</h3>
-            <p>Pick a helmet option for your rental. You can change this before pickup.</p>
+            <p>Tick the helmet options you need for this rental.</p>
           </div>
 
-          <div class="km-plans-grid-new">
-            <div class="km-plan-card-new selected" onclick="selectHelmet(this, 0, 'Own Helmet')">
-              <div class="plan-popular-tag">Included</div>
-              <div class="plan-km-heading">Own Helmet</div>
-              <div class="plan-km-sub">Bring your own — no add-on</div>
-              <div class="plan-price-main">€0.00/day</div>
-              <div class="plan-total-est" id="helmetEst0">€0.00 add-on</div>
-            </div>
+          <div class="helmet-check-list">
+            <label class="helmet-check-row" for="helmetCompliant">
+              <input type="checkbox" id="helmetCompliant" onchange="updateHelmetOptions()" />
+              <div class="helmet-check-copy">
+                <strong>Compliant Helmet</strong>
+                <span>ISI / DOT certified · complimentary</span>
+              </div>
+              <div class="helmet-check-price helmet-price-free">Free</div>
+            </label>
 
-            <div class="km-plan-card-new" onclick="selectHelmet(this, 2, 'Open Face')">
-              <div class="plan-km-heading">Open Face</div>
-              <div class="plan-km-sub">Light city helmet · 1 rider</div>
-              <div class="plan-price-main">€2.00/day</div>
-              <div class="plan-total-est" id="helmetEst2">€6.00 add-on</div>
-            </div>
-
-            <div class="km-plan-card-new" onclick="selectHelmet(this, 4, 'Full Face')">
-              <div class="plan-popular-tag">Popular</div>
-              <div class="plan-km-heading">Full Face</div>
-              <div class="plan-km-sub">DOT certified · max protection</div>
-              <div class="plan-price-main">€4.00/day</div>
-              <div class="plan-total-est" id="helmetEst4">€12.00 add-on</div>
-            </div>
-
-            <div class="km-plan-card-new" onclick="selectHelmet(this, 7, 'Dual Helmets')">
-              <div class="plan-km-heading">Dual Helmets</div>
-              <div class="plan-km-sub">Rider + pillion pair</div>
-              <div class="plan-price-main">€7.00/day</div>
-              <div class="plan-total-est" id="helmetEst7">€21.00 add-on</div>
-            </div>
+            <label class="helmet-check-row" for="helmetAdditional">
+              <input type="checkbox" id="helmetAdditional" onchange="updateHelmetOptions()" />
+              <div class="helmet-check-copy">
+                <strong>Additional Helmet</strong>
+                <span>Extra helmet for pillion rider</span>
+              </div>
+              <div class="helmet-check-price">€3.00/day</div>
+            </label>
           </div>
         </div>
 
@@ -1174,8 +1109,12 @@
             <strong id="sidebarDuration">3 Days</strong>
           </div>
           <div class="sidebar-detail-item">
-            <span>Helmet:</span>
-            <strong id="sidebarHelmet">Own Helmet</strong>
+            <span>Compliant Helmet:</span>
+            <strong id="sidebarHelmetCompliant">Not selected</strong>
+          </div>
+          <div class="sidebar-detail-item">
+            <span>Additional Helmet:</span>
+            <strong id="sidebarHelmetAdditional">Not selected</strong>
           </div>
         </div>
 
@@ -1206,8 +1145,7 @@
   let activeStep = 1;
   let baseRate = 15.00;
   let totalDays = 3;
-  let helmetAddonPerDay = 0;
-  let helmetLabel = 'Own Helmet';
+  const HELMET_ADDON_RATE = 3.00;
 
   window.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
@@ -1232,7 +1170,6 @@
       if (sideImg) sideImg.src = img;
     }
 
-    // Duration from dates
     if (startDate && endDate) {
       const s = new Date(startDate);
       const e = new Date(endDate);
@@ -1242,32 +1179,36 @@
     }
 
     document.getElementById('sidebarDuration').textContent = `${totalDays} Day${totalDays > 1 ? 's' : ''}`;
-    recalculateAllPrices();
+    updateHelmetOptions();
   });
 
-  function selectHelmet(elem, addonPerDay, label) {
-    document.querySelectorAll('.km-plan-card-new').forEach(c => c.classList.remove('selected'));
-    elem.classList.add('selected');
-    helmetAddonPerDay = addonPerDay;
-    helmetLabel = label;
-    recalculateAllPrices();
-  }
-
-  function recalculateAllPrices() {
+  function updateHelmetOptions() {
+    const compliant = document.getElementById('helmetCompliant')?.checked;
+    const additional = document.getElementById('helmetAdditional')?.checked;
+    const helmetAddonPerDay = additional ? HELMET_ADDON_RATE : 0;
     const dailyRate = baseRate + helmetAddonPerDay;
     const total = dailyRate * totalDays;
+    const addonTotal = helmetAddonPerDay * totalDays;
+
+    const compliantEl = document.getElementById('sidebarHelmetCompliant');
+    const additionalEl = document.getElementById('sidebarHelmetAdditional');
+    if (compliantEl) {
+      compliantEl.textContent = compliant ? 'Free' : 'Not selected';
+      compliantEl.style.color = compliant ? '#16a34a' : '';
+    }
+    if (additionalEl) {
+      additionalEl.textContent = additional
+        ? `€${HELMET_ADDON_RATE.toFixed(2)}/day (€${addonTotal.toFixed(2)})`
+        : 'Not selected';
+      additionalEl.style.color = additional ? 'var(--brand-accent)' : '';
+    }
 
     document.getElementById('sidebarTotal').textContent = `€${total.toFixed(2)}`;
     document.getElementById('succPaidTotal').textContent = `€${total.toFixed(2)}`;
-    document.getElementById('sidebarHelmet').textContent = helmetLabel;
+  }
 
-    [0, 2, 4, 7].forEach((addon) => {
-      const est = document.getElementById(`helmetEst${addon}`);
-      if (est) {
-        const a = addon * totalDays;
-        est.textContent = a === 0 ? '€0.00 add-on' : `€${a.toFixed(2)} add-on`;
-      }
-    });
+  function recalculateAllPrices() {
+    updateHelmetOptions();
   }
 
   function goToStep(stepNum) {

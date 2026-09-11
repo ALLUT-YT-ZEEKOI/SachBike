@@ -237,43 +237,6 @@
     display: block;
   }
 
-  .hero-spec-box {
-    position: absolute;
-    right: 4%;
-    top: 10%;
-    z-index: 4;
-    text-align: right;
-    opacity: 0;
-    transform: translateX(24px);
-  }
-  .hero-spec-box .starts {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--text-light);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .hero-spec-box .price {
-    font-size: 26px;
-    font-weight: 800;
-    color: var(--text-primary);
-  }
-  .hero-spec-box .price small {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text-muted);
-  }
-  .hero-spec-details {
-    margin-top: 8px;
-    font-size: 12px;
-    color: var(--text-muted);
-    line-height: 1.4;
-  }
-  .hero-spec-details span {
-    font-weight: 700;
-    color: var(--text-primary);
-  }
-
   /* Sleek Floating Horizontal Search Bar */
   .search-card {
     background: #ffffff;
@@ -610,10 +573,6 @@
     0%   { opacity: 0; transform: translateY(18px) scale(0.96); }
     100% { opacity: 1; transform: translateY(0) scale(1); }
   }
-  @keyframes heroSpecIn {
-    from { opacity: 0; transform: translateX(28px); }
-    to   { opacity: 1; transform: translateX(0); }
-  }
   @keyframes heroRiseIn {
     from { opacity: 0; transform: translateY(22px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -647,9 +606,6 @@
   .hero-section.is-animated .hero-main-img-wrap.is-swapping img {
     animation: heroSwap 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
-  .hero-section.is-animated .hero-spec-box {
-    animation: heroSpecIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.45s both;
-  }
   .hero-section.is-animated .search-card {
     animation: heroRiseIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.55s both;
   }
@@ -668,7 +624,6 @@
     .hero-bg-text,
     .hero-side-bike,
     .hero-main-img-wrap,
-    .hero-spec-box,
     .search-card,
     .hero-title-box,
     .carousel-dots {
@@ -1510,10 +1465,6 @@
       gap: 4px;
     }
     .hero-main-img-wrap { width: min(460px, 92%); }
-    .hero-spec-box {
-      position: static;
-      text-align: center;
-    }
   }
 
   /* --- Large phone / small tablet --- */
@@ -1582,8 +1533,6 @@
     .hero-stage { margin-bottom: 12px; }
     .hero-title-box h1 { font-size: 22px; }
     .hero-title-box p { font-size: 13px; }
-    .hero-spec-box .price { font-size: 22px; }
-    .hero-spec-details { display: flex; justify-content: center; gap: 14px; }
 
     .section-main-heading { font-size: 23px; letter-spacing: -0.4px; }
     .section-subtext { font-size: 13.5px; margin-bottom: 26px; }
@@ -1717,15 +1666,6 @@
         <img id="heroMainImg" src="images/hero_bike.png" alt="Norco Fluid HT 1 Motorbike" />
       </div>
 
-      <!-- Hero Spec Box -->
-      <div class="hero-spec-box">
-        <div class="starts">Starts From</div>
-        <div class="price" id="heroPrice">11.00 € <small>/DAY</small></div>
-        <div class="hero-spec-details">
-          <div>Size: <span id="heroSize">Medium</span></div>
-          <div>Weight: <span id="heroWeight">195 KG</span></div>
-        </div>
-      </div>
     </div>
 
     <!-- Sleek Floating Horizontal Search Form -->
@@ -2487,9 +2427,6 @@
     const applyCopy = () => {
       title.innerText = h.title;
       bg.innerText = h.bgText;
-      document.getElementById('heroPrice').innerHTML = h.price + ' <small>/DAY</small>';
-      document.getElementById('heroSize').innerText = h.size;
-      document.getElementById('heroWeight').innerText = h.weight;
       img.src = h.img;
       desc.innerText = h.desc;
       document.querySelectorAll('.carousel-dots .dot').forEach((dot, i) => {
