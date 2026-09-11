@@ -599,6 +599,16 @@
     font-size: 12px;
     color: var(--text-muted);
   }
+  .footer-brand-block {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .footer-links {
+    display: flex;
+    gap: 16px;
+    font-weight: 600;
+  }
   .footer-brand-logo {
     height: 44px;
     width: auto;
@@ -705,8 +715,17 @@
     footer.site-footer { padding: 44px 0 20px; }
     .footer-bottom {
       flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 14px;
+    }
+    .footer-brand-block {
+      flex-direction: column;
       gap: 10px;
-      text-align: left;
+    }
+    .footer-links {
+      justify-content: center;
+      flex-wrap: wrap;
     }
   }
 
@@ -731,8 +750,8 @@
     <nav class="nav-links" id="primaryNav">
       <a href="index.html">Home</a>
       <a href="search-results.html" class="active">Shop / Vehicles</a>
-      <a href="#blog">Blog</a>
-      <a href="#contact">Contact Us</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact Us</a>
     </nav>
 
     <div class="header-actions">
@@ -1066,13 +1085,13 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <div style="display:flex; align-items:center; gap:14px;">
+      <div class="footer-brand-block">
         <a href="index.html" aria-label="BIKES — Home">
           <img src="images/logo-bikes.png" alt="BIKES" class="footer-brand-logo" />
         </a>
         <span>© 2026 Kottayam Rentals. All rights reserved.</span>
       </div>
-      <div style="display:flex; gap:16px; font-weight:600;">
+      <div class="footer-links">
         <span>Privacy Policy</span>
         <span>Terms of Service</span>
         <span>Support</span>
