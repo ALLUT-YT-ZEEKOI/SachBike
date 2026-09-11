@@ -476,20 +476,25 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 10px;
     padding-top: 12px;
     border-top: 1px solid var(--border-color);
   }
   .price-box {
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
+    min-width: 0;
   }
   .price-main {
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 800;
     color: var(--text-primary);
-    line-height: 1.1;
+    line-height: 1.2;
+    white-space: nowrap;
+    letter-spacing: -0.02em;
   }
-  .price-sub {
+  .price-unit {
     font-size: 11px;
     font-weight: 600;
     color: var(--text-muted);
@@ -498,13 +503,16 @@
   .btn-select-vehicle {
     background: #c10000;
     color: #ffffff;
-    font-size: 12.5px;
+    font-size: 12px;
     font-weight: 800;
-    padding: 10px 16px;
+    padding: 10px 12px;
     border-radius: 10px;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    justify-content: center;
+    gap: 5px;
+    white-space: nowrap;
+    flex-shrink: 0;
     transition: all 0.2s ease;
     box-shadow: 0 4px 12px rgba(193, 0, 0, 0.25);
   }
@@ -874,9 +882,8 @@
         <div class="card-cat">URBAN & HIGHWAY</div>
         <h3 class="card-title">SPECIALIZED ROCKHOPPER ELITE</h3>
         <div class="card-footer-row">
-          <div class="price-box">
-            <div class="price-main">€11.00 <span style="font-size:12px; font-weight:600; color:var(--text-muted);">/day</span></div>
-            <div class="price-sub">Est. €33.00 total</div>
+          <div class="price-box" data-daily-rate="11.00">
+            <div class="price-main">€33.00 <span class="price-unit">total</span></div>
           </div>
           <button class="btn-select-vehicle" onclick="openBookingModal('SPECIALIZED ROCKHOPPER ELITE', '11.00', 'images/bike_green.png')">
             Select Vehicle →
@@ -896,9 +903,8 @@
         <div class="card-cat">CAFE RACER</div>
         <h3 class="card-title">NORCO FLUID FS 4 BLACK 29</h3>
         <div class="card-footer-row">
-          <div class="price-box">
-            <div class="price-main">€15.00 <span style="font-size:12px; font-weight:600; color:var(--text-muted);">/day</span></div>
-            <div class="price-sub">Est. €45.00 total</div>
+          <div class="price-box" data-daily-rate="15.00">
+            <div class="price-main">€45.00 <span class="price-unit">total</span></div>
           </div>
           <button class="btn-select-vehicle" onclick="openBookingModal('NORCO FLUID FS 4 BLACK 29', '15.00', 'images/bike_norco.png')">
             Select Vehicle →
@@ -918,9 +924,8 @@
         <div class="card-cat">TRACK SUPERBIKE</div>
         <h3 class="card-title">DUCATI PANIGALE V4 S</h3>
         <div class="card-footer-row">
-          <div class="price-box">
-            <div class="price-main">€45.00 <span style="font-size:12px; font-weight:600; color:var(--text-muted);">/day</span></div>
-            <div class="price-sub">Est. €135.00 total</div>
+          <div class="price-box" data-daily-rate="45.00">
+            <div class="price-main">€135.00 <span class="price-unit">total</span></div>
           </div>
           <button class="btn-select-vehicle" onclick="openBookingModal('DUCATI PANIGALE V4 S', '45.00', 'images/bike_vstrom.png')">
             Select Vehicle →
@@ -940,9 +945,8 @@
         <div class="card-cat">APEX SERIES</div>
         <h3 class="card-title">YAMAHA YZF-R1M APEX</h3>
         <div class="card-footer-row">
-          <div class="price-box">
-            <div class="price-main">€52.00 <span style="font-size:12px; font-weight:600; color:var(--text-muted);">/day</span></div>
-            <div class="price-sub">Est. €156.00 total</div>
+          <div class="price-box" data-daily-rate="52.00">
+            <div class="price-main">€156.00 <span class="price-unit">total</span></div>
           </div>
           <button class="btn-select-vehicle" onclick="openBookingModal('YAMAHA YZF-R1M APEX', '52.00', 'images/bike_cbr.png')">
             Select Vehicle →
@@ -962,9 +966,8 @@
         <div class="card-cat">SPORT TOURING</div>
         <h3 class="card-title">YAMAHA R15 V4 MONSTER EDITION</h3>
         <div class="card-footer-row">
-          <div class="price-box">
-            <div class="price-main">€22.00 <span style="font-size:12px; font-weight:600; color:var(--text-muted);">/day</span></div>
-            <div class="price-sub">Est. €66.00 total</div>
+          <div class="price-box" data-daily-rate="22.00">
+            <div class="price-main">€66.00 <span class="price-unit">total</span></div>
           </div>
           <button class="btn-select-vehicle" onclick="openBookingModal('YAMAHA R15 V4 MONSTER EDITION', '22.00', 'images/hero_bike.png')">
             Select Vehicle →
@@ -984,9 +987,8 @@
         <div class="card-cat">HYPER SUPERBIKE</div>
         <h3 class="card-title">BMW S1000RR M PERFORMANCE</h3>
         <div class="card-footer-row">
-          <div class="price-box">
-            <div class="price-main">€55.00 <span style="font-size:12px; font-weight:600; color:var(--text-muted);">/day</span></div>
-            <div class="price-sub">Est. €165.00 total</div>
+          <div class="price-box" data-daily-rate="55.00">
+            <div class="price-main">€165.00 <span class="price-unit">total</span></div>
           </div>
           <button class="btn-select-vehicle" onclick="openBookingModal('BMW S1000RR M PERFORMANCE', '55.00', 'images/bike_cbr.png')">
             Select Vehicle →
@@ -1006,9 +1008,8 @@
         <div class="card-cat">TOURING & TRAIL</div>
         <h3 class="card-title">SUZUKI V-STROM 1050 XT ADVENTURE</h3>
         <div class="card-footer-row">
-          <div class="price-box">
-            <div class="price-main">€38.00 <span style="font-size:12px; font-weight:600; color:var(--text-muted);">/day</span></div>
-            <div class="price-sub">Est. €114.00 total</div>
+          <div class="price-box" data-daily-rate="38.00">
+            <div class="price-main">€114.00 <span class="price-unit">total</span></div>
           </div>
           <button class="btn-select-vehicle" onclick="openBookingModal('SUZUKI V-STROM 1050 XT ADVENTURE', '38.00', 'images/bike_vstrom.png')">
             Select Vehicle →
@@ -1028,9 +1029,8 @@
         <div class="card-cat">ZERO EMISSION</div>
         <h3 class="card-title">ZERO SR/F ELECTRIC SUPER NAKED</h3>
         <div class="card-footer-row">
-          <div class="price-box">
-            <div class="price-main">€30.00 <span style="font-size:12px; font-weight:600; color:var(--text-muted);">/day</span></div>
-            <div class="price-sub">Est. €90.00 total</div>
+          <div class="price-box" data-daily-rate="30.00">
+            <div class="price-main">€90.00 <span class="price-unit">total</span></div>
           </div>
           <button class="btn-select-vehicle" onclick="openBookingModal('ZERO SR/F ELECTRIC SUPER NAKED', '30.00', 'images/bike_green.png')">
             Select Vehicle →
@@ -1089,7 +1089,7 @@
         <a href="index.html" aria-label="BIKES — Home">
           <img src="images/logo-bikes.png" alt="BIKES" class="footer-brand-logo" />
         </a>
-        <span>© 2026 Kottayam Rentals. All rights reserved.</span>
+        <span>© 2026 Kottayam Rentals. All Rights Reserved. Powered by Zeekoi Enterprise Solutions</span>
       </div>
       <div class="footer-links">
         <span>Privacy Policy</span>
@@ -1169,17 +1169,13 @@
   function updateCardEstTotals(days) {
     const cards = document.querySelectorAll('.bike-card');
     cards.forEach(card => {
+      const priceBox = card.querySelector('.price-box');
       const priceElem = card.querySelector('.price-main');
-      const estElem = card.querySelector('.price-sub');
-      if (priceElem && estElem) {
-        const text = priceElem.textContent;
-        const match = text.match(/€([\d\.]+)/);
-        if (match) {
-          const rate = parseFloat(match[1]);
-          const total = (rate * days).toFixed(2);
-          estElem.textContent = `Est. €${total} total`;
-        }
-      }
+      if (!priceBox || !priceElem) return;
+      const rate = parseFloat(priceBox.dataset.dailyRate || '0');
+      if (!rate) return;
+      const total = (rate * days).toFixed(2);
+      priceElem.innerHTML = `€${total} <span class="price-unit">total</span>`;
     });
   }
 

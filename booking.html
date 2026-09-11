@@ -104,37 +104,12 @@
     color: var(--text-primary);
   }
 
-  /* MODERN STEPPER / PROGRESS LINE COMPONENT */
+  /* STEPPER */
   .stepper-container {
     padding: 32px 0 24px;
     max-width: 800px;
     margin: 0 auto;
     position: relative;
-  }
-  /* Nodes are equal-width columns, so the outer circle centres sit at
-     1/6 and 5/6 of the row — the track spans exactly between them. */
-  .stepper-line-bg {
-    position: absolute;
-    top: calc(32px + 20px); /* container padding-top + half a circle */
-    transform: translateY(-50%);
-    left: 16.6667%;
-    right: 16.6667%;
-    height: 4px;
-    background: #e2e8f0;
-    z-index: 1;
-    border-radius: 4px;
-  }
-  /* Sits inside the track, so its width is always measured against the
-     track and never overshoots the last step node */
-  .stepper-line-progress {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    background: linear-gradient(90deg, #c10000 0%, #F4A300 100%);
-    border-radius: 4px;
-    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 0 10px rgba(193, 0, 0, 0.45);
   }
   .stepper-steps-wrap {
     position: relative;
@@ -341,12 +316,6 @@
     font-weight: 800;
     color: var(--text-primary);
     margin-bottom: 2px;
-  }
-  .helmet-check-copy span {
-    display: block;
-    font-size: 12.5px;
-    color: var(--text-muted);
-    font-weight: 500;
   }
   .helmet-check-price {
     font-size: 14px;
@@ -795,33 +764,56 @@
   /* --- Tablet --- */
   @media (max-width: 768px) {
     .stepper-container { padding: 24px 0 20px; }
-    .stepper-line-bg { top: calc(24px + 20px); }
     .step-label { font-size: 11.5px; }
     .checkout-card { padding: 22px 20px; }
     .success-hero-box { padding: 26px 16px 20px; }
+    .helmet-check-list { grid-template-columns: 1fr; }
   }
 
   /* --- Phone --- */
   @media (max-width: 640px) {
     .container { padding: 0 16px; }
+    body { overflow-x: hidden; }
 
+    .header-wrap {
+      gap: 10px;
+    }
+    .btn-back-link {
+      font-size: 12.5px;
+      white-space: nowrap;
+    }
+
+    .helmet-check-list { grid-template-columns: 1fr; }
     .helmet-check-row { padding: 14px 12px; gap: 10px; }
     .helmet-check-copy strong { font-size: 13px; }
-    .helmet-check-copy span { font-size: 11.5px; }
     .helmet-check-price { font-size: 12.5px; }
+
+    .checkout-card {
+      padding: 18px 16px;
+      min-width: 0;
+      overflow: hidden;
+    }
+    .left-main-col,
+    .checkout-grid {
+      min-width: 0;
+      max-width: 100%;
+    }
 
     .bike-stage-card { grid-template-columns: 1fr; text-align: center; }
     .bike-stage-thumb { height: 170px; }
-    .bike-stage-info h2 { font-size: 19px; }
+    .bike-stage-info h2 { font-size: 19px; word-break: break-word; }
     .form-grid-2col { grid-template-columns: 1fr; gap: 16px; }
     .t-label { font-size: 10.5px; }
     .t-value { font-size: 13px; }
     .t-value-accent { font-size: 15px; }
 
-    /* Compact stepper: smaller circles, so the track rides a little higher */
-    .stepper-line-bg { top: calc(24px + 17px); }
     .step-circle { width: 34px; height: 34px; font-size: 13px; }
-    .step-label { font-size: 10.5px; margin-top: 8px; }
+    .step-label {
+      font-size: 10px;
+      margin-top: 8px;
+      line-height: 1.25;
+      padding: 0 4px;
+    }
 
     .section-title-box h3 { font-size: 16px; }
     .section-title-box p { font-size: 12.5px; }
@@ -849,7 +841,6 @@
   /* --- Small phone --- */
   @media (max-width: 420px) {
     .brand-logo { height: 52px; }
-    .stepper-line-bg { display: none; }
     .stepper-steps-wrap { gap: 8px; }
     .step-label { font-size: 10px; }
     .checkout-card { padding: 18px 16px; }
@@ -883,10 +874,6 @@
 
   <!-- MODERN STEPPER PROGRESS LINE BAR -->
   <div class="stepper-container">
-    <div class="stepper-line-bg">
-      <div class="stepper-line-progress" id="progressFillLine" style="width: 15%;"></div>
-    </div>
-
     <div class="stepper-steps-wrap">
       <!-- Step 1 Node -->
       <div class="step-node active" id="stepNode1" onclick="goToStep(1)">
@@ -929,19 +916,13 @@
           </div>
         </div>
 
-        <!-- Customise ride: helmet checkboxes -->
+        <!-- Helmet options -->
         <div class="checkout-card">
-          <div class="section-title-box">
-            <h3>🪖 Customise Your Ride with Helmet</h3>
-            <p>Tick the helmet options you need for this rental.</p>
-          </div>
-
           <div class="helmet-check-list">
             <label class="helmet-check-row" for="helmetCompliant">
               <input type="checkbox" id="helmetCompliant" onchange="updateHelmetOptions()" />
               <div class="helmet-check-copy">
                 <strong>Compliant Helmet</strong>
-                <span>ISI / DOT certified · complimentary</span>
               </div>
               <div class="helmet-check-price helmet-price-free">Free</div>
             </label>
@@ -950,7 +931,6 @@
               <input type="checkbox" id="helmetAdditional" onchange="updateHelmetOptions()" />
               <div class="helmet-check-copy">
                 <strong>Additional Helmet</strong>
-                <span>Extra helmet for pillion rider</span>
               </div>
               <div class="helmet-check-price">€3.00/day</div>
             </label>
@@ -1234,10 +1214,8 @@
   function setActiveStepView(stepNum) {
     activeStep = stepNum;
 
-    // Update Stepper Progress Line & Circles
-    const progressFill = document.getElementById('progressFillLine');
+    // Update Stepper Circles
     if (stepNum === 1) {
-      progressFill.style.width = '15%';
       document.getElementById('stepNode1').className = 'step-node active';
       document.getElementById('stepNode2').className = 'step-node';
       document.getElementById('stepNode3').className = 'step-node';
@@ -1248,7 +1226,6 @@
       document.getElementById('sidebarCol').style.display = 'block';
       document.getElementById('mainDashboardGrid').classList.remove('single-col');
     } else if (stepNum === 2) {
-      progressFill.style.width = '50%';
       document.getElementById('stepNode1').className = 'step-node completed';
       document.getElementById('stepNode2').className = 'step-node active';
       document.getElementById('stepNode3').className = 'step-node';
@@ -1258,7 +1235,6 @@
       document.getElementById('sidebarCol').style.display = 'block';
       document.getElementById('mainDashboardGrid').classList.remove('single-col');
     } else if (stepNum === 3) {
-      progressFill.style.width = '100%';
       document.getElementById('stepNode1').className = 'step-node completed';
       document.getElementById('stepNode2').className = 'step-node completed';
       document.getElementById('stepNode3').className = 'step-node completed';

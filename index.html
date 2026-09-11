@@ -1346,9 +1346,12 @@
   }
   .footer-grid-top {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 40px;
-    margin-bottom: 48px;
+    grid-template-columns: minmax(220px, 1.5fr) repeat(3, minmax(150px, 1fr));
+    gap: 48px;
+    margin-bottom: 40px;
+    align-items: start;
+    text-align: left;
+    justify-items: stretch;
   }
   .footer-brand-title {
     font-size: 20px;
@@ -1383,6 +1386,8 @@
   }
   .footer-links-list li {
     margin-bottom: 10px;
+    font-size: 13px;
+    color: var(--text-muted);
   }
   .footer-links-list a {
     font-size: 13px;
@@ -1395,12 +1400,29 @@
 
   .footer-bottom-bar {
     border-top: 1px solid var(--border-color);
-    padding-top: 24px;
+    padding-top: 22px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 20px;
     font-size: 12px;
     color: var(--text-muted);
+  }
+  .footer-copy {
+    margin: 0;
+    line-height: 1.5;
+  }
+  .footer-legal-links {
+    display: flex;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+  .footer-legal-links a {
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+  .footer-legal-links a:hover {
+    color: var(--text-primary);
   }
 
   /* =========================================================
@@ -1508,7 +1530,36 @@
     .policy-6grid { grid-template-columns: 1fr; }
     .policy-subgrid { grid-template-columns: 1fr; }
     .full-span-card { grid-column: span 1; }
-    .footer-grid-top { grid-template-columns: 1fr; gap: 28px; }
+    .footer-grid-top {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      text-align: center;
+      justify-items: center;
+    }
+    .footer-brand-logo {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .footer-brand-desc {
+      max-width: none;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .footer-links-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .footer-bottom-bar {
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      text-align: center;
+    }
+    .footer-legal-links {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
     .section-bg-watermark { width: 600px; opacity: 0.04; }
     .cancellation-flex-boxes { flex-direction: column; align-items: stretch; }
     .cancel-note { min-width: 0; }
@@ -1554,15 +1605,6 @@
 
     .faq-header-btn { padding: 18px 18px; font-size: 14px; gap: 12px; }
     .faq-body-text { padding: 0 18px 20px; padding-top: 16px; }
-
-    .footer-brand-desc { max-width: none; }
-    .footer-bottom-bar {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 12px;
-      text-align: left;
-    }
-    .footer-bottom-bar > div:last-child { flex-wrap: wrap; }
   }
 
   /* --- Small phone --- */
@@ -1857,22 +1899,6 @@
               <p>Monitored for rider security across Kerala highways and mountain terrain.</p>
             </div>
           </div>
-
-          <div class="hero-feature-item">
-            <span class="feature-icon">⚖️</span>
-            <div>
-              <strong>₹1,500 Fine Per Event</strong>
-              <p>Overspeeding events charged a flat ₹1,500 fine per recorded breach.</p>
-            </div>
-          </div>
-
-          <div class="hero-feature-item">
-            <span class="feature-icon">⛰️</span>
-            <div>
-              <strong>Highland Safety</strong>
-              <p>Ensures maximum road safety on Kerala scenic routes & hairpin bends.</p>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -1940,30 +1966,6 @@
             <li><strong>Cochin Airport (COK):</strong> Flat ₹300 one-way terminal pickup/drop.</li>
             <li><strong>One-Way Drop:</strong> Multi-location drops across Kerala supported.</li>
           </ul>
-        </div>
-
-        <!-- Card 5: Cancellation Policy (Full-width bottom span) -->
-        <div class="policy-mini-card full-span-card">
-          <div class="mini-card-header">
-            <div class="mini-icon-bubble icon-bg-rose">❌</div>
-            <div>
-              <h4 class="mini-card-title">Cancellation Policy</h4>
-              <span class="mini-card-subtag">Refund Terms</span>
-            </div>
-          </div>
-          <div class="cancellation-flex-boxes">
-            <div class="cancel-badge-box">
-              <span class="cancel-time">> 24 Hours Prior</span>
-              <span class="cancel-val green">100% Full Booking Refund</span>
-            </div>
-            <div class="cancel-badge-box">
-              <span class="cancel-time">< 24 Hours Prior</span>
-              <span class="cancel-val amber">50% Booking Refund</span>
-            </div>
-            <div class="cancel-note">
-              * Non-production of original documents treated as late cancellation (no refund).
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -2107,7 +2109,7 @@
           <img src="images/logo-bikes.png" alt="BIKES" class="footer-brand-logo" />
         </a>
         <p class="footer-brand-desc">
-          Kottayam Rentals | Kerala's premier self-drive motorbike &amp; bike rental network. Headquarters at Jawaharlal Nehru International Stadium, Kaloor, Kochi with regional depots in Kollam, Adoor, Pathanamthitta, and Kottayam.
+          Kottayam Rentals | Kerala's premier self-drive motorbike &amp; bike rental network.
         </p>
       </div>
 
@@ -2143,8 +2145,8 @@
     </div>
 
     <div class="footer-bottom-bar">
-      <div>© 2026 Kottayam Rentals. All rights reserved.</div>
-      <div style="display:flex; gap:16px;">
+      <p class="footer-copy">© 2026 Kottayam Rentals. All Rights Reserved. Powered by Zeekoi Enterprise Solutions</p>
+      <div class="footer-legal-links">
         <a href="#policies">Privacy Policy</a>
         <a href="#policies">Terms of Service</a>
         <a href="#policies">Rental Guidelines</a>
@@ -2544,8 +2546,7 @@
       '.faq-section .section-main-heading',
       '.faq-section .section-subtext',
       '.faq-item-card',
-      '.footer-grid-top > *',
-      '.footer-bottom-bar'
+      '.footer-grid-top > *'
     ].join(','));
 
     targets.forEach((el) => el.classList.add('reveal'));
